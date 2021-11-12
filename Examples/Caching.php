@@ -1,10 +1,10 @@
 <?php
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
-use CrmCareCloud\Webservice\RestApi\SDK\Cache\Cache;
-use CrmCareCloud\Webservice\RestApi\SDK\Cache\Rule;
-use CrmCareCloud\Webservice\RestApi\SDK\Config;
-use CrmCareCloud\Webservice\RestApi\SDK\CareCloud;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\Cache;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\Rule;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 require_once '../vendor/autoload.php';

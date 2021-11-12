@@ -13,8 +13,8 @@ composer require carecloud/sdk-php
 You need to create the client first:
 
 ```php
-use CrmCareCloud\Webservice\RestApi\SDK\Data\AuthTypes;
-use CrmCareCloud\Webservice\RestApi\SDK\Data\Interfaces;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\Interfaces;
 
 require_once '../vendor/autoload.php';
 
@@ -391,7 +391,7 @@ composer require symfony/cache
 Setup the rules:
 
 ```php
-use CrmCareCloud\Webservice\RestApi\SDK\Cache\Rule;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\Rule;
 $cache_rules  = [
     new Rule( 
         Rule::REQUEST_TYPE_GET, // Request type 
@@ -405,7 +405,7 @@ Setup the Cache and pass it to the client:
 
 ```php
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use CrmCareCloud\Webservice\RestApi\SDK\Cache\Cache;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\Cache;
 $cache = new Cache(
 	new FilesystemAdapter( 'testCache', 0, __DIR__ ), // PSR-6 compatible Cache Pool, in our case Symfony FileAdapter
 	$cache_rules

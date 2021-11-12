@@ -1,9 +1,9 @@
 <?php
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
-use CrmCareCloud\Webservice\RestApi\SDK\Config;
-use CrmCareCloud\Webservice\RestApi\SDK\CareCloud;
-use CrmCareCloud\Webservice\RestApi\SDK\Data\AuthTypes;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
 require_once '../vendor/autoload.php';
 require_once 'config.php';

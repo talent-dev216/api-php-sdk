@@ -1,6 +1,6 @@
 <?php
 
-namespace CrmCareCloud\Webservice\RestApi\SDK\Cache;
+namespace CrmCareCloud\Webservice\RestApi\Client\SDK\Cache;
 
 use Kevinrob\GuzzleCache\Strategy\Delegate\RequestMatcherInterface;
 use Psr\Http\Message\RequestInterface;

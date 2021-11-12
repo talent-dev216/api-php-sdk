@@ -15,8 +15,8 @@ use CrmCareCloud\Webservice\RestApi\Client\Model\InterestRecord;
 use CrmCareCloud\Webservice\RestApi\Client\Model\PersonalInformation;
 use CrmCareCloud\Webservice\RestApi\Client\Model\PropertyRecord;
 use CrmCareCloud\Webservice\RestApi\Client\Model\SocialNetworkCredentials;
-use CrmCareCloud\Webservice\RestApi\SDK\Config;
-use CrmCareCloud\Webservice\RestApi\SDK\CareCloud;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 
 require_once '../vendor/autoload.php';
 require_once 'config.php';

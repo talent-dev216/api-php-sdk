@@ -1,13 +1,13 @@
 <?php
 
-namespace CrmCareCloud\Webservice\RestApi\SDK\Extensions;
+namespace CrmCareCloud\Webservice\RestApi\Client\SDK\Extensions;
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
 use CrmCareCloud\Webservice\RestApi\Client\Configuration;
 use CrmCareCloud\Webservice\RestApi\Client\Model\ActionsAssignfreecardBody;
 use CrmCareCloud\Webservice\RestApi\Client\Model\Card;
 use CrmCareCloud\Webservice\RestApi\Client\Model\CardsCardIdBody;
-use CrmCareCloud\Webservice\RestApi\SDK\CareCloud;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use Exception;
 use GuzzleHttp\ClientInterface;
 

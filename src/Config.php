@@ -1,9 +1,9 @@
 <?php
 
-namespace CrmCareCloud\Webservice\RestApi\SDK;
+namespace CrmCareCloud\Webservice\RestApi\Client\SDK;
 
-use CrmCareCloud\Webservice\RestApi\SDK\Data\AuthTypes;
-use CrmCareCloud\Webservice\RestApi\SDK\Data\Interfaces;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\Interfaces;
 use Symfony\Contracts\Cache\CacheInterface;
 
 class Config {

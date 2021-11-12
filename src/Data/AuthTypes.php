@@ -1,6 +1,6 @@
 <?php
 
-namespace CrmCareCloud\Webservice\RestApi\SDK\Data;
+namespace CrmCareCloud\Webservice\RestApi\Client\SDK\Data;
 
 class AuthTypes
 {

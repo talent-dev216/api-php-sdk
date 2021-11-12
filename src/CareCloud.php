@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CrmCareCloud\Webservice\RestApi\SDK;
+namespace CrmCareCloud\Webservice\RestApi\Client\SDK;
 
 
 use CrmCareCloud\Webservice\RestApi\Client\Api\AgreementsApi;
@@ -60,10 +60,10 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\WalletApi;
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
 use CrmCareCloud\Webservice\RestApi\Client\Configuration;
 use CrmCareCloud\Webservice\RestApi\Client\Model\ActionsLoginBody1;
-use CrmCareCloud\Webservice\RestApi\SDK\Cache\Cache;
-use CrmCareCloud\Webservice\RestApi\SDK\Cache\CacheRequestMatcher;
-use CrmCareCloud\Webservice\RestApi\SDK\Data\AuthTypes;
-use CrmCareCloud\Webservice\RestApi\SDK\Data\Interfaces;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\Cache;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\CacheRequestMatcher;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\Interfaces;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
@@ -174,7 +174,7 @@ class CareCloud {
 	}
 
 	/**
-	 * @return \CrmCareCloud\Webservice\RestApi\SDK\Extensions\CardsApi
+	 * @return \CrmCareCloud\Webservice\RestApi\Client\SDK\Extensions\CardsApi
 	 */
 	public function cardsApi(): CardsApi {
 		return new Extensions\CardsApi( $this->getClient(), $this->getDefaultConfiguration() );
@@ -202,7 +202,7 @@ class CareCloud {
 	}
 
 	/**
-	 * @return \CrmCareCloud\Webservice\RestApi\SDK\Extensions\CustomersApi
+	 * @return \CrmCareCloud\Webservice\RestApi\Client\SDK\Extensions\CustomersApi
 	 */
 	public function customersApi(): CustomersApi {
 		return new Extensions\CustomersApi( $this->getClient(), $this->getDefaultConfiguration(), $this );

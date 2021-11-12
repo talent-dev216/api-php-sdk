@@ -1,6 +1,6 @@
 <?php
 
-namespace CrmCareCloud\Webservice\RestApi\SDK\Extensions;
+namespace CrmCareCloud\Webservice\RestApi\Client\SDK\Extensions;
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
 use CrmCareCloud\Webservice\RestApi\Client\Model\Card;

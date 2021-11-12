@@ -1,5 +1,5 @@
 <?php
-namespace CrmCareCloud\Webservice\RestApi\SDK\Cache;
+namespace CrmCareCloud\Webservice\RestApi\Client\SDK\Cache;
 use Psr\Cache\CacheItemPoolInterface;
 
 class Cache {

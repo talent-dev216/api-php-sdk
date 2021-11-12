@@ -1,11 +1,11 @@
 <?php
 
-namespace CrmCareCloud\Webservice\RestApi\SDK\Abstracts;
+namespace CrmCareCloud\Webservice\RestApi\Client\SDK\Abstracts;
 
 use RelayPay\Api\ECommerceApi;
-use CrmCareCloud\Webservice\RestApi\SDK\Config;
-use CrmCareCloud\Webservice\RestApi\SDK\Client;
-use CrmCareCloud\Webservice\RestApi\SDK\Exceptions\ApiException;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Client;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Exceptions\ApiException;
 
 abstract class ApiRequest {
 	private $client;
