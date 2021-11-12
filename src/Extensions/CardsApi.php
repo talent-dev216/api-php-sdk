@@ -1,13 +1,13 @@
 <?php
 
-namespace CareCloud\SDK\Extensions;
+namespace CrmCareCloud\Webservice\RestApi\SDK\Extensions;
 
-use CareCloud\ApiException;
-use CareCloud\Model\Card;
-use CareCloud\Model\CardsCardIdBody;
+use CrmCareCloud\Webservice\RestApi\Client\ApiException;
+use CrmCareCloud\Webservice\RestApi\Client\Model\Card;
+use CrmCareCloud\Webservice\RestApi\Client\Model\CardsCardIdBody;
 use Exception;
 
-class CardsApi extends \CareCloud\Api\CardsApi {
+class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi {
 
     /**
      * Search for the card and verify that it is not assigned

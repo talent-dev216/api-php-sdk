@@ -1,6 +1,6 @@
 <?php
 
-namespace CareCloud\SDK\Cache;
+namespace CrmCareCloud\Webservice\RestApi\SDK\Cache;
 
 class Rule {
 	private string $requestType;

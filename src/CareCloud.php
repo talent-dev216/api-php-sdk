@@ -1,69 +1,69 @@
 <?php
 
 
-namespace CareCloud\SDK;
+namespace CrmCareCloud\Webservice\RestApi\SDK;
 
 
-use CareCloud\Api\AgreementsApi;
-use CareCloud\Api\CampaignProductsApi;
-use CareCloud\Api\CampaignsApi;
-use CareCloud\Api\CardsApi;
-use CareCloud\Api\CardTypesApi;
-use CareCloud\Api\CountriesApi;
-use CareCloud\Api\CurrenciesApi;
-use CareCloud\Api\CustomerExternalApplicationsApi;
-use CareCloud\Api\CustomerPropertiesApi;
-use CareCloud\Api\CustomerRelationTypesApi;
-use CareCloud\Api\CustomersActionsApi;
-use CareCloud\Api\CustomersApi;
-use CareCloud\Api\CustomerSourceRecordsApi;
-use CareCloud\Api\CustomerSourcesApi;
-use CareCloud\Api\CustomerTypesApi;
-use CareCloud\Api\EventGroupsApi;
-use CareCloud\Api\EventPropertiesApi;
-use CareCloud\Api\EventsApi;
-use CareCloud\Api\EventTypesApi;
-use CareCloud\Api\InterestsApi;
-use CareCloud\Api\LanguagesApi;
-use CareCloud\Api\MessagesApi;
-use CareCloud\Api\MessageTemplatesApi;
-use CareCloud\Api\OrdersApi;
-use CareCloud\Api\PartnersApi;
-use CareCloud\Api\PointReservationApi;
-use CareCloud\Api\PointsApi;
-use CareCloud\Api\PointTypesApi;
-use CareCloud\Api\ProductBrandsApi;
-use CareCloud\Api\ProductGroupsApi;
-use CareCloud\Api\ProductPropertiesApi;
-use CareCloud\Api\ProductReservationsApi;
-use CareCloud\Api\ProductReservationSourcesApi;
-use CareCloud\Api\ProductsApi;
-use CareCloud\Api\PurchaseItemTypesApi;
-use CareCloud\Api\PurchasesApi;
-use CareCloud\Api\PurchaseTypesApi;
-use CareCloud\Api\RecommendationEngineApi;
-use CareCloud\Api\RecommendationsApi;
-use CareCloud\Api\ReservableProductsApi;
-use CareCloud\Api\RewardPropertiesApi;
-use CareCloud\Api\RewardsApi;
-use CareCloud\Api\SegmentsApi;
-use CareCloud\Api\SkipassesApi;
-use CareCloud\Api\StatusesApi;
-use CareCloud\Api\StoreGroupsApi;
-use CareCloud\Api\StorePropertiesApi;
-use CareCloud\Api\StoresApi;
-use CareCloud\Api\TokensApi;
-use CareCloud\Api\UserRolesApi;
-use CareCloud\Api\UsersApi;
-use CareCloud\Api\VouchersApi;
-use CareCloud\Api\WalletApi;
-use CareCloud\ApiException;
-use CareCloud\Configuration;
-use CareCloud\Model\ActionsLoginBody1;
-use CareCloud\SDK\Cache\Cache;
-use CareCloud\SDK\Cache\CacheRequestMatcher;
-use CareCloud\SDK\Data\AuthTypes;
-use CareCloud\SDK\Data\Interfaces;
+use CrmCareCloud\Webservice\RestApi\Client\Api\AgreementsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CampaignProductsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CampaignsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CardTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CountriesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CurrenciesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerExternalApplicationsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerPropertiesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerRelationTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomersActionsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomersApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerSourceRecordsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerSourcesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\EventGroupsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\EventPropertiesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\EventsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\EventTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\InterestsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\LanguagesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\MessagesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\MessageTemplatesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\OrdersApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PartnersApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PointReservationApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PointsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PointTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductBrandsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductGroupsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductPropertiesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationSourcesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PurchaseItemTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PurchasesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PurchaseTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\RecommendationEngineApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\RecommendationsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ReservableProductsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\RewardPropertiesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\RewardsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\SegmentsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\SkipassesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\StatusesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\StoreGroupsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\StorePropertiesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\StoresApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\TokensApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\UserRolesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\UsersApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\VouchersApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\WalletApi;
+use CrmCareCloud\Webservice\RestApi\Client\ApiException;
+use CrmCareCloud\Webservice\RestApi\Client\Configuration;
+use CrmCareCloud\Webservice\RestApi\Client\Model\ActionsLoginBody1;
+use CrmCareCloud\Webservice\RestApi\SDK\Cache\Cache;
+use CrmCareCloud\Webservice\RestApi\SDK\Cache\CacheRequestMatcher;
+use CrmCareCloud\Webservice\RestApi\SDK\Data\AuthTypes;
+use CrmCareCloud\Webservice\RestApi\SDK\Data\Interfaces;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
@@ -174,7 +174,7 @@ class CareCloud {
 	}
 
 	/**
-	 * @return \CareCloud\SDK\Extensions\CardsApi
+	 * @return \CrmCareCloud\Webservice\RestApi\SDK\Extensions\CardsApi
 	 */
 	public function cardsApi(): CardsApi {
 		return new Extensions\CardsApi( $this->getClient(), $this->getDefaultConfiguration() );
@@ -202,7 +202,7 @@ class CareCloud {
 	}
 
 	/**
-	 * @return \CareCloud\SDK\Extensions\CustomersApi
+	 * @return \CrmCareCloud\Webservice\RestApi\SDK\Extensions\CustomersApi
 	 */
 	public function customersApi(): CustomersApi {
 		return new Extensions\CustomersApi( $this->getClient(), $this->getDefaultConfiguration(), $this );

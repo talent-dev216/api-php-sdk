@@ -1,10 +1,10 @@
 <?php
 
-namespace CareCloud\SDK;
+namespace CrmCareCloud\Webservice\RestApi\SDK;
 
-use CareCloud\Api\UsersApi;
-use CareCloud\Model\ActionsLoginBody1;
-use CareCloud\SDK\Data\AuthTypes;
+use CrmCareCloud\Webservice\RestApi\Client\Api\UsersApi;
+use CrmCareCloud\Webservice\RestApi\Client\Model\ActionsLoginBody1;
+use CrmCareCloud\Webservice\RestApi\SDK\Data\AuthTypes;
 use GuzzleHttp\Client;
 use Psr\Http\Message\RequestInterface;
 

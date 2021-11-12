@@ -1,7 +1,7 @@
 <?php
 
-use CareCloud\SDK\Data\AuthTypes;
-use CareCloud\SDK\Data\Interfaces;
+use CrmCareCloud\Webservice\RestApi\SDK\Data\AuthTypes;
+use CrmCareCloud\Webservice\RestApi\SDK\Data\Interfaces;
 
 $projectUri    = 'project-uri';
 $login         = 'myLogin';

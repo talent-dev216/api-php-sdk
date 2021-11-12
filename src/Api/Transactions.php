@@ -1,6 +1,6 @@
 <?php
 
-namespace CareCloud\SDK\Api;
+namespace CrmCareCloud\Webservice\RestApi\SDK\Api;
 
 use GuzzleHttp\Psr7\Utils;
 use RelayPay\Api\ECommerceApi;
@@ -11,11 +11,11 @@ use RelayPay\Model\EcommerceMerchantTransaction;
 use RelayPay\Model\EcommerceResponse;
 use RelayPay\Model\PageEcommerceMerchantTransaction;
 use RelayPay\Model\TransactionRequest;
-use CareCloud\SDK\Abstracts\ApiRequest;
+use CrmCareCloud\Webservice\RestApi\SDK\Abstracts\ApiRequest;
 
 /**
  * Class Transactions
- * @package CareCloud\SDK\Api
+ * @package CrmCareCloud\Webservice\RestApi\SDK\Api
  * @property ECommerceApi $client
  */
 class Agreements extends ApiRequest {

@@ -1,22 +1,22 @@
 <?php
 
-use CareCloud\ApiException;
-use CareCloud\Model\Address;
-use CareCloud\Model\Agreement;
-use CareCloud\Model\Card;
-use CareCloud\Model\CustomAgreements;
-use CareCloud\Model\Customer;
-use CareCloud\Model\CustomerIdInterestrecordsBody;
-use CareCloud\Model\CustomerIdPropertyrecordsBody;
-use CareCloud\Model\CustomersBody;
-use CareCloud\Model\CustomersCustomerIdBody;
-use CareCloud\Model\CustomerSourceRecord;
-use CareCloud\Model\InterestRecord;
-use CareCloud\Model\PersonalInformation;
-use CareCloud\Model\PropertyRecord;
-use CareCloud\Model\SocialNetworkCredentials;
-use CareCloud\SDK\Config;
-use CareCloud\SDK\CareCloud;
+use CrmCareCloud\Webservice\RestApi\Client\ApiException;
+use CrmCareCloud\Webservice\RestApi\Client\Model\Address;
+use CrmCareCloud\Webservice\RestApi\Client\Model\Agreement;
+use CrmCareCloud\Webservice\RestApi\Client\Model\Card;
+use CrmCareCloud\Webservice\RestApi\Client\Model\CustomAgreements;
+use CrmCareCloud\Webservice\RestApi\Client\Model\Customer;
+use CrmCareCloud\Webservice\RestApi\Client\Model\CustomerIdInterestrecordsBody;
+use CrmCareCloud\Webservice\RestApi\Client\Model\CustomerIdPropertyrecordsBody;
+use CrmCareCloud\Webservice\RestApi\Client\Model\CustomersBody;
+use CrmCareCloud\Webservice\RestApi\Client\Model\CustomersCustomerIdBody;
+use CrmCareCloud\Webservice\RestApi\Client\Model\CustomerSourceRecord;
+use CrmCareCloud\Webservice\RestApi\Client\Model\InterestRecord;
+use CrmCareCloud\Webservice\RestApi\Client\Model\PersonalInformation;
+use CrmCareCloud\Webservice\RestApi\Client\Model\PropertyRecord;
+use CrmCareCloud\Webservice\RestApi\Client\Model\SocialNetworkCredentials;
+use CrmCareCloud\Webservice\RestApi\SDK\Config;
+use CrmCareCloud\Webservice\RestApi\SDK\CareCloud;
 
 require_once '../vendor/autoload.php';
 require_once 'config.php';

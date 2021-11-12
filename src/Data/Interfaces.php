@@ -1,6 +1,6 @@
 <?php
 
-namespace CareCloud\SDK\Data;
+namespace CrmCareCloud\Webservice\RestApi\SDK\Data;
 
 class Interfaces {
 	const ENTERPRISE = 'enterprise';

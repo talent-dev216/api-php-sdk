@@ -6,7 +6,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CareCloud\\SDK\\": "src/"
+      "CrmCareCloud\\Webservice\\RestApi\\SDK\\": "src/"
     }
   }
 }

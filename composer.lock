@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crmcarecloud/api-php-client.git",
-                "reference": "cc6296d286a48ec093a1473338602b2a8cc66ed1"
+                "reference": "0b53106af152f73e88189b18302e3810ef2b2494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crmcarecloud/api-php-client/zipball/cc6296d286a48ec093a1473338602b2a8cc66ed1",
-                "reference": "cc6296d286a48ec093a1473338602b2a8cc66ed1",
+                "url": "https://api.github.com/repos/crmcarecloud/api-php-client/zipball/0b53106af152f73e88189b18302e3810ef2b2494",
+                "reference": "0b53106af152f73e88189b18302e3810ef2b2494",
                 "shasum": ""
             },
             "require": {
@@ -36,7 +36,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "CareCloud\\": "lib/"
+                    "CrmCareCloud\\Webservice\\RestApi\\Client\\": "lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -60,7 +60,7 @@
                 "issues": "https://github.com/crmcarecloud/api-php-client/issues",
                 "source": "https://github.com/crmcarecloud/api-php-client/tree/master"
             },
-            "time": "2021-11-11T12:48:26+00:00"
+            "time": "2021-11-12T07:29:22+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
