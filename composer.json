@@ -1,16 +1,12 @@
 {
-  "name": "carecloud/sdk-php",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url":  "git@gitlab.wpify.io:wpify/client/carecloud/carecloud-client-php.git"
-    }
-  ],
+  "name": "crmcarecloud/sdk-php",
   "require": {
-    "carecloud/client-php": "dev-master",
+    "crmcarecloud/api-php-client": "dev-master",
     "kevinrob/guzzle-cache-middleware": "^3.4"
   },
   "autoload": {
-    "psr-4": {"CareCloud\\SDK\\": "src/"}
+    "psr-4": {
+      "CareCloud\\SDK\\": "src/"
+    }
   }
 }
