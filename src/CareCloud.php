@@ -72,6 +72,8 @@ use Kevinrob\GuzzleCache\Storage\Psr6CacheStorage;
 use Kevinrob\GuzzleCache\Strategy\Delegate\DelegatingCacheStrategy;
 use Kevinrob\GuzzleCache\Strategy\GreedyCacheStrategy;
 use Kevinrob\GuzzleCache\Strategy\NullCacheStrategy;
+use \DateTime;
+use \DateTimeZone;
 
 class CareCloud {
 	private $client;
@@ -552,7 +554,8 @@ class CareCloud {
 	}
 
 	public function getHashedPassword() {
-		return hash( 'sha256', md5( $this->config->getPassword() ) . date( 'YmdH' ) );
+		$dt = new DateTime('now', new DateTimeZone('UTC'));
+		return hash( 'sha256', md5( $this->config->getPassword() ) . $dt->format("YmdH") );
 	}
 
 }
