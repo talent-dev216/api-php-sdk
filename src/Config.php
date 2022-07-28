@@ -23,7 +23,7 @@ class Config {
 		string $login,
 		string $password,
 		string $externalAppId = '',
-		string $authType = AuthTypes::BASIC_AUTH,
+		string $authType = AuthTypes::DEFAULT_AUTH,
 		string $interface = Interfaces::ENTERPRISE,
 		CacheInterface $cache = null,
 		string $token = null,

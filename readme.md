@@ -22,7 +22,7 @@ $projectUri    = 'https://yourapiurl.com/webservice/rest-api/enterprise-interfac
 $login         = 'login';
 $password      = 'pass';
 $externalAppId = 'appId';
-$authType      = AuthTypes::TOKEN; 
+$authType      = AuthTypes::BEARER_AUTH;
 // Or if using basic auth, just change the AuthType to Basic Auth
 // $authType      = AuthTypes::BASIC_AUTH;
 
