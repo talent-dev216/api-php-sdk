@@ -91,6 +91,8 @@ class CareCloud {
 		$url = trim( $this->config->getProjectUri() );
 
 		$config = Configuration::getDefaultConfiguration()->setHost( $url );
+		$config->setBasicAuth($this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH)
+			->setBearerAuth($this->getConfig()->getAuthType() === AuthTypes::BEARER_AUTH);
 
 		if ( $this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH ) {
 			$password = $this->config->getInterface() === Interfaces::ENTERPRISE ? $this->getHashedPassword() : $this->getConfig()->getPassword();
