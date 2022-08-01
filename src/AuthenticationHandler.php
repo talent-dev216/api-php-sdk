@@ -22,7 +22,7 @@ class AuthenticationHandler {
 		if ( $config->getToken() ) {
 			$this->token = $config->getToken();
 		}
-		if ( $config->getAuthType() === AuthTypes::TOKEN && ! $this->token ) {
+		if ( $config->getAuthType() === AuthTypes::BEARER_AUTH && ! $this->token ) {
 			$body = new ActionsLoginBody1();
 			$body
 				->setLogin( $config->getLogin() )
@@ -35,7 +35,7 @@ class AuthenticationHandler {
 		}
 
 		return function ( RequestInterface $request, array $options ) use ( $handler ) {
-			if ( $this->care_cloud->getConfig()->getAuthType() === AuthTypes::TOKEN ) {
+			if ( $this->care_cloud->getConfig()->getAuthType() === AuthTypes::BEARER_AUTH ) {
 				return $handler(
 					$request->withHeader( 'Authorization', 'Bearer ' . $this->token ),
 					$options
