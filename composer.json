@@ -1,12 +1,24 @@
 {
   "name": "crmcarecloud/sdk-php",
+  "config": {
+    "sort-packages": true
+  },
   "require": {
     "crmcarecloud/api-php-client": "dev-master",
-    "kevinrob/guzzle-cache-middleware": "^3.4"
+    "kevinrob/guzzle-cache-middleware": "^3.4",
+    "psr/simple-cache": "^1.0",
+    "relaypay-official/merchant-php-client": "^1.0",
+    "symfony/cache": "^5.4"
   },
   "autoload": {
     "psr-4": {
       "CrmCareCloud\\Webservice\\RestApi\\Client\\SDK\\": "src/"
     }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.8"
+  },
+  "scripts": {
+    "phpstan": "vendor/bin/phpstan"
   }
 }

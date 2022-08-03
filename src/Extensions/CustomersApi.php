@@ -94,7 +94,8 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
 	public function postCustomerExtended( $customerBody, ?Card $card = null, $propertyBody = null, $interestBody = null, string $accept_language = null ): array
     {
 		// Card data
-        $card_id      = null;
+		$card_id      = null;
+		$state        = $card ?? $card->getState();
 		$card_number  = $card ?? $card->getCardNumber();
 		$valid_from   = $card ?? $card->getValidFrom();
 		$valid_to     = $card ?? $card->getValidTo();

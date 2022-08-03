@@ -528,16 +528,17 @@ class CareCloud {
 	}
 
 	/**
-	 * @throws InvalidArgumentException
+	 * @throws \InvalidArgumentException
 	 */
 	public function getCountries() {
-		$this->cache->get( 'countries', function ( ItemInterface $item ) {
-			$item->expiresAfter( 3600 );
-
-			$api = new CountriesApi( $this->getClient(), $this->getDefaultConfiguration() );
-
-			return $api->getCountries();
-		} );
+        if(!$this->cache->has('countries')){
+            $this->cache->set(
+                'countries',
+                (new CountriesApi( $this->getClient(), $this->getDefaultConfiguration() ))->getCountries(),
+                3600
+            );
+        }
+        return $this->cache->get('countries');
 	}
 
 	/**
