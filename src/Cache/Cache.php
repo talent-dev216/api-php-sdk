@@ -12,7 +12,7 @@ class Cache extends Psr16Cache {
 		$this->cacheItemPool = $cache_item_pool;
 		$this->rules = $rules;
 
-        parent::__construct($cache_item_pool);
+		parent::__construct($cache_item_pool);
 	}
 
 	/**

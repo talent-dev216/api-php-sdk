@@ -531,14 +531,14 @@ class CareCloud {
 	 * @throws \InvalidArgumentException
 	 */
 	public function getCountries() {
-        if(!$this->cache->has('countries')){
-            $this->cache->set(
-                'countries',
-                (new CountriesApi( $this->getClient(), $this->getDefaultConfiguration() ))->getCountries(),
-                3600
-            );
-        }
-        return $this->cache->get('countries');
+		if(!$this->cache->has('countries')){
+			$this->cache->set(
+			'countries',
+			$this->countriesApi()->getCountries(),
+			3600
+			);
+		}
+		return $this->cache->get('countries');
 	}
 
 	/**
