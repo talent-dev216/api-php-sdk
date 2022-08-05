@@ -93,7 +93,8 @@ class CareCloud {
 
 		$config = Configuration::getDefaultConfiguration()->setHost( $url );
 		$config->setBasicAuth($this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH)
-			->setBearerAuth($this->getConfig()->getAuthType() === AuthTypes::BEARER_AUTH);
+			->setBearerAuth($this->getConfig()->getAuthType() === AuthTypes::BEARER_AUTH)
+			->addUserAgent($this->getCareCloudUserAgent());
 
 		if ( $this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH ) {
 			$password = $this->config->getInterface() === Interfaces::ENTERPRISE ? $this->getHashedPassword() : $this->getConfig()->getPassword();
@@ -580,4 +581,8 @@ class CareCloud {
 		return hash( 'sha256', md5( $this->config->getPassword() ) . $dt->format("YmdH") );
 	}
 
+	private function getCareCloudUserAgent()
+	{
+		return 'CareCloud SDK '.SdkConfig::SDK_VERSION;
+	}
 }
