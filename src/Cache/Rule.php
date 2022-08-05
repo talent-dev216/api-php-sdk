@@ -55,18 +55,18 @@ class Rule {
 	}
 
 	/**
-	 * @return string
+	 * @return int
 	 */
-	public function getTtl(): string {
+	public function getTtl(): int {
 		return $this->ttl;
 	}
 
 	/**
-	 * @param  string  $ttl
+	 * @param  int  $ttl
 	 *
 	 * @return Rule
 	 */
-	public function setTtl( string $ttl ): Rule {
+	public function setTtl( int $ttl ): Rule {
 		$this->ttl = $ttl;
 
 		return $this;

@@ -87,7 +87,7 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
      * @param null $interestBody
      * @param string|null $accept_language
      *
-     * @return null[]
+     * @return array<string, string|null>
      * @throws ApiException
      * @throws Exception
      */

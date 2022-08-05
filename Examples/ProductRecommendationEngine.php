@@ -12,10 +12,10 @@ $config    = new Config($projectUri, $login, $password, $externalAppId, $authTyp
 $careCloud = new CareCloud($config);
 
 try {
-    // Get all recommendations
-    $recommendations = $careCloud->recommendationsApi()->getRecommendations();
-    $items = $recommendations->getData()->getRecommendations();
-    $totalItems = $recommendations->getData()->getTotalItems();
+    // Get the best recommendation with an elimination
+    $recommendationProductEliminate = $careCloud->productRecommendationEngineApi()->getRecommendationProductEliminate('8bed991c68a470e7aaeffbf048');
+    $items = $recommendationProductEliminate->getData()->getRecommendedProductsList();
+    $totalItems = $recommendationProductEliminate->getData()->getTotalItems();
 } catch (ApiException $e) {
     die(var_dump($e->getResponseBody()));
 }

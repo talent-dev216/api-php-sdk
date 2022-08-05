@@ -23,6 +23,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\EventGroupsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\EventPropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\EventsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\EventTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\HintsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\InterestsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\LanguagesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\MessagesApi;
@@ -41,7 +42,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\ProductsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PurchaseItemTypesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PurchasesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PurchaseTypesApi;
-use CrmCareCloud\Webservice\RestApi\Client\Api\RecommendationEngineApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductRecommendationEngineApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\RecommendationsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ReservableProductsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\RewardPropertiesApi;
@@ -423,17 +424,35 @@ class CareCloud {
 	}
 
 	/**
-	 * @return RecommendationsApi
+	 * @deprecated use hintApi() method
+	 *
+	 * @return HintsApi
 	 */
-	public function recommendationsApi(): RecommendationsApi {
-		return new RecommendationsApi( $this->getClient(), $this->getDefaultConfiguration() );
+	public function recommendationsApi(): HintsApi {
+		return $this->hintApi();
 	}
 
 	/**
-	 * @return RecommendationEngineApi
+	 * @return HintsApi
 	 */
-	public function recommendationEngineApi(): RecommendationEngineApi {
-		return new RecommendationEngineApi( $this->getClient(), $this->getDefaultConfiguration() );
+	public function hintApi(): HintsApi {
+		return new HintsApi( $this->getClient(), $this->getDefaultConfiguration() );
+	}
+
+	/**
+	 * @deprecated use productRecommendationEngineApi() method
+	 *
+	 * @return ProductRecommendationEngineApi
+	 */
+	public function recommendationEngineApi(): ProductRecommendationEngineApi {
+		return $this->productRecommendationEngineApi();
+	}
+
+	/**
+	 * @return ProductRecommendationEngineApi
+	 */
+	public function productRecommendationEngineApi(): ProductRecommendationEngineApi {
+		return new ProductRecommendationEngineApi( $this->getClient(), $this->getDefaultConfiguration() );
 	}
 
 	/**
