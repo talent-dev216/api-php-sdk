@@ -82,6 +82,7 @@ class CareCloud {
 	/** @var AuthenticationHandler */
 	private $auth_handler;
 	private ?Cache $cache;
+	private ?Configuration $defaultConfiguration = null;
 
 	public function __construct( Config $config, Cache $cache = null ) {
 		$this->config = $config;
@@ -89,21 +90,26 @@ class CareCloud {
 	}
 
 	public function getDefaultConfiguration() {
+
+		if($this->defaultConfiguration !== null){
+			return $this->defaultConfiguration;
+		}
+
 		$url = trim( $this->config->getProjectUri() );
 
-		$config = Configuration::getDefaultConfiguration()->setHost( $url );
-		$config->setBasicAuth($this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH)
+		$this->defaultConfiguration = Configuration::getDefaultConfiguration()->setHost( $url );
+		$this->defaultConfiguration->setBasicAuth($this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH)
 			->setBearerAuth($this->getConfig()->getAuthType() === AuthTypes::BEARER_AUTH)
 			->addUserAgent($this->getCareCloudUserAgent());
-
+;
 		if ( $this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH ) {
 			$password = $this->config->getInterface() === Interfaces::ENTERPRISE ? $this->getHashedPassword() : $this->getConfig()->getPassword();
-			$config->setUsername( $this->config->getLogin() )->setPassword( $password )->setAccessToken(
+			$this->defaultConfiguration->setUsername( $this->config->getLogin() )->setPassword( $password )->setAccessToken(
 				null
 			);
 		}
 
-		return $config;
+		return $this->defaultConfiguration;
 	}
 
 	/**
@@ -156,6 +162,7 @@ class CareCloud {
 	 */
 	public function setConfig( Config $config ): void {
 		$this->config = $config;
+		$this->defaultConfiguration = null;
 	}
 
 	/**
