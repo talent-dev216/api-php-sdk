@@ -8,32 +8,32 @@ use Symfony\Contracts\Cache\CacheInterface;
 
 class Config {
 
-	private string $projectUri;
+	private string $project_uri;
 	private string $login;
 	private string $password;
-	private string $externalAppId;
-	private string $authType;
+	private string $external_app_id;
+	private string $auth_type;
 	private ?CacheInterface $cache;
 	private ?string $token;
 	private array $middlewares;
 	private string $interface;
 
 	public function __construct(
-		string $projectUri,
+		string $project_uri,
 		string $login,
 		string $password,
-		string $externalAppId = '',
-		string $authType = AuthTypes::DEFAULT_AUTH,
+		string $external_app_id = '',
+		string $auth_type = AuthTypes::DEFAULT_AUTH,
 		string $interface = Interfaces::ENTERPRISE,
 		CacheInterface $cache = null,
 		string $token = null,
 		array $middlewares = []
 	) {
-		$this->projectUri    = $projectUri;
+		$this->project_uri    = $project_uri;
 		$this->login         = $login;
 		$this->password      = $password;
-		$this->externalAppId = $externalAppId;
-		$this->authType      = $authType;
+		$this->external_app_id = $external_app_id;
+		$this->auth_type      = $auth_type;
 		$this->cache         = $cache;
 		$this->token         = $token;
 		$this->middlewares   = $middlewares;
@@ -44,7 +44,7 @@ class Config {
 	 * @return string
 	 */
 	public function getProjectUri(): string {
-		return $this->projectUri;
+		return $this->project_uri;
 	}
 
 	/**
@@ -52,8 +52,8 @@ class Config {
 	 *
 	 * @return Config
 	 */
-	public function setProjectUri( string $projectUri ): Config {
-		$this->projectUri = $projectUri;
+	public function setProjectUri(string $project_uri ): Config {
+		$this->project_uri = $project_uri;
 
 		return $this;
 	}
@@ -98,7 +98,7 @@ class Config {
 	 * @return string
 	 */
 	public function getExternalAppId(): string {
-		return $this->externalAppId;
+		return $this->external_app_id;
 	}
 
 	/**
@@ -106,8 +106,8 @@ class Config {
 	 *
 	 * @return Config
 	 */
-	public function setExternalAppId( string $externalAppId ): Config {
-		$this->externalAppId = $externalAppId;
+	public function setExternalAppId( string $external_app_id ): Config {
+		$this->external_app_id = $external_app_id;
 
 		return $this;
 	}
@@ -116,7 +116,7 @@ class Config {
 	 * @return string
 	 */
 	public function getAuthType(): string {
-		return $this->authType;
+		return $this->auth_type;
 	}
 
 	/**
@@ -124,8 +124,8 @@ class Config {
 	 *
 	 * @return Config
 	 */
-	public function setAuthType( string $authType ): Config {
-		$this->authType = $authType;
+	public function setAuthType( string $auth_type ): Config {
+		$this->auth_type = $auth_type;
 
 		return $this;
 	}

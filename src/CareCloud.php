@@ -82,7 +82,7 @@ class CareCloud {
 	/** @var AuthenticationHandler */
 	private $auth_handler;
 	private ?Cache $cache;
-	private ?Configuration $defaultConfiguration = null;
+	private ?Configuration $default_configuration = null;
 
 	public function __construct( Config $config, Cache $cache = null ) {
 		$this->config = $config;
@@ -91,25 +91,25 @@ class CareCloud {
 
 	public function getDefaultConfiguration() {
 
-		if($this->defaultConfiguration !== null){
-			return $this->defaultConfiguration;
+		if($this->default_configuration !== null){
+			return $this->default_configuration;
 		}
 
 		$url = trim( $this->config->getProjectUri() );
 
-		$this->defaultConfiguration = Configuration::getDefaultConfiguration()->setHost( $url );
-		$this->defaultConfiguration->setBasicAuth($this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH)
+		$this->default_configuration = Configuration::getDefaultConfiguration()->setHost( $url );
+		$this->default_configuration->setBasicAuth($this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH)
 			->setBearerAuth($this->getConfig()->getAuthType() === AuthTypes::BEARER_AUTH)
 			->addUserAgent($this->getCareCloudUserAgent());
-;
+
 		if ( $this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH ) {
 			$password = $this->config->getInterface() === Interfaces::ENTERPRISE ? $this->getHashedPassword() : $this->getConfig()->getPassword();
-			$this->defaultConfiguration->setUsername( $this->config->getLogin() )->setPassword( $password )->setAccessToken(
+			$this->default_configuration->setUsername( $this->config->getLogin() )->setPassword( $password )->setAccessToken(
 				null
 			);
 		}
 
-		return $this->defaultConfiguration;
+		return $this->default_configuration;
 	}
 
 	/**
@@ -130,7 +130,7 @@ class CareCloud {
 		}
 
 		if ( $this->cache ) {
-			$strategy = new DelegatingCacheStrategy( $defaultStrategy = new NullCacheStrategy() );
+			$strategy = new DelegatingCacheStrategy( $default_strategy = new NullCacheStrategy() );
 			foreach ( $this->cache->getRules() as $item ) {
 				$strategy->registerRequestMatcher(
 					new CacheRequestMatcher( $item ),
@@ -162,7 +162,7 @@ class CareCloud {
 	 */
 	public function setConfig( Config $config ): void {
 		$this->config = $config;
-		$this->defaultConfiguration = null;
+		$this->default_configuration = null;
 	}
 
 	/**

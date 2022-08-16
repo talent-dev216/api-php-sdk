@@ -19,8 +19,8 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi {
      * @throws ApiException
      */
 	public function getUnassignedCard( string $card_number, string $accept_language = null ): Card {
-		$getCard = $this->getCards( $accept_language, null, null, null, null, null, $card_number );
-		$card    = $getCard->getData()->getCards()[0];
+		$get_card = $this->getCards( $accept_language, null, null, null, null, null, $card_number );
+		$card    = $get_card->getData()->getCards()[0];
 
 		if ( $card->getCustomerId() ) {
 			throw new Exception( 'The card is already assigned to the customer.' );
@@ -45,20 +45,20 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi {
      * @throws ApiException
      */
 	public function putUnassignedCard( string $card_number, string $customer_id, string $valid_from = null, string $valid_to = null, string $store_id = null, string $accept_language = null ) {
-		$unassignedCard = $this->getUnassignedCard( $card_number, $accept_language );
+		$unassigned_card = $this->getUnassignedCard( $card_number, $accept_language );
 
-		$cartBody = new Card();
-		$cartBody->setCustomerId( $customer_id )
-		         ->setCardTypeId( $unassignedCard->getCardId() )
+		$cart_body = new Card();
+		$cart_body->setCustomerId( $customer_id )
+		         ->setCardTypeId( $unassigned_card->getCardId() )
 		         ->setCardNumber( $card_number )
 		         ->setValidFrom( $valid_from )
 		         ->setValidTo( $valid_to )
 		         ->setStoreId( $store_id )
-		         ->setState( $unassignedCard->getState() );
+		         ->setState( $unassigned_card->getState() );
 
 		$body = new CardsCardIdBody();
-		$body->setCard( $cartBody );
+		$body->setCard( $cart_body );
 
-		$this->putCard( $body, $unassignedCard->getCardId(), );
+		$this->putCard( $body, $unassigned_card->getCardId(), );
 	}
 }

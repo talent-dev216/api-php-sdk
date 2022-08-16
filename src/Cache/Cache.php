@@ -4,12 +4,12 @@ use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Psr16Cache;
 
 class Cache extends Psr16Cache {
-	private CacheItemPoolInterface $cacheItemPool;
+	private CacheItemPoolInterface $cache_item_pool;
 	/** @var Rule[] $config  */
 	private array $rules;
 
 	public function __construct( CacheItemPoolInterface $cache_item_pool, array $rules = []) {
-		$this->cacheItemPool = $cache_item_pool;
+		$this->cache_item_pool = $cache_item_pool;
 		$this->rules = $rules;
 
 		parent::__construct($cache_item_pool);
@@ -19,7 +19,7 @@ class Cache extends Psr16Cache {
 	 * @return CacheItemPoolInterface
 	 */
 	public function getCacheItemPool(): CacheItemPoolInterface {
-		return $this->cacheItemPool;
+		return $this->cache_item_pool;
 	}
 
 	/**
