@@ -11,64 +11,69 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use Exception;
 use GuzzleHttp\ClientInterface;
 
-class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CustomersApi {
-	private CareCloud $care_cloud;
+class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CustomersApi
+{
+    private CareCloud $care_cloud;
 
-	/**
-	 * @param  ClientInterface  $client
-	 * @param  Configuration  $config
-	 * @param  CareCloud  $careCloud
-	 */
-	public function __construct( ClientInterface $client, Configuration $config, CareCloud $care_cloud ) {
-		parent::__construct( $client, $config );
-		$this->care_cloud = $care_cloud;
-	}
+    /**
+     * @param ClientInterface $client
+     * @param Configuration   $config
+     * @param CareCloud       $careCloud
+     */
+    public function __construct(ClientInterface $client, Configuration $config, CareCloud $care_cloud)
+    {
+        parent::__construct($client, $config);
+        $this->care_cloud = $care_cloud;
+    }
 
     /**
      * Get all rewards
      *
-     * @param string $customer_id
-     * @param bool $rewards
-     * @param int|null $reward_group
-     * @param bool $vouchers
-     * @param bool $campaign_products
-     * @param bool|null $is_valid
+     * @param string      $customer_id
+     * @param bool        $rewards
+     * @param int|null    $reward_group
+     * @param bool        $vouchers
+     * @param bool        $campaign_products
+     * @param bool|null   $is_valid
      * @param string|null $customer_type_id
      * @param string|null $accept_language
      *
      * @return array[]
      * @throws ApiException
      */
-    public function getAllRewards( string $customer_id, bool $rewards = true, int $reward_group = null, bool $vouchers = true, bool $campaign_products = true, bool $is_valid = null, string $customer_type_id = null, string $accept_language = null ): array
+    public function getAllRewards(string $customer_id, bool $rewards = true, int $reward_group = null, bool $vouchers = true, bool $campaign_products = true, bool $is_valid = null, string $customer_type_id = null, string $accept_language = null): array
     {
 
-        $rewards_data           = [];
-        $total_rewards          = 0;
-        $vouchers_data          = [];
-        $total_vouchers         = 0;
-        $campaign_products_data  = [];
+        $rewards_data = [];
+        $total_rewards = 0;
+        $vouchers_data = [];
+        $total_vouchers = 0;
+        $campaign_products_data = [];
         $total_campaign_products = 0;
 
-		// We want get resource rewards
-		if ( $rewards ) {
-            $get_rewards   = $this->getSubCustomerRewards( $customer_id, $accept_language, null, null, null, null, null, null, $is_valid, null, null, null, null, $reward_group,  $customer_type_id );
-            $rewards_data  = $get_rewards->getData()->getRewards();
+        // We want get resource rewards
+        if($rewards)
+        {
+            $get_rewards = $this->getSubCustomerRewards($customer_id, $accept_language, null, null, null, null, null, null, $is_valid, null, null, null, null, $reward_group, $customer_type_id);
+            $rewards_data = $get_rewards->getData()->getRewards();
             $total_rewards = $get_rewards->getData()->getTotalItems();
-		}
+        }
 
-		// We want get resource vouchers
-		if ( $vouchers ) {
-			$get_vouchers   = $this->getSubCustomerVouchers( $customer_id, $accept_language, null, null, null, null, null, $is_valid );
-			$vouchers_data  = $get_vouchers->getData()->getVouchers();
+        // We want get resource vouchers
+        if($vouchers)
+        {
+            $get_vouchers = $this->getSubCustomerVouchers($customer_id, $accept_language, null, null, null, null, null, $is_valid);
+            $vouchers_data = $get_vouchers->getData()->getVouchers();
             $total_vouchers = $get_vouchers->getData()->getTotalItems();
-		}
+        }
 
-		// We want get resource campaign-products
-		if ( $campaign_products ) {
-			$get_campaign_products   = $this->care_cloud->campaignProductsApi()->getCampaignProducts(  $accept_language, null, null, null, null, null, null, null, $customer_type_id );
-			$campaign_products_data  = $get_campaign_products->getData()->getCampaignProducts();
+        // We want get resource campaign-products
+        if($campaign_products)
+        {
+            $get_campaign_products = $this->care_cloud->campaignProductsApi()->getCampaignProducts($accept_language, null, null, null, null, null, null, null, $customer_type_id);
+            $campaign_products_data = $get_campaign_products->getData()->getCampaignProducts();
             $total_campaign_products = $get_campaign_products->getData()->getTotalItems();
-		}
+        }
 
         return [
             'rewards' => [
@@ -81,93 +86,99 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
     /**
      * Save the customer extended
      *
-     * @param $customerBody
-     * @param Card|null $card
-     * @param null $propertyBody
-     * @param null $interestBody
+     * @param             $customerBody
+     * @param Card|null   $card
+     * @param null        $propertyBody
+     * @param null        $interestBody
      * @param string|null $accept_language
      *
      * @return array<string, string|null>
      * @throws ApiException
      * @throws Exception
      */
-	public function postCustomerExtended( $customer_body, ?Card $card = null, $property_body = null, $interest_body = null, string $accept_language = null ): array
+    public function postCustomerExtended($customer_body, ?Card $card = null, $property_body = null, $interest_body = null, string $accept_language = null): array
     {
-		// Card data
-		$card_id      = null;
-		$state        = $card ?? $card->getState();
-		$card_number  = $card ?? $card->getCardNumber();
-		$valid_from   = $card ?? $card->getValidFrom();
-		$valid_to     = $card ?? $card->getValidTo();
-		$store_id     = $card ?? $card->getStoreId();
-		$card_type_id = $card ?? $card->getCardTypeId();
+        // Card data
+        $card_id = null;
+        $state = $card ?? $card->getState();
+        $card_number = $card ?? $card->getCardNumber();
+        $valid_from = $card ?? $card->getValidFrom();
+        $valid_to = $card ?? $card->getValidTo();
+        $store_id = $card ?? $card->getStoreId();
+        $card_type_id = $card ?? $card->getCardTypeId();
 
-		$response = array(
-			'customer_id'        => null,
-			'card_id'            => null,
-			'property_record_id' => null,
-			'interest_record_id' => null,
-		);
+        $response = array(
+            'customer_id'        => null,
+            'card_id'            => null,
+            'property_record_id' => null,
+            'interest_record_id' => null,
+        );
 
-		// Search for the card and verify that it is not assigned
-		if ( $card_number ) {
-			$unassigned_card = $this->care_cloud->cardsApi()->getUnassignedCard( $card_number );
-			$card_id        = $unassigned_card->getCardId();
-			$state          = $unassigned_card->getState();
-			$card_type_id   = $unassigned_card->getCardTypeId();
-		}
+        // Search for the card and verify that it is not assigned
+        if($card_number)
+        {
+            $unassigned_card = $this->care_cloud->cardsApi()->getUnassignedCard($card_number);
+            $card_id = $unassigned_card->getCardId();
+            $state = $unassigned_card->getState();
+            $card_type_id = $unassigned_card->getCardTypeId();
+        }
 
-		// Create a new customer
-		$new_customer             = $this->postCustomer( $customer_body, $accept_language );
-		$customer_id              = $new_customer->getData()->getCustomerId();
-		$response['customer_id'] = $customer_id;
+        // Create a new customer
+        $new_customer = $this->postCustomer($customer_body, $accept_language);
+        $customer_id = $new_customer->getData()->getCustomerId();
+        $response['customer_id'] = $customer_id;
 
-		//assign the customer's searched card if it is free
-		if ( $card_number && $card_id ) {
-			$cart_body = new Card();
-			$cart_body->setCustomerId( $customer_id )
-			         ->setCardTypeId( $card_type_id )
-			         ->setCardNumber( $card_number )
-			         ->setValidFrom( $valid_from )
-			         ->setValidTo( $valid_to)
-			         ->setStoreId( $store_id )
-			         ->setState( $state );
+        //assign the customer's searched card if it is free
+        if($card_number && $card_id)
+        {
+            $cart_body = new Card();
+            $cart_body->setCustomerId($customer_id)
+                ->setCardTypeId($card_type_id)
+                ->setCardNumber($card_number)
+                ->setValidFrom($valid_from)
+                ->setValidTo($valid_to)
+                ->setStoreId($store_id)
+                ->setState($state);
 
-			$body = new CardsCardIdBody();
-			$body->setCard( $cart_body );
+            $body = new CardsCardIdBody();
+            $body->setCard($cart_body);
 
-			$this->care_cloud->cardsApi()->putCard( $body, $card_id, $accept_language );
+            $this->care_cloud->cardsApi()->putCard($body, $card_id, $accept_language);
+            // If we don't know the card number assign any free
+        }
+        else
+        {
+            if(!$card_type_id)
+            {
+                throw new Exception('To assign a free card you need to fill cardTypeId');
+            }
 
-        // If we don't know the card number assign any free
-		} else {
-			if ( ! $card_type_id ) {
-				throw new Exception( 'To assign a free card you need to fill cardTypeId' );
-			}
+            $body = new ActionsAssignfreecardBody();
+            $body->setCardTypeId($card_type_id)
+                ->setCustomerId($customer_id);
 
-			$body = new ActionsAssignfreecardBody();
-			$body->setCardTypeId( $card_type_id )
-			     ->setCustomerId( $customer_id );
+            $free_card = $this->care_cloud->cardsApi()->postAssignCard($body, $accept_language);
+            $card_id = $free_card->getData()->getCardId();
+        }
 
-			$free_card  = $this->care_cloud->cardsApi()->postAssignCard( $body, $accept_language );
-			$card_id   = $free_card->getData()->getCardId();
-		}
+        $response['card_id'] = $card_id;
 
-		$response['card_id'] = $card_id;
+        // Add a property to a customer if is set
+        if($property_body)
+        {
+            $property_record = $this->postSubCustomerProperties($property_body, $customer_id, $accept_language);
+            $property_record_id = $property_record->getData()->getPropertyRecordId();
+            $response['property_record_id'] = $property_record_id;
+        }
 
-		// Add a property to a customer if is set
-		if ( $property_body ) {
-			$property_record                 = $this->postSubCustomerProperties( $property_body, $customer_id, $accept_language );
-			$property_record_id               = $property_record->getData()->getPropertyRecordId();
-			$response['property_record_id'] = $property_record_id;
-		}
+        // Add an interest record to a customer if is set
+        if($interest_body)
+        {
+            $interest_record = $this->postSubCustomerInterest($interest_body, $customer_id, $accept_language);
+            $interest_record_id = $interest_record->getData()->getInterestRecordId();
+            $response['interest_record_id'] = $interest_record_id;
+        }
 
-		// Add an interest record to a customer if is set
-		if ( $interest_body ) {
-			$interest_record                 = $this->postSubCustomerInterest( $interest_body, $customer_id, $accept_language );
-			$interest_record_id               = $interest_record->getData()->getInterestRecordId();
-			$response['interest_record_id'] = $interest_record_id;
-		}
-
-		return $response;
-	}
+        return $response;
+    }
 }
