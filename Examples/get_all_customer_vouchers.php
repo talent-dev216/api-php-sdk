@@ -41,13 +41,13 @@ $without_stores = null; // boolean | If true, the data will not contain informat
 
 // Call endpoint and get data
 try {
-    $get_vouchers = $care_cloud->vouchersApi()->getVouchers(
+    $get_vouchers = $care_cloud->customersApi()->getSubCustomerVouchers(
+        $customer_id,
         $accept_language,
         $count,
         $offset,
         $sort_field,
         $sort_direction,
-        $customer_id,
         $code,
         $store_id,
         $is_valid,
