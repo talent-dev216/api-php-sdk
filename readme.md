@@ -6,7 +6,7 @@ This package provides a convenient wrapper around CareCloud PHP Client.
 You can install this package with composer
 
 ```shell
-composer require crmcarecloud/sdk-php
+composer require crmcarecloud/sdk-php:^1.0
 ```
 
 ## Client setup
