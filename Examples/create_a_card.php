@@ -12,11 +12,11 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
 require_once '../vendor/autoload.php';
 
-$project_uri     = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
-$login           = 'login';
-$password        = 'password';
+$project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
+$login = 'login';
+$password = 'password';
 $external_app_id = 'application_id';
-$auth_type       = AuthTypes::BEARER_AUTH;
+$auth_type = AuthTypes::BEARER_AUTH;
 // Or if using basic auth, just change the AuthType to Basic Auth
 // $authType      = AuthTypes::BASIC_AUTH;
 
@@ -41,9 +41,12 @@ $body = new CardsBody();
 $body->setCard($card);
 
 // Call endpoint and post data
-try {
+try
+{
     $post_card = $care_cloud->cardsApi()->postCard($body, $accept_language);
     $card_id = $post_card->getData()->getCardId();
-} catch (ApiException $e) {
+}
+catch(ApiException $e)
+{
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }
