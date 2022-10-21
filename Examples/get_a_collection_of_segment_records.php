@@ -10,11 +10,11 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
 require_once '../vendor/autoload.php';
 
-$project_uri     = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
-$login           = 'login';
-$password        = 'password';
+$project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
+$login = 'login';
+$password = 'password';
 $external_app_id = 'application_id';
-$auth_type       = AuthTypes::BEARER_AUTH;
+$auth_type = AuthTypes::BEARER_AUTH;
 // Or if using basic auth, just change the AuthType to Basic Auth
 // $authType      = AuthTypes::BASIC_AUTH;
 
@@ -32,10 +32,13 @@ $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the cu
 $segment_group_ids = null; // string[] | List of the segment group IDs from the resource GET /segment-groups (optional)
 
 // Call endpoint and get data
-try {
+try
+{
     $get_segments = $care_cloud->customersApi()->getSubCustomerSegments($customer_id, $accept_language, $segment_group_ids);
     $segments = $get_segments->getData();
     $total_items = $get_segments->getData()->getTotalItems();
-} catch (ApiException $e) {
+}
+catch(ApiException $e)
+{
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }
