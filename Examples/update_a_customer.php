@@ -17,11 +17,11 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
 require_once '../vendor/autoload.php';
 
-$project_uri     = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
-$login           = 'login';
-$password        = 'password';
+$project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
+$login = 'login';
+$password = 'password';
 $external_app_id = 'application_id';
-$auth_type       = AuthTypes::BEARER_AUTH;
+$auth_type = AuthTypes::BEARER_AUTH;
 // Or if using basic auth, just change the AuthType to Basic Auth
 // $authType      = AuthTypes::BASIC_AUTH;
 
@@ -54,7 +54,7 @@ $custom_agreement2->setAgreementValue(1); // integer | Value of the specific agr
 
 $custom_agreements = array(
     $custom_agreement1,
-    $custom_agreement2
+    $custom_agreement2,
 );
 
 // Set agreement of a new customer
@@ -94,8 +94,11 @@ $body->setCustomer($customer)
     ->setSocialNetworkCredentials($social_network_credentials);
 
 // Call endpoint and put data
-try {
+try
+{
     $care_cloud->customersApi()->putCustomer($body, $customer_id, $accept_language);
-} catch (ApiException $e) {
+}
+catch(ApiException $e)
+{
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }
