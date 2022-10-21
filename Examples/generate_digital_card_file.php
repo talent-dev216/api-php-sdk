@@ -11,11 +11,11 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
 require_once '../vendor/autoload.php';
 
-$project_uri     = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
-$login           = 'login';
-$password        = 'password';
+$project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
+$login = 'login';
+$password = 'password';
 $external_app_id = 'application_id';
-$auth_type       = AuthTypes::BEARER_AUTH;
+$auth_type = AuthTypes::BEARER_AUTH;
 // Or if using basic auth, just change the AuthType to Basic Auth
 // $authType      = AuthTypes::BASIC_AUTH;
 
@@ -32,9 +32,12 @@ $body->setCardId('8bd253a890067595008f1d44aa'); // string | Id of the card. It w
 $body->setFileType('png'); // string | Type of the final file Possible values: png - generates picture in png format /wallet - generates pass package file for Apple Wallet
 
 // Call endpoint and post data
-try {
+try
+{
     $post_generate_card = $care_cloud->cardsApi()->postGenerateDigitalCard($body, $accept_language);
     $file_url = $post_generate_card->getData()->getFileUrl();
-} catch (ApiException $e) {
+}
+catch(ApiException $e)
+{
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }
