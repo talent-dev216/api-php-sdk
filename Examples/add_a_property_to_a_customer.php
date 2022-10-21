@@ -12,11 +12,11 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
 require_once '../vendor/autoload.php';
 
-$project_uri     = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
-$login           = 'login';
-$password        = 'password';
+$project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
+$login = 'login';
+$password = 'password';
 $external_app_id = 'application_id';
-$auth_type       = AuthTypes::BEARER_AUTH;
+$auth_type = AuthTypes::BEARER_AUTH;
 // Or if using basic auth, just change the AuthType to Basic Auth
 // $authType      = AuthTypes::BASIC_AUTH;
 
@@ -40,9 +40,12 @@ $body = new CustomerIdPropertyrecordsBody();
 $body->setPropertyRecord($property_record);
 
 // Call endpoint and post data
-try {
+try
+{
     $post_property_record = $care_cloud->customersApi()->postSubCustomerProperties($body, $customer_id, $accept_language);
     $property_record_id = $post_property_record->getData()->getPropertyRecordId();
-} catch (ApiException $e) {
+}
+catch(ApiException $e)
+{
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }
