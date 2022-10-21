@@ -18,11 +18,11 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
 require_once '../vendor/autoload.php';
 
-$project_uri     = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
-$login           = 'login';
-$password        = 'password';
+$project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
+$login = 'login';
+$password = 'password';
 $external_app_id = 'application_id';
-$auth_type       = AuthTypes::BEARER_AUTH;
+$auth_type = AuthTypes::BEARER_AUTH;
 // Or if using basic auth, just change the AuthType to Basic Auth
 // $authType      = AuthTypes::BASIC_AUTH;
 
@@ -52,29 +52,29 @@ $custom_agreement2->setAgreementValue(1); // integer | Value of the specific agr
 
 $custom_agreements = array(
     $custom_agreement1,
-    $custom_agreement2
+    $custom_agreement2,
 );
 
 // Set agreement of a new customer
 $agreement = new Agreement();
 $agreement->setAgreementGtc(1) // integer | Consent to General Terms & Conditions Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
-    ->setAgreementProfiling(1) // integer | Consent to profiling Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
-    ->setAgreementMarketingCommunication(0) // integer | Consent to marketing communication Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
-    ->setCustomAgreements($custom_agreements);
+->setAgreementProfiling(1) // integer | Consent to profiling Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
+->setAgreementMarketingCommunication(0) // integer | Consent to marketing communication Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
+->setCustomAgreements($custom_agreements);
 
 // Set personal information of a new customer
 $personal_information = new PersonalInformation();
 $personal_information->setSalutation('Mr. Doe') // string | Customers salutation (optional)
-    ->setGender(1) // integer | Gender of the customer Possible values: 1 - male, 2 - female (optional)
-    ->setFirstName('John') // string | First name of the customer (optional)
-    ->setLastName('Doe') // string | Last name of the customer (optional)
-    ->setBirthdate('1990-01-01') // string <date> | Customer's date of birth (YYYY-MM-DD) (optional)
-    ->setEmail('doe@crmcarecloud.com') // string | Email of the customer (optional)
-    ->setPhone('420523828932') // string | Phone number of the customer with international prefix (420000000000) (optional)
-    ->setLanguageId('cs') // string | The unique id for the language by ISO 639 code
-    ->setStoreId(null) // string | The unique id for the original customer account store of registration (optional)
-    ->setPhotoUrl(null) // string | URL address of the customer photo (optional)
-    ->setAddress($address)
+->setGender(1) // integer | Gender of the customer Possible values: 1 - male, 2 - female (optional)
+->setFirstName('John') // string | First name of the customer (optional)
+->setLastName('Doe') // string | Last name of the customer (optional)
+->setBirthdate('1990-01-01') // string <date> | Customer's date of birth (YYYY-MM-DD) (optional)
+->setEmail('doe@crmcarecloud.com') // string | Email of the customer (optional)
+->setPhone('420523828932') // string | Phone number of the customer with international prefix (420000000000) (optional)
+->setLanguageId('cs') // string | The unique id for the language by ISO 639 code
+->setStoreId(null) // string | The unique id for the original customer account store of registration (optional)
+->setPhotoUrl(null) // string | URL address of the customer photo (optional)
+->setAddress($address)
     ->setAgreement($agreement);
 
 $customer = new Customer();
@@ -99,9 +99,12 @@ $body->setCustomer($customer)
     ->setSocialNetworkCredentials($social_network_credentials);
 
 // Call endpoint and post data
-try {
+try
+{
     $post_customer = $care_cloud->customersApi()->postCustomer($body, $accept_language);
     $customer_id = $post_customer->getData()->getCustomerId();
-} catch (ApiException $e) {
+}
+catch(ApiException $e)
+{
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }
