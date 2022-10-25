@@ -1,6 +1,6 @@
 <?php
 /**
- * Get information about all events
+ * Get information about all the events
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
