@@ -13,16 +13,19 @@ composer require crmcarecloud/sdk-php:^1.0
 You need to create the client first:
 
 ```php
+use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\Interfaces;
 
-require_once '../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $projectUri    = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
 $login         = 'login';
 $password      = 'pass';
 $externalAppId = 'appId';
 $authType      = AuthTypes::BEARER_AUTH;
+$interface     = Interfaces::ENTERPRISE;
 // Or if using basic auth, just change the AuthType to Basic Auth
 // $authType      = AuthTypes::BASIC_AUTH;
 
@@ -48,8 +51,8 @@ try {
     $agreement = $careCloud->agreementsApi()->getAgreement($agreement_id, $accept_language);
     $name      = $agreement->getData()->getName();
     $text      = $agreement->getData()->getText();
-} catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+} catch (CrmCareCloud\Webservice\RestApi\Client\ApiException $exception) {
+    die(var_dump($exception->getResponseBody() ?: $exception->getMessage()));
 }
 ```
 
@@ -81,8 +84,8 @@ try {
     $getCustomers  = $careCloud->customersApi()->getCustomers($accept_language, $count, $offset, $sort_field, $sort_direction, $email, $phone, $customer_source_id, $first_name, $last_name, $birthdate);
     $customers     = $getCustomers->getData()->getCustomers();
     $totalItems    = $getCustomers->getData()->getTotalItems();
-} catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+} catch (CrmCareCloud\Webservice\RestApi\Client\ApiException $exception) {
+    die(var_dump($exception->getResponseBody() ?: $exception->getMessage()));
 }
 ```
 
@@ -102,8 +105,8 @@ $customer_id     = '87af991126405bf8e7dfb36045'; // string | The unique id for t
 try {
     $getCustomer = $careCloud->customersApi()->getCustomer($customer_id, $accept_language);
     $customer    = $getCustomer->getData();
-} catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+} catch (CrmCareCloud\Webservice\RestApi\Client\ApiException $exception) {
+    die(var_dump($exception->getResponseBody() ?: $exception->getMessage()));
 }
 ```
 
@@ -179,8 +182,8 @@ $body->setCustomer($customer)
 // Call endpoint and get data
 try {
     $putCustomer = $careCloud->customersApi()->putCustomer( $body, $customer_id, $accept_language );
-} catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+} catch (CrmCareCloud\Webservice\RestApi\Client\ApiException $exception) {
+    die(var_dump($exception->getResponseBody() ?: $exception->getMessage()));
 }
 ```
 
@@ -209,8 +212,8 @@ $store_id     = null; // string | assign a store id to the card
 // Call endpoint and get data
 try {
     $assignCard = $careCloud->cardsApi()->putUnassignedCard($card_number, $customer_id, $valid_from, $valid_to, $store_id, $accept_language);
-} catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+} catch (CrmCareCloud\Webservice\RestApi\Client\ApiException $exception) {
+    die(var_dump($exception->getResponseBody() ?: $exception->getMessage()));
 }
 ```
 
@@ -321,8 +324,8 @@ $interestBody->setInterestRecord($interest_record);
 // Call endpoint and get data
 try {
     $newCustomer = $careCloud->customersApi()->postCustomerExtended($customerBody, $card, $propertyBody, $interestBody, $accept_language );
-} catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+} catch (CrmCareCloud\Webservice\RestApi\Client\ApiException $exception) {
+    die(var_dump($exception->getResponseBody() ?: $exception->getMessage()));
 }
 ```
 
@@ -361,8 +364,8 @@ $customer_type_id  = null; // By resource customer-types
 try {
     $allRewards = $careCloud->customersApi()->getAllRewards( $customer_id, $rewards, $reward_group, $vouchers, $campaign_products, $is_valid, $customer_type_id, $accept_language );
     die(print_r($allRewards));
-} catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+} catch (CrmCareCloud\Webservice\RestApi\Client\ApiException $exception) {
+    die(var_dump($exception->getResponseBody() ?: $exception->getMessage()));
 }
 ```
 Response

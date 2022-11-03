@@ -51,6 +51,8 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\StatusesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\StoreGroupsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\StorePropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\StoresApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\TaskPropertiesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\TasksApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\TokensApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\UserRolesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\UsersApi;
@@ -622,6 +624,16 @@ class CareCloud
     public function walletApi(): WalletApi
     {
         return new WalletApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    public function tasksApi(): TasksApi
+    {
+        return new TasksApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    public function taskPropertiesApi(): TaskPropertiesApi
+    {
+        return new TaskPropertiesApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
     /**
