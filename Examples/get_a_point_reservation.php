@@ -33,6 +33,7 @@ try
 {
     $get_point_reservation = $care_cloud->pointReservationsApi()->getPointReservation($point_reservation_id, $accept_language);
     $point_reservation = $get_point_reservation->getData();
+    var_dump($point_reservation);
 }
 catch(ApiException $e)
 {

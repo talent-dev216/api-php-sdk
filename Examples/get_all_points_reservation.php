@@ -47,6 +47,8 @@ try
     );
     $point_reservations = $get_point_reservations->getData()->getPointReservations();
     $total_items = $get_point_reservations->getData()->getTotalItems();
+    var_dump($point_reservations);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
