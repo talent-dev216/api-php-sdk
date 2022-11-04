@@ -37,7 +37,7 @@ $campaign->setExternalId($external_id);
 $campaign->setParentId($parent_id);
 $campaign->setName($name);
 
-// Set information about the new campaign
+// Set the request body
 $body = new CampaignsBody();
 $body->setCampaign($campaign);
 
@@ -46,6 +46,7 @@ try
 {
     $new_campaign = $care_cloud->campaignsApi()->postCampaign($body, $accept_language);
     $campaign_id = $new_campaign->getData()->getCampaignId();
+    var_dump($campaign_id);
 }
 catch(ApiException $e)
 {
