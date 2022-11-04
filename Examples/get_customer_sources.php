@@ -43,6 +43,8 @@ try
     );
     $customer_sources = $get_customer_sources->getData()->getCustomerSources();
     $total_items = $get_customer_sources->getData()->getTotalItems();
+    var_dump($customer_sources);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
