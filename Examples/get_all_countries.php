@@ -31,6 +31,8 @@ try
     $get_countries = $care_cloud->countriesApi()->getCountries($accept_language);
     $countries = $get_countries->getData()->getCountries();
     $total_items = $get_countries->getData()->getTotalItems();
+    var_dump($countries);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
