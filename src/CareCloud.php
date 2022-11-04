@@ -31,6 +31,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\PartnersApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PointReservationApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PointsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PointTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PointHistoryApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductBrandsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductGroupsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductPropertiesApi;
