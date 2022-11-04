@@ -34,6 +34,8 @@ try
     $get_languages = $care_cloud->languagesApi()->getLanguages($accept_language, $language_list_type);
     $languages = $get_languages->getData()->getLanguages();
     $total_items = $get_languages->getData()->getTotalItems();
+    var_dump($languages);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
