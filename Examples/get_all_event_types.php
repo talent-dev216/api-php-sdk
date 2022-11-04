@@ -45,6 +45,8 @@ try
     );
     $event_types = $get_event_types->getData()->getEventTypes();
     $total_items = $get_event_types->getData()->getTotalItems();
+    var_dump($event_types);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

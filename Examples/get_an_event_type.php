@@ -33,6 +33,7 @@ try
 {
     $get_event_type = $care_cloud->eventTypesApi()->getEventType($event_type_id, $accept_language);
     $event_type = $get_event_type->getData();
+    var_dump($event_type);
 }
 catch(ApiException $e)
 {
