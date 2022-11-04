@@ -45,6 +45,7 @@ try
 {
     $post_social_network_login = $care_cloud->tokensApi()->postTokenSocialLogin($body, $token_id, $accept_language);
     $customer_id = $post_social_network_login->getData()->getCustomerId();
+    var_dump($customer_id);
 }
 catch(ApiException $e)
 {

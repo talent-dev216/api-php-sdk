@@ -41,6 +41,7 @@ try
 {
     $post_token_login = $care_cloud->tokensApi()->postTokenLogin($body, $token_id, $accept_language);
     $customer_id = $post_token_login->getData()->getCustomerId();
+    var_dump($customer_id);
 }
 catch(ApiException $e)
 {

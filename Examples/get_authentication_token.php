@@ -43,6 +43,7 @@ try
         $accept_language
     );
     $token = $get_token->getData();
+    var_dump($token);
 }
 catch(ApiException $e)
 {
