@@ -45,6 +45,8 @@ try
     );
     $reward_properties = $get_reward_properties->getData()->getRewardProperties();
     $total_items = $get_reward_properties->getData()->getTotalItems();
+    var_dump($reward_properties);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

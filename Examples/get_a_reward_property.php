@@ -33,6 +33,7 @@ try
 {
     $get_reward_property = $care_cloud->rewardPropertiesApi()->getRewardProperty($reward_property_id, $accept_language);
     $reward_property = $get_reward_property->getData();
+    var_dump($reward_property);
 }
 catch(ApiException $e)
 {
