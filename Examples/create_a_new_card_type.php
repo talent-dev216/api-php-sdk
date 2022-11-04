@@ -40,7 +40,8 @@ $body->setCardType($card_type);
 try
 {
     $post_card_type = $care_cloud->cardTypesApi()->postCardType($body, $accept_language);
-    $new_card_type = $post_card_type->getData();
+    $new_card_type_id = $post_card_type->getData()->getCardTypeId();
+    var_dump($new_card_type_id);
 }
 catch(ApiException $e)
 {

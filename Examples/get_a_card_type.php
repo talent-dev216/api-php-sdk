@@ -33,6 +33,7 @@ try
 {
     $get_card_type = $care_cloud->cardTypesApi()->getCardType($card_type_id);
     $card_type = $get_card_type->getData();
+    var_dump($card_type);
 }
 catch(ApiException $e)
 {

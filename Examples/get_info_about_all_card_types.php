@@ -38,6 +38,8 @@ try
     $get_card_types = $care_cloud->cardTypesApi()->getCardTypes();
     $card_types = $get_card_types->getData()->getCardTypes();
     $total_items = $get_card_types->getData()->getTotalItems();
+    var_dump($card_types);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

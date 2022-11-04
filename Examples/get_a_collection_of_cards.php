@@ -42,6 +42,8 @@ try
     $get_card_types = $care_cloud->cardTypesApi()->getSubCardTypeCards($card_type_id, $accept_language);
     $card_types = $get_card_types->getData()->getCards();
     $total_items = $get_card_types->getData()->getTotalItems();
+    var_dump($card_types);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
