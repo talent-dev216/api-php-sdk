@@ -43,6 +43,8 @@ try
     );
     $customer_types = $get_customer_types->getData()->getCustomerTypes();
     $total_items = $get_customer_types->getData()->getTotalItems();
+    var_dump($customer_types);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

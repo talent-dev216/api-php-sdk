@@ -33,6 +33,7 @@ try
 {
     $get_customer_type = $care_cloud->customerTypesApi()->getCustomerType($customer_type_id, $accept_language);
     $customer_type = $get_customer_type->getData();
+    var_dump($customer_type);
 }
 catch(ApiException $e)
 {
