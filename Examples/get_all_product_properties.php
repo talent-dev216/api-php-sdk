@@ -45,6 +45,8 @@ try
     );
     $product_properties = $get_product_properties->getData()->getProductProperties();
     $total_items = $get_product_properties->getData()->getTotalItems();
+    var_dump($product_properties);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

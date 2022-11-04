@@ -33,6 +33,7 @@ try
 {
     $get_product_property = $care_cloud->productPropertiesApi()->getProductProperty($product_property_id, $accept_language);
     $product_property = $get_product_property->getData();
+    var_dump($product_property);
 }
 catch(ApiException $e)
 {
