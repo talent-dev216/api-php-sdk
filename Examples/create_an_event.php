@@ -51,6 +51,7 @@ try
 {
     $post_event = $care_cloud->eventsApi()->postEvent($body, $accept_language);
     $event_id = $post_event->getData()->getEventId();
+    var_dump($event_id);
 }
 catch(ApiException $e)
 {

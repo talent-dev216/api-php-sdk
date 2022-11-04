@@ -34,6 +34,8 @@ try
     $get_property_records = $care_cloud->eventsApi()->getSubEventProperties($event_id, $accept_language);
     $property_records = $get_property_records->getData()->getPropertyRecords();
     $total_items = $get_property_records->getData()->getTotalItems();
+    var_dump($property_records);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
