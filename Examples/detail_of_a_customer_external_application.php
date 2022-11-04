@@ -33,6 +33,7 @@ try
 {
     $get_customer_external_app = $care_cloud->customerExternalApplicationsApi()->getCustomerExternalApp($customer_external_application_id, $accept_language);
     $customer_external_app = $get_customer_external_app->getData();
+    var_dump($customer_external_app);
 }
 catch(ApiException $e)
 {

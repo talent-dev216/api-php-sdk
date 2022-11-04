@@ -43,6 +43,8 @@ try
     );
     $customer_external_apps = $get_customer_external_apps->getData()->getCustomerExternalApplications();
     $total_items = $get_customer_external_apps->getData()->getTotalItems();
+    var_dump($customer_external_apps);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
