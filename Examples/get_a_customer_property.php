@@ -33,6 +33,7 @@ try
 {
     $get_customer_property = $care_cloud->customerPropertiesApi()->getCustomerProperty($customer_property_id, $accept_language);
     $customer_property = $get_customer_property->getData();
+    var_dump($customer_property);
 }
 catch(ApiException $e)
 {

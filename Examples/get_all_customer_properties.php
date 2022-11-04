@@ -45,8 +45,8 @@ try
     );
     $customer_properties = $get_customer_properties->getData()->getCustomerProperties();
     $total_items = $get_customer_properties->getData()->getTotalItems();
-    print_r($customer_properties);
-    echo '<br/>Total items = '.$total_items;
+    var_dump($customer_properties);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
