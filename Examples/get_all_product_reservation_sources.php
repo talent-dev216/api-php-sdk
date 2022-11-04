@@ -43,6 +43,8 @@ try
     );
     $product_reservation_sources = $get_product_reservation_sources->getData()->getProductReservationSources();
     $total_items = $get_product_reservation_sources->getData()->getTotalItems();
+    var_dump($product_reservation_sources);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

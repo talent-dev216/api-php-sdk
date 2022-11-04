@@ -33,6 +33,7 @@ try
 {
     $get_product_reservation_source = $care_cloud->productReservationSourcesApi()->getProductReservationSource($product_reservation_source_id, $accept_language);
     $product_reservation_source = $get_product_reservation_source->getData();
+    var_dump($product_reservation_source);
 }
 catch(ApiException $e)
 {
