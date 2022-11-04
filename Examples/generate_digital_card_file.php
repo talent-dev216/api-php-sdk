@@ -36,6 +36,7 @@ try
 {
     $post_generate_card = $care_cloud->cardsApi()->postGenerateDigitalCard($body, $accept_language);
     $file_url = $post_generate_card->getData()->getFileUrl();
+    var_dump($file_url);
 }
 catch(ApiException $e)
 {

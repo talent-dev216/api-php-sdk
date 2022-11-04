@@ -36,6 +36,7 @@ try
 {
     $post_assign_card = $care_cloud->cardsApi()->postAssignCard($body, $accept_language);
     $card_id = $post_assign_card->getData()->getCardId();
+    var_dump($card_id);
 }
 catch(ApiException $e)
 {

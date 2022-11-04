@@ -53,6 +53,8 @@ try
     );
     $cards = $get_cards->getData()->getCards();
     $total_items = $get_cards->getData()->getTotalItems();
+    var_dump($cards);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

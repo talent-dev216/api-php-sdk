@@ -34,6 +34,7 @@ try
 {
     $get_card = $care_cloud->cardsApi()->getCard($card_id, $accept_language);
     $card = $get_card->getData();
+    var_dump($card);
 }
 catch(ApiException $e)
 {
