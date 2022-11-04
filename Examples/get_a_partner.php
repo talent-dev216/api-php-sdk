@@ -33,6 +33,7 @@ try
 {
     $get_partner = $care_cloud->partnersApi()->getPartner($partner_id, $accept_language);
     $partner = $get_partner->getData();
+    var_dump($partner);
 }
 catch(ApiException $e)
 {

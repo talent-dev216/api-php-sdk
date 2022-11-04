@@ -43,6 +43,8 @@ try
     );
     $partners = $get_partners->getData()->getPartners();
     $total_items = $get_partners->getData()->getTotalItems();
+    var_dump($partners);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
