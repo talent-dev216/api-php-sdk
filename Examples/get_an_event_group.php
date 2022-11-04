@@ -36,6 +36,7 @@ try
         $accept_language
     );
     $event_group = $get_event_group->getData();
+    var_dump($event_group);
 }
 catch(ApiException $e)
 {

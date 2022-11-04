@@ -47,6 +47,8 @@ try
     );
     $event_groups = $get_event_groups->getData()->getEventGroups();
     $total_items = $get_event_groups->getData()->getTotalItems();
+    var_dump($event_groups);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
