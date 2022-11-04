@@ -43,6 +43,8 @@ try
     );
     $purchase_item_types = $get_purchase_item_types->getData()->getPurchaseItemTypes();
     $total_items = $get_purchase_item_types->getData()->getTotalItems();
+    var_dump($purchase_item_types);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
