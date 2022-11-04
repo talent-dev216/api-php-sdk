@@ -33,6 +33,7 @@ try
 {
     $get_recommendation = $care_cloud->hintApi()->getRecommendation($recommendation_id, $accept_language);
     $recommendation = $get_recommendation->getData();
+    var_dump($recommendation);
 }
 catch(ApiException $e)
 {
