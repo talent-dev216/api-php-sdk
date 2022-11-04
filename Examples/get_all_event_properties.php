@@ -45,6 +45,8 @@ try
     );
     $event_properties = $get_event_properties->getData()->getEventProperties();
     $total_items = $get_event_properties->getData()->getTotalItems();
+    var_dump($event_properties);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

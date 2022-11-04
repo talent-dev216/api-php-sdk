@@ -33,6 +33,7 @@ try
 {
     $get_event_property = $care_cloud->eventPropertiesApi()->getEventProperty($event_property_id, $accept_language);
     $event_property = $get_event_property->getData();
+    var_dump($event_property);
 }
 catch(ApiException $e)
 {
