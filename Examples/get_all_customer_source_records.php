@@ -49,6 +49,8 @@ try
     );
     $customer_source_records = $get_customer_source_records->getData()->getCustomerSourceRecords();
     $total_items = $get_customer_source_records->getData()->getTotalItems();
+    var_dump($customer_source_records);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
