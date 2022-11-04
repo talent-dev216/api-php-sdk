@@ -34,6 +34,7 @@ try
 {
     $get_agreement = $care_cloud->agreementsApi()->getAgreement($agreement_id, $accept_language);
     $agreement = $get_agreement->getData();
+    var_dump($agreement);
 }
 catch(ApiException $e)
 {
