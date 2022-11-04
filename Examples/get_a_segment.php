@@ -33,6 +33,7 @@ try
 {
     $get_segment = $care_cloud->segmentsApi()->getSegment($segment_id, $accept_language);
     $segment = $get_segment->getData();
+    var_dump($segment);
 }
 catch(ApiException $e)
 {

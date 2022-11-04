@@ -45,6 +45,8 @@ try
     );
     $segments = $get_segments->getData()->getSegments();
     $total_items = $get_segments->getData()->getTotalItems();
+    var_dump($segments);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
