@@ -45,6 +45,7 @@ try
 {
     $post_verify_token = $care_cloud->customersActionsApi()->postCustomersVerifyAuthToken($body);
     $customer_id = $post_verify_token->getData()->getCustomerId();
+    var_dump($customer_id);
 }
 catch(ApiException $e)
 {
