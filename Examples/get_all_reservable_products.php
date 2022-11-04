@@ -47,6 +47,8 @@ try
     );
     $reservable_products = $get_reservable_products->getData()->getReservableProducts();
     $total_items = $get_reservable_products->getData()->getTotalItems();
+    var_dump($reservable_products);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

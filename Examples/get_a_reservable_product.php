@@ -33,6 +33,7 @@ try
 {
     $get_reservable_product = $care_cloud->reservableProductsApi()->getReservableProduct($reservable_product_id, $accept_language);
     $reservable_product = $get_reservable_product->getData();
+    var_dump($reservable_product);
 }
 catch(ApiException $e)
 {
