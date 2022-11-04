@@ -33,6 +33,7 @@ try
 {
     $get_product_group = $care_cloud->productGroupsApi()->getProductGroup($product_group_id, $accept_language);
     $product_group = $get_product_group->getData();
+    var_dump($product_group);
 }
 catch(ApiException $e)
 {
