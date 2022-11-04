@@ -34,6 +34,7 @@ try
 {
     $post_credentials = $care_cloud->customersActionsApi()->postCustomerVerifyCredentials($body);
     $customer_id = $post_credentials->getData()->getCustomerId();
+    var_dump($customer_id);
 }
 catch(ApiException $e)
 {

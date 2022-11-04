@@ -34,7 +34,7 @@ $body->setData('YTc4ZTExZTc3NGY3Zmh1b3dmamZram5sam5kZmpuZm5mIGRzbiBzZGpuc2Rsam5k
 // Call endpoint and post data
 try
 {
-    $post_photo = $care_cloud->customersActionsApi()->postCustomersUploadPhoto($body);
+    $care_cloud->customersActionsApi()->postCustomersUploadPhoto($body);
 }
 catch(ApiException $e)
 {

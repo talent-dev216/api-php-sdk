@@ -38,6 +38,7 @@ try
 {
     $post_credentials = $care_cloud->customersActionsApi()->postCustomerVerifySocialNetworkCredentials($body);
     $customer_id = $post_credentials->getData()->getCustomerId();
+    var_dump($customer_id);
 }
 catch(ApiException $e)
 {

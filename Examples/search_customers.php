@@ -44,6 +44,7 @@ try
         $mode
     );
     $customers = $get_customers->getData();
+    var_dump($customers);
 }
 catch(ApiException $e)
 {
