@@ -33,6 +33,7 @@ try
 {
     $get_product_brand = $care_cloud->productBrandsApi()->getProductBrand($product_brand_id, $accept_language);
     $product_brand = $get_product_brand->getData();
+    var_dump($product_brand);
 }
 catch(ApiException $e)
 {
