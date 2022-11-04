@@ -51,6 +51,8 @@ try
     );
     $points = $get_points->getData()->getPoints();
     $total_items = $get_points->getData()->getTotalItems();
+    var_dump($points);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

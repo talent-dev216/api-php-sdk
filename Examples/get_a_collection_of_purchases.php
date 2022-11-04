@@ -59,6 +59,8 @@ try
     );
     $purchases = $get_purchases->getData()->getPurchases();
     $total_items = $get_purchases->getData()->getTotalItems();
+    var_dump($purchases);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
