@@ -33,6 +33,7 @@ try
 {
     $get_reward = $care_cloud->rewardsApi()->getReward($reward_id, $accept_language);
     $reward = $get_reward->getData();
+    var_dump($reward);
 }
 catch(ApiException $e)
 {

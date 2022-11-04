@@ -44,6 +44,7 @@ try
         $accept_language
     );
     $voucher_id = $post_voucher->getData()->getVoucherId();
+    var_dump($voucher_id);
 }
 catch(ApiException $e)
 {

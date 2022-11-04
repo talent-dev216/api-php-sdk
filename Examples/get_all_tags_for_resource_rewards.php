@@ -47,6 +47,8 @@ try
     );
     $reward_tags = $get_reward_tags->getData()->getTags();
     $total_items = $get_reward_tags->getData()->getTotalItems();
+    var_dump($reward_tags);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

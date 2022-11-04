@@ -49,6 +49,8 @@ try
     );
     $stores = $get_stores->getData()->getStores();
     $total_items = $get_stores->getData()->getTotalItems();
+    var_dump($stores);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
