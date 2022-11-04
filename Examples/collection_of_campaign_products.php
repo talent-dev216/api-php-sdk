@@ -61,6 +61,8 @@ try
     );
     $campaign_products = $get_campaign_products->getData()->getCampaignProducts();
     $total_items = $get_campaign_products->getData()->getTotalItems();
+    var_dump($campaign_products);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

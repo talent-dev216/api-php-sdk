@@ -38,6 +38,8 @@ try
     $get_campaigns = $care_cloud->campaignsApi()->getCampaigns($accept_language, $count, $offset, $sort_field, $sort_direction, $name);
     $campaigns = $get_campaigns->getData()->getCampaigns();
     $total_items = $get_campaigns->getData()->getTotalItems();
+    var_dump($campaigns);
+    var_dump($total_items);
 }
 catch (ApiException $e)
 {

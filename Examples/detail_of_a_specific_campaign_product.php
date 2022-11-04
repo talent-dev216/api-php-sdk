@@ -33,6 +33,7 @@ try
 {
     $get_campaign_product = $care_cloud->campaignProductsApi()->getCampaignProduct($campaign_product_id, $accept_language);
     $campaign_product = $get_campaign_product->getData();
+    var_dump($campaign_product);
 }
 catch(ApiException $e)
 {

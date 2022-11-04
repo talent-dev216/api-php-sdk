@@ -58,6 +58,7 @@ try
 {
     $new_campaign_product = $care_cloud->campaignProductsApi()->postCampaignProduct($body, $accept_language);
     $new_campaign_product_id = $new_campaign_product->getData()->getCampaignProductId();
+    var_dump($new_campaign_product_id);
 }
 catch(ApiException $e)
 {
