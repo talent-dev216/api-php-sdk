@@ -57,6 +57,8 @@ try
     );
     $vouchers = $get_vouchers->getData()->getVouchers();
     $total_items = $get_vouchers->getData()->getTotalItems();
+    var_dump($vouchers);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

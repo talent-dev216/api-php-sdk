@@ -34,6 +34,8 @@ try
     $get_properties = $care_cloud->customersApi()->getSubCustomerProperties($customer_id, $accept_language);
     $properties = $get_properties->getData()->getPropertyRecords();
     $total_items = $get_properties->getData()->getTotalItems();
+    var_dump($properties);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

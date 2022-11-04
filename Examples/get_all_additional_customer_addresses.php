@@ -49,6 +49,8 @@ try
     );
     $addresses = $get_addresses->getData()->getAddresses();
     $total_items = $get_addresses->getData()->getTotalItems();
+    var_dump($addresses);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

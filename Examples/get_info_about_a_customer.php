@@ -33,6 +33,7 @@ try
 {
     $get_customer = $care_cloud->customersApi()->getCustomer($customer_id, $accept_language);
     $customer = $get_customer->getData();
+    var_dump($customer);
 }
 catch(ApiException $e)
 {

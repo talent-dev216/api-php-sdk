@@ -44,6 +44,7 @@ try
 {
     $post_source_record = $care_cloud->customersApi()->postSubCustomerSource($body, $customer_id, $accept_language);
     $source_record_id = $post_source_record->getData()->getCustomerSourceRecordId();
+    var_dump($source_record_id);
 }
 catch(ApiException $e)
 {

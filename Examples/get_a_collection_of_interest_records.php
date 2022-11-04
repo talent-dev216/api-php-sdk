@@ -34,6 +34,8 @@ try
     $get_interests = $care_cloud->customersApi()->getSubCustomerInterests($customer_id, $accept_language);
     $interests = $get_interests->getData()->getInterestRecords();
     $total_items = $get_interests->getData()->getTotalItems();
+    var_dump($interests);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

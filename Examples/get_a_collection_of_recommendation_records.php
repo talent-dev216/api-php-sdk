@@ -49,6 +49,8 @@ try
     );
     $recommendation_records = $get_recommendation_records->getData()->getRecommendations();
     $total_items = $get_recommendation_records->getData()->getTotalItems();
+    var_dump($recommendation_records);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

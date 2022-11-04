@@ -51,6 +51,8 @@ try
     );
     $source_records = $get_source_records->getData()->getCustomerSourceRecords();
     $total_items = $get_source_records->getData()->getTotalItems();
+    var_dump($source_records);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

@@ -49,6 +49,8 @@ try
     );
     $point_records = $get_point_records->getData()->getPoints();
     $total_items = $get_point_records->getData()->getTotalItems();
+    var_dump($point_records);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

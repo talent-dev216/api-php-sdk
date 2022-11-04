@@ -55,6 +55,8 @@ try
     );
     $customers = $get_customers->getData()->getCustomers();
     $total_items = $get_customers->getData()->getTotalItems();
+    var_dump($customers);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

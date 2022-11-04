@@ -44,6 +44,7 @@ try
 {
     $post_property_record = $care_cloud->customersApi()->postSubCustomerProperties($body, $customer_id, $accept_language);
     $property_record_id = $post_property_record->getData()->getPropertyRecordId();
+    var_dump($property_record_id);
 }
 catch(ApiException $e)
 {

@@ -33,8 +33,8 @@ $additional_customer_address_id_path = '86e05affc7a7abefcd513ab400'; // string |
 try
 {
     $get_address = $care_cloud->customersApi()->getSubCustomerAddress($customer_id, $additional_customer_address_id_path, $accept_language);
-    $address = $get_address->getData()->getAddress();
-    $address_type = $get_address->getData()->getAddressType();
+    $address = $get_address->getData();
+    var_dump($address);
 }
 catch(ApiException $e)
 {

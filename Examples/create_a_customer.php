@@ -85,7 +85,7 @@ $customer_source = new CustomerSourceRecord();
 $customer_source->setCustomerSourceId('8fd73167342d06899c4c015320'); // string | The unique id of the customer source. It identifies the system where the customer belongs or the customer account was created
 $customer_source->setExternalId('external-id'); // string | The unique external id of the customer. It may be id from the other system
 
-// Set customer Social network credentials (optional)
+// Set customer's social network credentials (optional)
 $social_network_credentials = new SocialNetworkCredentials();
 $social_network_credentials->setSocialNetworkId('instagram'); // string | The unique id of the social network
 $social_network_credentials->setSocialNetworkToken('38e223j1jedu12d1jnjqwd'); // string | Social network customer's token
@@ -103,6 +103,7 @@ try
 {
     $post_customer = $care_cloud->customersApi()->postCustomer($body, $accept_language);
     $customer_id = $post_customer->getData()->getCustomerId();
+    var_dump($customer_id);
 }
 catch(ApiException $e)
 {

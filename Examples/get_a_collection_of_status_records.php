@@ -49,6 +49,8 @@ try
     );
     $status_records = $get_status_records->getData()->getStatusRecords();
     $total_items = $get_status_records->getData()->getTotalItems();
+    var_dump($status_records);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

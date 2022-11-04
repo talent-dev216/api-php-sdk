@@ -29,7 +29,7 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the customer
 $interest_record_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the interest record
 
-// Call endpoint and put data
+// Call endpoint and delete data
 try
 {
     $care_cloud->customersApi()->deleteSubCustomerInterest($customer_id, $interest_record_id, $accept_language);

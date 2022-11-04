@@ -37,6 +37,8 @@ try
     $get_segments = $care_cloud->customersApi()->getSubCustomerSegments($customer_id, $accept_language, $segment_group_ids);
     $segments = $get_segments->getData();
     $total_items = $get_segments->getData()->getTotalItems();
+    var_dump($segments);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

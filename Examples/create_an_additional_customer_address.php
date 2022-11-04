@@ -45,8 +45,8 @@ $address->setCity('Prague 2'); // string | City
 $address->setCountryCode('cz'); // string | ISO code of the country Possible values de / gb / us / it / cz / etc.
 
 $additional_address = new AdditionalAddress();
-$additional_address->setAddressType('86e05affc7a7abefcd513ab400'); // string | The unique id of the type of the address
-$additional_address->setAddress($address);
+$additional_address->setAddressType('86e05affc7a7abefcd513ab400') // string | The unique id of the type of the address
+    ->setAddress($address);
 
 // Set additional address to the request body
 $body = new CustomerIdAddressesBody();
@@ -57,6 +57,7 @@ try
 {
     $post_address = $care_cloud->customersApi()->postSubCustomerAddress($body, $customer_id, $accept_language);
     $additional_address_id = $post_address->getData()->getAdditionalAddressId();
+    var_dump($additional_address_id);
 }
 catch(ApiException $e)
 {

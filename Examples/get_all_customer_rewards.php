@@ -69,6 +69,8 @@ try
     );
     $rewards = $get_rewards->getData()->getRewards();
     $total_items = $get_rewards->getData()->getTotalItems();
+    var_dump($rewards);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

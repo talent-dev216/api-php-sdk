@@ -48,6 +48,7 @@ $address->setAddress1('New Town Square') // string | Street name of the address 
 $custom_agreement1 = new CustomAgreements();
 $custom_agreement1->setAgreementId('89ce2a1b9b01f5c939fb1e20cd'); // string | The unique id of the agreement in CareCloud
 $custom_agreement1->setAgreementValue(1); // integer | Value of the specific agreement Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
+
 $custom_agreement2 = new CustomAgreements();
 $custom_agreement2->setAgreementId('8fd73167342d06899c4c015320'); // string | The unique id of the agreement in CareCloud
 $custom_agreement2->setAgreementValue(1); // integer | Value of the specific agreement Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
@@ -60,23 +61,23 @@ $custom_agreements = array(
 // Set agreement of a new customer
 $agreement = new Agreement();
 $agreement->setAgreementGtc(1) // integer | Consent to General Terms & Conditions Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
-->setAgreementProfiling(1) // integer | Consent to profiling Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
-->setAgreementMarketingCommunication(0) // integer | Consent to marketing communication Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
-->setCustomAgreements($custom_agreements);
+    ->setAgreementProfiling(1) // integer | Consent to profiling Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
+    ->setAgreementMarketingCommunication(0) // integer | Consent to marketing communication Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
+    ->setCustomAgreements($custom_agreements);
 
 // Set personal information of a new customer
 $personal_information = new PersonalInformation();
 $personal_information->setSalutation('Mr. Doe') // string | Customers salutation (optional)
-->setGender(1) // integer | Gender of the customer Possible values: 1 - male, 2 - female (optional)
-->setFirstName('John') // string | First name of the customer (optional)
-->setLastName('Doe') // string | Last name of the customer (optional)
-->setBirthdate('1990-01-01') // string <date> | Customer's date of birth (YYYY-MM-DD) (optional)
-->setEmail('doe@crmcarecloud.com') // string | Email of the customer (optional)
-->setPhone('420523828932') // string | Phone number of the customer with international prefix (420000000000) (optional)
-->setLanguageId('cs') // string | The unique id for the language by ISO 639 code
-->setStoreId(null) // string | The unique id for the original customer account store of registration (optional)
-->setPhotoUrl(null) // string | URL address of the customer photo (optional)
-->setAddress($address)
+    ->setGender(1) // integer | Gender of the customer Possible values: 1 - male, 2 - female (optional)
+    ->setFirstName('John') // string | First name of the customer (optional)
+    ->setLastName('Doe') // string | Last name of the customer (optional)
+    ->setBirthdate('1990-01-01') // string <date> | Customer's date of birth (YYYY-MM-DD) (optional)
+    ->setEmail('doe@crmcarecloud.com') // string | Email of the customer (optional)
+    ->setPhone('420523828932') // string | Phone number of the customer with international prefix (420000000000) (optional)
+    ->setLanguageId('cs') // string | The unique id for the language by ISO 639 code
+    ->setStoreId(null) // string | The unique id for the original customer account store of registration (optional)
+    ->setPhotoUrl(null) // string | URL address of the customer photo (optional)
+    ->setAddress($address)
     ->setAgreement($agreement);
 
 $customer = new Customer();
