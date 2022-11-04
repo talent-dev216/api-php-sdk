@@ -43,6 +43,8 @@ try
     );
     $customer_relation_types = $get_customer_relation_types->getData()->getCustomerRelationTypes();
     $total_items = $get_customer_relation_types->getData()->getTotalItems();
+    var_dump($customer_relation_types);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
