@@ -43,6 +43,8 @@ try
     );
     $point_types = $get_point_types->getData()->getPointTypes();
     $total_items = $get_point_types->getData()->getTotalItems();
+    var_dump($point_types);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

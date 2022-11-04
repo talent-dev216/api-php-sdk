@@ -33,6 +33,7 @@ try
 {
     $get_point_type = $care_cloud->pointTypesApi()->getPointType($point_type_id, $accept_language);
     $point_type = $get_point_type->getData();
+    var_dump($point_type);
 }
 catch(ApiException $e)
 {
