@@ -33,6 +33,7 @@ try
 {
     $get_currency = $care_cloud->currenciesApi()->getCurrency($currency_id, $accept_language);
     $currency = $get_currency->getData();
+    var_dump($currency);
 }
 catch(ApiException $e)
 {

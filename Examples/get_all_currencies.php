@@ -31,6 +31,8 @@ try
     $get_currencies = $care_cloud->currenciesApi()->getCurrencies($accept_language);
     $currencies = $get_currencies->getData()->getCurrencies();
     $total_items = $get_currencies->getData()->getTotalItems();
+    var_dump($currencies);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
