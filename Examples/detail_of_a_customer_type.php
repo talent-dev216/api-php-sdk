@@ -23,7 +23,7 @@ $care_cloud = new CareCloud($config);
 // Set Header parameter Accept-Language
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
-// Set path parameter
+// Set path parameters
 $customer_type_id = '86e05affc7a7abefcd513ab400'; // string | The unique id og the customer type
 
 // Call endpoint and get data
