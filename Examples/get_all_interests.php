@@ -45,6 +45,8 @@ try
     );
     $interests = $get_interests->getData()->getInterests();
     $total_items = $get_interests->getData()->getTotalItems();
+    var_dump($interests);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

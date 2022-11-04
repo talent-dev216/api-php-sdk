@@ -33,6 +33,7 @@ try
 {
     $get_interest = $care_cloud->interestsApi()->getInterest($interest_id, $accept_language);
     $interest = $get_interest->getData();
+    var_dump($interest);
 }
 catch(ApiException $e)
 {
