@@ -408,6 +408,14 @@ class CareCloud
     }
 
     /**
+     * @return PointHistoryApi
+     */
+    public function pointHistoryApi(): PointHistoryApi
+    {
+        return new PointHistoryApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
      * @return ProductsApi
      */
     public function productsApi(): ProductsApi
