@@ -19,8 +19,6 @@ $login = 'login';
 $password = 'password';
 $external_app_id = 'application_id';
 $auth_type = AuthTypes::BEARER_AUTH;
-// Or if using basic auth, just change the AuthType to Basic Auth
-// $authType      = AuthTypes::BASIC_AUTH;
 
 $config = new Config($project_uri, $login, $password, $external_app_id, $auth_type);
 
@@ -71,6 +69,8 @@ try
     $post_best_rewards = $care_cloud->purchasesApi()->postPurchaseRecommendedRewards($body, $accept_language);
     $best_rewards = $post_best_rewards->getData()->getRecommendedBestRewards();
     $total_items = $post_best_rewards->getData()->getTotalItems();
+    var_dump($best_rewards);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

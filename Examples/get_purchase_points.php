@@ -47,6 +47,8 @@ try
     );
     $purchase_points = $get_purchase_points->getData()->getPoints();
     $total_items = $get_purchase_points->getData()->getTotalItems();
+    var_dump($purchase_points);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

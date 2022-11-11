@@ -15,8 +15,6 @@ $login = 'login';
 $password = 'password';
 $external_app_id = 'application_id';
 $auth_type = AuthTypes::BEARER_AUTH;
-// Or if using basic auth, just change the AuthType to Basic Auth
-// $authType      = AuthTypes::BASIC_AUTH;
 
 $config = new Config($project_uri, $login, $password, $external_app_id, $auth_type);
 
@@ -33,6 +31,7 @@ try
 {
     $get_payment_summary = $care_cloud->purchasesApi()->getPurchasePaymentSummary($purchase_id, $accept_language);
     $payment_summary = $get_payment_summary->getData();
+    var_dump($payment_summary);
 }
 catch(ApiException $e)
 {

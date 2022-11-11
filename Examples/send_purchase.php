@@ -19,8 +19,6 @@ $login = 'login';
 $password = 'password';
 $external_app_id = 'application_id';
 $auth_type = AuthTypes::BEARER_AUTH;
-// Or if using basic auth, just change the AuthType to Basic Auth
-// $authType      = AuthTypes::BASIC_AUTH;
 
 $config = new Config($project_uri, $login, $password, $external_app_id, $auth_type);
 
@@ -75,6 +73,7 @@ try
 {
     $post_purchase = $care_cloud->purchasesApi()->postPurchaseSend($body, $accept_language);
     $purchase_id = $post_purchase->getData()->getPurchaseId();
+    var_dump($purchase_id);
 }
 catch(ApiException $e)
 {

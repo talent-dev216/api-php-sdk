@@ -15,8 +15,6 @@ $login = 'login';
 $password = 'password';
 $external_app_id = 'application_id';
 $auth_type = AuthTypes::BEARER_AUTH;
-// Or if using basic auth, just change the AuthType to Basic Auth
-// $authType      = AuthTypes::BASIC_AUTH;
 
 $config = new Config($project_uri, $login, $password, $external_app_id, $auth_type);
 
@@ -47,6 +45,8 @@ try
     );
     $purchase_vouchers = $get_purchase_vouchers->getData()->getVouchers();
     $total_items = $get_purchase_vouchers->getData()->getTotalItems();
+    var_dump($purchase_vouchers);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
