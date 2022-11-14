@@ -7,6 +7,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\CampaignProductsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CampaignsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CardTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CommunicationChannelsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CountriesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CurrenciesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerExternalApplicationsApi;
@@ -221,6 +222,14 @@ class CareCloud
     public function cardTypesApi(): CardTypesApi
     {
         return new CardTypesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return CommunicationChannelsApi
+     */
+    public function communicationChannelsApi(): CommunicationChannelsApi
+    {
+        return new CommunicationChannelsApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
     /**
