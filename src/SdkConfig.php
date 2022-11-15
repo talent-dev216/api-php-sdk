@@ -6,5 +6,5 @@ namespace CrmCareCloud\Webservice\RestApi\Client\SDK;
 
 class SdkConfig
 {
-	const SDK_VERSION = '1.3.0';
+	const SDK_VERSION = '1.4.0';
 }
