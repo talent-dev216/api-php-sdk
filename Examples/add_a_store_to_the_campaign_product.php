@@ -10,7 +10,7 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
-require_once '../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
 $login = 'login';
@@ -33,7 +33,7 @@ $campaign_product_store_record = new CampaignProductStoreRecord();
 $campaign_product_store_record->setStoreId('82de12eb8b138791e678fd11c3'); // string | The unique id of the store
 $campaign_product_store_record->setCampaignProductId($campaign_product_id); // string | The unique id of the campaign product
 
-// Set information about store record to the request body
+// Set the request body
 $body = new CampaignProductIdCampaignproductstorerecordsBody();
 $body->setCampaignProductStoreRecord($campaign_product_store_record);
 
