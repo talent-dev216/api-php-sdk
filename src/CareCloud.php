@@ -48,6 +48,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\RecommendationsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ReservableProductsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\RewardPropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\RewardsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\RewardTypesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\SegmentsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\SkipassesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\StatusesApi;
@@ -563,6 +564,14 @@ class CareCloud
     public function rewardPropertiesApi(): RewardPropertiesApi
     {
         return new RewardPropertiesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return RewardTypesApi
+     */
+    public function rewardTypesApi(): RewardTypesApi
+    {
+        return new RewardTypesApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
     /**
