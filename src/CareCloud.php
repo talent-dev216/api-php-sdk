@@ -37,6 +37,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\PointHistoryApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductBrandsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductGroupsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductPropertiesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationExternalListTypesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationSourcesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductsApi;
@@ -463,6 +464,14 @@ class CareCloud
     public function productPropertiesApi(): ProductPropertiesApi
     {
         return new ProductPropertiesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return ProductReservationExternalListTypesApi
+     */
+    public function productReservetionExternalListTypesApi(): ProductReservationExternalListTypesApi
+    {
+        return new ProductReservationExternalListTypesApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
     /**
