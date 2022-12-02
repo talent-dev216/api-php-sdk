@@ -30,20 +30,21 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\MessageTemplatesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\OneTimePasswordApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\OrdersApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PartnersApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PointHistoryApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PointReservationApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PointsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PointTypesApi;
-use CrmCareCloud\Webservice\RestApi\Client\Api\PointHistoryApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductBrandsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductGroupsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductPropertiesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductRecommendationEngineApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationExternalListTypesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationSourcesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PurchaseItemTypesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PurchasesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PurchaseTypesApi;
-use CrmCareCloud\Webservice\RestApi\Client\Api\ProductRecommendationEngineApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\RecommendationsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ReservableProductsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\RewardPropertiesApi;
@@ -69,6 +70,8 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\Cache;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\CacheRequestMatcher;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\Interfaces;
+use DateTime;
+use DateTimeZone;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
@@ -77,8 +80,6 @@ use Kevinrob\GuzzleCache\Storage\Psr6CacheStorage;
 use Kevinrob\GuzzleCache\Strategy\Delegate\DelegatingCacheStrategy;
 use Kevinrob\GuzzleCache\Strategy\GreedyCacheStrategy;
 use Kevinrob\GuzzleCache\Strategy\NullCacheStrategy;
-use \DateTime;
-use \DateTimeZone;
 
 class CareCloud
 {
@@ -464,6 +465,14 @@ class CareCloud
     public function productPropertiesApi(): ProductPropertiesApi
     {
         return new ProductPropertiesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return ProductReservationExternalListTypesApi
+     */
+    public function productReservetionExternalListTypesApi(): ProductReservationExternalListTypesApi
+    {
+        return new ProductReservationExternalListTypesApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
     /**
