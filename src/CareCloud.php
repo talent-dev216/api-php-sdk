@@ -61,6 +61,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\TasksApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\TokensApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\UserRolesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\UsersApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\VoucherPropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\VouchersApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\WalletApi;
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -653,6 +654,14 @@ class CareCloud
     public function userRolesApi(): UserRolesApi
     {
         return new UserRolesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return VoucherPropertiesApi
+     */
+    public function voucherPropertiesApi(): VoucherPropertiesApi
+    {
+        return new VoucherPropertiesApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
     /**
