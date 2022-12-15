@@ -215,7 +215,12 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
         }
         catch(ApiException $e)
         {
-            die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+            throw new ApiException(
+                $e->getMessage(),
+                $e->getCode(),
+                $e->getResponseHeaders(),
+                $e->getResponseBody()
+            );
         }
         //source record was found, do updating
         if(count($source_record) > 0)
@@ -268,7 +273,12 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
             }
             catch(ApiException $e)
             {
-                die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+                throw new ApiException(
+                    $e->getMessage(),
+                    $e->getCode(),
+                    $e->getResponseHeaders(),
+                    $e->getResponseBody()
+                );
             }
         }//source record was not found, do creation
         else
@@ -291,7 +301,12 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
             }
             catch(ApiException $e)
             {
-                die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+                throw new ApiException(
+                    $e->getMessage(),
+                    $e->getCode(),
+                    $e->getResponseHeaders(),
+                    $e->getResponseBody()
+                );
             }
         }
 
