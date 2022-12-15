@@ -228,7 +228,9 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
             try
             {
                 //update customer
-                $customer_id = $source_record['0']['customer_id'];
+                reset($source_record);
+                $source_record = current($source_record);
+                $customer_id = $source_record->getCustomerId();
                 $this->putCustomer($body, $customer_id, $accept_language);
 
                 //get updated customer by its id
