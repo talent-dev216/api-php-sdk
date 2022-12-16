@@ -194,34 +194,23 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
      * @param string        $customer_source_id
      * @param string        $external_id
      *
-     * @return Customer|void
+     * @return Customer
+     * @throws ApiException
      */
-    public function synchronizeCustomer(CareCloud $care_cloud, CustomersBody $customers_body, string $accept_language, string $customer_source_id, string $external_id)
+    public function synchronizeCustomer(CareCloud $care_cloud, CustomersBody $customers_body, string $accept_language, string $customer_source_id, string $external_id): Customer
     {
         //search source record by $external_id & $customer_source_id
-        try
-        {
-            $get_source_record = $care_cloud->customerSourceRecordsApi()->getCustomerSourceRecords(
-                $accept_language,
-                null,
-                null,
-                null,
-                null,
-                null,
-                $external_id,
-                $customer_source_id
-            );
-            $source_record = $get_source_record->getData()->getCustomerSourceRecords();
-        }
-        catch(ApiException $e)
-        {
-            throw new ApiException(
-                $e->getMessage(),
-                $e->getCode(),
-                $e->getResponseHeaders(),
-                $e->getResponseBody()
-            );
-        }
+        $get_source_record = $care_cloud->customerSourceRecordsApi()->getCustomerSourceRecords(
+            $accept_language,
+            null,
+            null,
+            null,
+            null,
+            null,
+            $external_id,
+            $customer_source_id
+        );
+        $source_record = $get_source_record->getData()->getCustomerSourceRecords();
         //source record was found, do updating
         if(count($source_record) > 0)
         {
@@ -230,55 +219,42 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
                 ->setPassword($customers_body->getPassword())
                 ->setSocialNetworkCredentials($customers_body->getSocialNetworkCredentials());
 
-            try
+            //update customer
+            $source_record = reset($source_record);
+            $customer_id = $source_record->getCustomerId();
+            $this->putCustomer($body, $customer_id, $accept_language);
+
+            //get updated customer by its id
+            $get_customer = $this->getCustomer($customer_id, $accept_language);
+            $customer_record = $get_customer->getData();
+
+            //if we have customer's property records passed, we have to delete existing and add those that were passed
+            $get_property_records = $this->getSubCustomerProperties($customer_id, $accept_language);
+            $property_records = $get_property_records->getData()->getPropertyRecords();
+            $total_items = $get_property_records->getData()->getTotalItems();
+
+            //deleting existing properties if there are any
+            if($total_items > 0)
             {
-                //update customer
-                reset($source_record);
-                $source_record = current($source_record);
-                $customer_id = $source_record->getCustomerId();
-                $this->putCustomer($body, $customer_id, $accept_language);
-
-                //get updated customer by its id
-                $get_customer = $this->getCustomer($customer_id, $accept_language);
-                $customer_record = $get_customer->getData();
-
-                //if we have customer's property records passed, we have to delete existing and add those that were passed
-                $get_property_records = $this->getSubCustomerProperties($customer_id, $accept_language);
-                $property_records = $get_property_records->getData()->getPropertyRecords();
-                $total_items = $get_property_records->getData()->getTotalItems();
-
-                //deleting existing properties if there are any
-                if($total_items > 0)
+                foreach($property_records as $property_record)
                 {
-                    foreach($property_records as $property_record)
+                    //if there is property value
+                    if($property_record->getPropertyValue())
                     {
-                        //if there is property value
-                        if($property_record->getPropertyValue())
-                        {
-                            $this->deleteSubCustomerProperty($customer_id, $property_record->getPropertyRecordId(), $accept_language);
-                        }
-                    }
-                }
-
-                //adding new properties if there are any
-                if($customers_body->getPropertyRecords())
-                {
-                    foreach($customers_body->getPropertyRecords() as $property_record)
-                    {
-                        $body = new CustomerIdPropertyrecordsBody();
-                        $body->setPropertyRecord($property_record);
-                        $this->postSubCustomerProperties($body, $customer_id, $accept_language);
+                        $this->deleteSubCustomerProperty($customer_id, $property_record->getPropertyRecordId(), $accept_language);
                     }
                 }
             }
-            catch(ApiException $e)
+
+            //adding new properties if there are any
+            if($customers_body->getPropertyRecords())
             {
-                throw new ApiException(
-                    $e->getMessage(),
-                    $e->getCode(),
-                    $e->getResponseHeaders(),
-                    $e->getResponseBody()
-                );
+                foreach($customers_body->getPropertyRecords() as $property_record)
+                {
+                    $body = new CustomerIdPropertyrecordsBody();
+                    $body->setPropertyRecord($property_record);
+                    $this->postSubCustomerProperties($body, $customer_id, $accept_language);
+                }
             }
         }//source record was not found, do creation
         else
@@ -289,25 +265,13 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
 
             $customers_body->setCustomerSource($customer_source);
 
-            try
-            {
-                //post customer and get its id
-                $post_customer = $this->postCustomer($customers_body, $accept_language);
-                $customer_id = $post_customer->getData()->getCustomerId();
+            //post customer and get its id
+            $post_customer = $this->postCustomer($customers_body, $accept_language);
+            $customer_id = $post_customer->getData()->getCustomerId();
 
-                //get newly created customer by its id
-                $get_customer = $this->getCustomer($customer_id, $accept_language);
-                $customer_record = $get_customer->getData();
-            }
-            catch(ApiException $e)
-            {
-                throw new ApiException(
-                    $e->getMessage(),
-                    $e->getCode(),
-                    $e->getResponseHeaders(),
-                    $e->getResponseBody()
-                );
-            }
+            //get newly created customer by its id
+            $get_customer = $this->getCustomer($customer_id, $accept_language);
+            $customer_record = $get_customer->getData();
         }
 
         return $customer_record;
