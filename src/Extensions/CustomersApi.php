@@ -233,26 +233,22 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
             $property_records = $get_property_records->getData()->getPropertyRecords();
             $total_items = $get_property_records->getData()->getTotalItems();
 
-            //deleting existing properties if there are any
-            if($total_items > 0)
+            //updating properties if there are any
+            if($total_items > 0 && count($customers_body->getPropertyRecords()) > 0)
             {
-                foreach($property_records as $property_record)
+                foreach($customers_body->getPropertyRecords() as $new_property)
                 {
-                    //if there is property value
-                    if($property_record->getPropertyValue())
+                    foreach($property_records as $property_record)
                     {
-                        $this->deleteSubCustomerProperty($customer_id, $property_record->getPropertyRecordId(), $accept_language);
+                        //delete current property value
+                        if($property_record->getPropertyId() === $new_property->getPropertyId())
+                        {
+                            $this->deleteSubCustomerProperty($customer_id, $property_record->getPropertyRecordId(), $accept_language);
+                        }
                     }
-                }
-            }
-
-            //adding new properties if there are any
-            if($customers_body->getPropertyRecords())
-            {
-                foreach($customers_body->getPropertyRecords() as $property_record)
-                {
+                    //create property with new value
                     $body = new CustomerIdPropertyrecordsBody();
-                    $body->setPropertyRecord($property_record);
+                    $body->setPropertyRecord($new_property);
                     $this->postSubCustomerProperties($body, $customer_id, $accept_language);
                 }
             }
