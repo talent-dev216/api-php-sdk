@@ -3,13 +3,21 @@
 namespace CrmCareCloud\Webservice\RestApi\Client\SDK;
 
 use CrmCareCloud\Webservice\RestApi\Client\Api\AgreementsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\BookingsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\BookingStatusesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\BookingTicketPropertiesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\BookingTicketsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CampaignProductsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CampaignsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CardTypesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CommunicationChannelsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CountriesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CreditHistoryApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CreditsApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CreditTypesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CurrenciesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerAddressTypesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerExternalApplicationsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerPropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerRelationTypesApi;
@@ -58,6 +66,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\StorePropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\StoresApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\TaskPropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\TasksApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\TestsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\TokensApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\UserRolesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\UsersApi;
@@ -194,6 +203,78 @@ class CareCloud
     public function agreementsApi(): AgreementsApi
     {
         return new AgreementsApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return BookingsApi
+     */
+    public function bookingsApi(): BookingsApi
+    {
+        return new BookingsApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return BookingTicketsApi
+     */
+    public function bookingTicketsApi(): BookingTicketsApi
+    {
+        return new BookingTicketsApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return BookingTicketPropertiesApi
+     */
+    public function bookingTicketsPropertiesApi(): BookingTicketPropertiesApi
+    {
+        return new BookingTicketPropertiesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return BookingStatusesApi
+     */
+    public function bookingStatusesApi(): BookingStatusesApi
+    {
+        return new BookingStatusesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return CreditsApi
+     */
+    public function creditsApi(): CreditsApi
+    {
+        return new CreditsApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return CreditHistoryApi
+     */
+    public function creditHistoryApi(): CreditHistoryApi
+    {
+        return new CreditHistoryApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return CreditTypesApi
+     */
+    public function creditTypesApi(): CreditTypesApi
+    {
+        return new CreditTypesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return CustomerAddressTypesApi
+     */
+    public function customerAddressTypesApi(): CustomerAddressTypesApi
+    {
+        return new CustomerAddressTypesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return TestsApi
+     */
+    public function testsApi(): TestsApi
+    {
+        return new TestsApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
     /**
@@ -471,7 +552,7 @@ class CareCloud
     /**
      * @return ProductReservationExternalListTypesApi
      */
-    public function productReservetionExternalListTypesApi(): ProductReservationExternalListTypesApi
+    public function productReservationExternalListTypesApi(): ProductReservationExternalListTypesApi
     {
         return new ProductReservationExternalListTypesApi($this->getClient(), $this->getDefaultConfiguration());
     }
