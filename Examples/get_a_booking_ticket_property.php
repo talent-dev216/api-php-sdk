@@ -1,6 +1,6 @@
 <?php
 /**
- * Get a task state
+ * Get a booking ticket property
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -24,14 +24,17 @@ $care_cloud = new CareCloud($config);
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
 // Set path parameters
-$task_state_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
+$booking_ticket_property_id = 'firstname'; // string | The unique id of the booking ticket property
 
 // Call endpoint and get data
 try
 {
-    $get_state = $care_cloud->tasksApi()->getTaskState($task_state_id, $accept_language);
-    $task_state = $get_state->getData();
-    var_dump($task_state);
+    $get_booking_ticket_property = $care_cloud->bookingTicketsPropertiesApi()->getBookingTicketProperty(
+        $booking_ticket_property_id,
+        $accept_language
+    );
+    $booking_ticket_property = $get_booking_ticket_property->getData();
+    var_dump($booking_ticket_property);
 }
 catch(ApiException $e)
 {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Get all countries
+ * Get all product reservation external list types
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -28,22 +28,20 @@ $count = 10; // integer >= 1 | The number of records to return (optional, defaul
 $offset = 0; // integer | The number of records from a collection to skip (optional, default is 0)
 $sort_field = null; // string | One of the query string parameters for sorting (optional, default is null)
 $sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
-$name = null; // string | Search record by name or a part of the name (optional)
 
 // Call endpoint and get data
 try
 {
-    $get_countries = $care_cloud->countriesApi()->getCountries(
+    $get_product_reservation_ext_list_types = $care_cloud->productReservationExternalListTypesApi()->getProductReservationExternalListTypes(
         $accept_language,
         $count,
         $offset,
         $sort_field,
-        $sort_direction,
-        $name
+        $sort_direction
     );
-    $countries = $get_countries->getData()->getCountries();
-    var_dump($countries);
-    $total_items = $get_countries->getData()->getTotalItems();
+    $product_reservation_ext_list_types = $get_product_reservation_ext_list_types->getData()->getProductReservationExternalListTypes();
+    $total_items = $get_product_reservation_ext_list_types->getData()->getTotalItems();
+    var_dump($product_reservation_ext_list_types);
     var_dump($total_items);
 }
 catch(ApiException $e)

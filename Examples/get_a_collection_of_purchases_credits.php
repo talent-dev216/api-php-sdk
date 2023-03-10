@@ -1,6 +1,6 @@
 <?php
 /**
- * Get all countries
+ * Get a collection of purchases
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -23,27 +23,41 @@ $care_cloud = new CareCloud($config);
 // Set Header parameter Accept-Language
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
+// Set path parameters
+$credit_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the credit record
+
 // Set query parameters
 $count = 10; // integer >= 1 | The number of records to return (optional, default is 100)
 $offset = 0; // integer | The number of records from a collection to skip (optional, default is 0)
 $sort_field = null; // string | One of the query string parameters for sorting (optional, default is null)
 $sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
-$name = null; // string | Search record by name or a part of the name (optional)
+$store_id = null; // string | The unique id of the store (optional)
+$customer_id = null; // string | The unique id of the customer (optional)
+$type_id = null; // string | The unique id of the purchase type (optional)
+$payment_time_from = null; // string | Date and time from of the purchase payment (YYYY-MM-DD HH:MM:SS) (optional)
+$payment_time_to = null; // string | Date and time to of the purchase payment (YYYY-MM-DD HH:MM:SS) (optional)
+$purchase_items_extension = null; // boolean | If true, resource returns extended response with purchase items. If false, the resource won't be extended (optional)
 
 // Call endpoint and get data
 try
 {
-    $get_countries = $care_cloud->countriesApi()->getCountries(
+    $get_purchases = $care_cloud->creditsApi()->getSubCreditPurchases(
+        $credit_id,
         $accept_language,
         $count,
         $offset,
         $sort_field,
         $sort_direction,
-        $name
+        $store_id,
+        $customer_id,
+        $type_id,
+        $payment_time_from,
+        $payment_time_to,
+        $purchase_items_extension
     );
-    $countries = $get_countries->getData()->getCountries();
-    var_dump($countries);
-    $total_items = $get_countries->getData()->getTotalItems();
+    $purchases = $get_purchases->getData()->getPurchases();
+    $total_items = $get_purchases->getData()->getTotalItems();
+    var_dump($purchases);
     var_dump($total_items);
 }
 catch(ApiException $e)

@@ -9,7 +9,7 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 $project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
 $login = 'login';

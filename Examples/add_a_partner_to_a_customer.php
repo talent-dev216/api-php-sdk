@@ -1,9 +1,11 @@
 <?php
 /**
- * Get a task state
+ * Add a partner to the customer
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
+use CrmCareCloud\Webservice\RestApi\Client\Model\CustomerIdPartnerrecordsBody;
+use CrmCareCloud\Webservice\RestApi\Client\Model\PartnerRecord;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
@@ -24,14 +26,25 @@ $care_cloud = new CareCloud($config);
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
 // Set path parameters
-$task_state_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
+$customer_id = '8fa66731256448d1ae0c19a1dd'; // string | The unique id of the customer
 
-// Call endpoint and get data
+// Set the request body
+$partner_record = new PartnerRecord();
+$partner_record->setPartnerId('86e05affc7a7abefcd513ab400'); // string | The unique id of the partner
+
+$body = new CustomerIdPartnerrecordsBody();
+$body->setPartnerRecord($partner_record);
+
+// Call endpoint and post data
 try
 {
-    $get_state = $care_cloud->tasksApi()->getTaskState($task_state_id, $accept_language);
-    $task_state = $get_state->getData();
-    var_dump($task_state);
+    $post_customer_partner = $care_cloud->customersApi()->postSubCustomerPartnerRecord(
+        $body,
+        $customer_id,
+        $accept_language
+    );
+    $partner_record_id = $post_customer_partner->getData()->getPartnerRecordId();
+    var_dump($partner_record_id);
 }
 catch(ApiException $e)
 {

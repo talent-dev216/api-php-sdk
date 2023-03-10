@@ -1,6 +1,6 @@
 <?php
 /**
- * Get all countries
+ * Get all voucher properties
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -33,7 +33,7 @@ $name = null; // string | Search record by name or a part of the name (optional)
 // Call endpoint and get data
 try
 {
-    $get_countries = $care_cloud->countriesApi()->getCountries(
+    $get_voucher_properties = $care_cloud->voucherPropertiesApi()->getVoucherProperties(
         $accept_language,
         $count,
         $offset,
@@ -41,9 +41,9 @@ try
         $sort_direction,
         $name
     );
-    $countries = $get_countries->getData()->getCountries();
-    var_dump($countries);
-    $total_items = $get_countries->getData()->getTotalItems();
+    $voucher_properties = $get_voucher_properties->getData()->getVoucherProperties();
+    $total_items = $get_voucher_properties->getData()->getTotalItems();
+    var_dump($voucher_properties);
     var_dump($total_items);
 }
 catch(ApiException $e)

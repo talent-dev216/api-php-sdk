@@ -8,7 +8,7 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 $project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
 $login = 'login';
@@ -29,9 +29,9 @@ $message_template_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id o
 // Call endpoint and get data
 try
 {
-    $get_messsage_template = $care_cloud->messageTemplatesApi()->getMessageTemplate($message_template_id, $accept_language);
-    $messsage_template = $get_messsage_template->getData();
-    var_dump($messsage_template);
+    $get_message_template = $care_cloud->messageTemplatesApi()->getMessageTemplate($message_template_id, $accept_language);
+    $message_template = $get_message_template->getData();
+    var_dump($message_template);
 }
 catch(ApiException $e)
 {

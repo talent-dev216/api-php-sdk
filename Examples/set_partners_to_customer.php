@@ -1,9 +1,11 @@
 <?php
 /**
- * Get a task state
+ * Set one or multiple partners to the customer
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
+use CrmCareCloud\Webservice\RestApi\Client\Model\ActionsSetpartnersBody;
+use CrmCareCloud\Webservice\RestApi\Client\Model\PartnerRecord;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
@@ -23,15 +25,21 @@ $care_cloud = new CareCloud($config);
 // Set Header parameter Accept-Language
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
-// Set path parameters
-$task_state_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
+// Set the request body
+$partner_record1 = new PartnerRecord();
+$partner_record1->setPartnerId('86e05affc7a7abefcd513ab400'); // string | The unique id of the partner
 
-// Call endpoint and get data
+$body = new ActionsSetpartnersBody();
+$body->setCustomerId('8ea2591121e636086a4a9c0992'); // string | The unique id of the customer
+$body->setPartnerRecords(array($partner_record1));
+
+// Call endpoint and post data
 try
 {
-    $get_state = $care_cloud->tasksApi()->getTaskState($task_state_id, $accept_language);
-    $task_state = $get_state->getData();
-    var_dump($task_state);
+    $care_cloud->customersActionsApi()->postSubCustomerSetPartners(
+        $body,
+        $accept_language
+    );
 }
 catch(ApiException $e)
 {

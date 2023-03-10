@@ -31,12 +31,13 @@ $count = 10; // integer >= 1 | The number of records to return (optional, defaul
 $offset = 0; // integer | The number of records from a collection to skip (optional, default is 0)
 $sort_field = null; // string | One of the query string parameters for sorting (optional, default is null)
 $sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
-$card_number    = null; // string | Number of the customer card (optional, default is null)
-$card_type_id   = null; // string | The unique id of the card type (optional, default is null)
-$is_valid       = null; // boolean | In validity range - true / before or after validity range - false / no value - all (optional, default is null)
+$card_number = null; // string | Number of the customer card (optional, default is null)
+$card_type_id = null; // string | The unique id of the card type (optional, default is null)
+$is_valid = null; // boolean | In validity range - true / before or after validity range - false / no value - all (optional, default is null)
 
 // Call endpoint and get data
-try {
+try
+{
     $get_cards = $care_cloud->customersApi()->getSubCustomerCards(
         $customer_id,
         $accept_language,

@@ -8,7 +8,7 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 $project_uri = 'https://yourapiurl.com/webservice/rest-api/enterprise-interface/v1.0';
 $login = 'login';
@@ -33,7 +33,7 @@ $name = null; // string | Search record by name or a part of the name (optional,
 // Call endpoint and get data
 try
 {
-    $get_messsage_templates = $care_cloud->messageTemplatesApi()->getMessageTemplates(
+    $get_message_templates = $care_cloud->messageTemplatesApi()->getMessageTemplates(
         $accept_language,
         $count,
         $offset,
@@ -41,9 +41,9 @@ try
         $sort_direction,
         $name
     );
-    $messsage_templates = $get_messsage_templates->getData()->getMessageTemplates();
-    $total_items = $get_messsage_templates->getData()->getTotalItems();
-    var_dump($messsage_templates);
+    $message_templates = $get_message_templates->getData()->getMessageTemplates();
+    $total_items = $get_message_templates->getData()->getTotalItems();
+    var_dump($message_templates);
     var_dump($total_items);
 }
 catch(ApiException $e)

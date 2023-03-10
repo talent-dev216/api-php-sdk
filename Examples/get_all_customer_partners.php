@@ -1,6 +1,6 @@
 <?php
 /**
- * Detail of a relation between customers
+ * Get information about all customer's partners
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -23,16 +23,30 @@ $care_cloud = new CareCloud($config);
 // Set Header parameter Accept-Language
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
-// Set path parameter
+// Set path parameters
 $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the customer
-$customer_relation_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the relation between two customers
+
+// Set query parameters
+$count = 10; // integer >= 1 | The number of records to return (optional, default is 100)
+$offset = 0; // integer | The number of records from a collection to skip (optional, default is 0)
+$sort_field = null; // string | One of the query string parameters for sorting (optional, default is null)
+$sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
 
 // Call endpoint and get data
 try
 {
-    $get_relation = $care_cloud->customersApi()->getSubCustomerRelatedCustomer($customer_id, $customer_relation_id, $accept_language);
-    $relation = $get_relation->getData();
-    var_dump($relation);
+    $get_partners = $care_cloud->customersApi()->getSubCustomerPartners(
+        $customer_id,
+        $accept_language,
+        $count,
+        $offset,
+        $sort_field,
+        $sort_direction
+    );
+    $partners = $get_partners->getData()->getPartnerRecords();
+    var_dump($partners);
+    $total_items = $get_partners->getData()->getTotalItems();
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {

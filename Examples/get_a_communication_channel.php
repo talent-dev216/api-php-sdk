@@ -1,6 +1,6 @@
 <?php
 /**
- * Get a task state
+ * Get a communication channel
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -24,14 +24,19 @@ $care_cloud = new CareCloud($config);
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
 // Set path parameters
-$task_state_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
+$communication_channel_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the communication channel
 
 // Call endpoint and get data
 try
 {
-    $get_state = $care_cloud->tasksApi()->getTaskState($task_state_id, $accept_language);
-    $task_state = $get_state->getData();
-    var_dump($task_state);
+    $get_communication_channel = $care_cloud->communicationChannelsApi()->getCommunicationChannel(
+        $communication_channel_id,
+        $accept_language
+    );
+    $communication_channel = $get_communication_channel->getData();
+    //$total_items = $get_communication_channel->getData()->getTotalItems();
+    var_dump($communication_channel);
+    //var_dump($total_items);
 }
 catch(ApiException $e)
 {

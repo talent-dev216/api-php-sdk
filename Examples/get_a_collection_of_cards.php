@@ -37,10 +37,10 @@ $is_valid = null; // boolean | in validity range - true / before or after validi
 // Call endpoint and get data
 try
 {
-    $get_card_types = $care_cloud->cardTypesApi()->getSubCardTypeCards($card_type_id, $accept_language);
-    $card_types = $get_card_types->getData()->getCards();
-    $total_items = $get_card_types->getData()->getTotalItems();
-    var_dump($card_types);
+    $get_cards = $care_cloud->cardTypesApi()->getSubCardTypeCards($card_type_id, $accept_language);
+    $cards = $get_cards->getData()->getCards();
+    $total_items = $get_cards->getData()->getTotalItems();
+    var_dump($cards);
     var_dump($total_items);
 }
 catch(ApiException $e)

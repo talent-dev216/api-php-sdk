@@ -37,7 +37,7 @@ $customer_source_record->setExternalId(null); // string | The unique external id
 $body = new CustomerIdCustomersourcerecordsBody();
 $body->setCustomerSourceRecord($customer_source_record);
 
-// Call endpoint and get data
+// Call endpoint and post data
 try
 {
     $post_source_record = $care_cloud->customersApi()->postSubCustomerSource($body, $customer_id, $accept_language);

@@ -1,6 +1,6 @@
 <?php
 /**
- * Get a task state
+ * Connection test
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -20,18 +20,15 @@ $config = new Config($project_uri, $login, $password, $external_app_id, $auth_ty
 
 $care_cloud = new CareCloud($config);
 
-// Set Header parameter Accept-Language
-$accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
-
-// Set path parameters
-$task_state_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
+// Set query parameters
+$test_string = 'taco cat'; // string | Test string send to REST API. Correct result should return a reverted string
 
 // Call endpoint and get data
 try
 {
-    $get_state = $care_cloud->tasksApi()->getTaskState($task_state_id, $accept_language);
-    $task_state = $get_state->getData();
-    var_dump($task_state);
+    $get_connection_test = $care_cloud->productRecommendationEngineApi()->getRecommendationCartCombined();
+    $test_string_reverted = $get_connection_test->getData()->getTestString();
+    var_dump($test_string_reverted);
 }
 catch(ApiException $e)
 {

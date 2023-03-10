@@ -1,6 +1,6 @@
 <?php
 /**
- * Get all countries
+ * Get all booking ticket properties
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -33,7 +33,7 @@ $name = null; // string | Search record by name or a part of the name (optional)
 // Call endpoint and get data
 try
 {
-    $get_countries = $care_cloud->countriesApi()->getCountries(
+    $get_booking_ticket_properties = $care_cloud->bookingTicketsPropertiesApi()->getBookingTicketProperties(
         $accept_language,
         $count,
         $offset,
@@ -41,9 +41,9 @@ try
         $sort_direction,
         $name
     );
-    $countries = $get_countries->getData()->getCountries();
-    var_dump($countries);
-    $total_items = $get_countries->getData()->getTotalItems();
+    $booking_ticket_properties = $get_booking_ticket_properties->getData()->getBookingTicketProperties();
+    $total_items = $get_booking_ticket_properties->getData()->getTotalItems();
+    var_dump($booking_ticket_properties);
     var_dump($total_items);
 }
 catch(ApiException $e)

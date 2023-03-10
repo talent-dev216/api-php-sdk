@@ -1,6 +1,6 @@
 <?php
 /**
- * Get a task state
+ * Delete a partner record from an account
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -24,14 +24,17 @@ $care_cloud = new CareCloud($config);
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
 // Set path parameters
-$task_state_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
+$customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the customer
+$partner_record_id = '86b672f8b84076d6679cac14d9'; // string | The unique id of the partner record
 
-// Call endpoint and get data
+// Call endpoint and delete data
 try
 {
-    $get_state = $care_cloud->tasksApi()->getTaskState($task_state_id, $accept_language);
-    $task_state = $get_state->getData();
-    var_dump($task_state);
+    $care_cloud->customersApi()->deleteSubCustomerPartner(
+        $customer_id,
+        $partner_record_id,
+        $accept_language
+    );
 }
 catch(ApiException $e)
 {

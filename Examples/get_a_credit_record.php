@@ -1,6 +1,6 @@
 <?php
 /**
- * Get a task state
+ * Get a credit record
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -24,14 +24,17 @@ $care_cloud = new CareCloud($config);
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
 // Set path parameters
-$task_state_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
+$credit_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the credit record
 
 // Call endpoint and get data
 try
 {
-    $get_state = $care_cloud->tasksApi()->getTaskState($task_state_id, $accept_language);
-    $task_state = $get_state->getData();
-    var_dump($task_state);
+    $get_credit_record = $care_cloud->creditsApi()->getCredit(
+        $credit_id,
+        $accept_language
+    );
+    $credit_record = $get_credit_record->getData();
+    var_dump($credit_record);
 }
 catch(ApiException $e)
 {

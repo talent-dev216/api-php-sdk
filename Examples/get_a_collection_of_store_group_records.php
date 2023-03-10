@@ -31,7 +31,7 @@ try
 {
     $get_store_groups = $care_cloud->storesApi()->getSubStoreGroups($store_id, $accept_language);
     $store_groups = $get_store_groups->getData()->getStoreGroupRecords();
-    var_dump($store_proups);
+    var_dump($store_groups);
     $total_items = $get_store_groups->getData()->getTotalItems();
     var_dump($total_items);
 }

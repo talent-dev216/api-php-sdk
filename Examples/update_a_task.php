@@ -1,6 +1,6 @@
 <?php
 /**
- * Create a task
+ * Update a task
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;

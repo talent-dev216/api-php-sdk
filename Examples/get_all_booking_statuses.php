@@ -1,6 +1,6 @@
 <?php
 /**
- * Get a task state
+ * Get all booking statuses
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -23,15 +23,26 @@ $care_cloud = new CareCloud($config);
 // Set Header parameter Accept-Language
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
-// Set path parameters
-$task_state_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
+// Set query parameters
+$count = 10; // integer >= 1 | The number of records to return (optional, default is 100)
+$offset = 0; // integer | The number of records from a collection to skip (optional, default is 0)
+$sort_field = null; // string | One of the query string parameters for sorting (optional, default is null)
+$sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
 
 // Call endpoint and get data
 try
 {
-    $get_state = $care_cloud->tasksApi()->getTaskState($task_state_id, $accept_language);
-    $task_state = $get_state->getData();
-    var_dump($task_state);
+    $get_booking_statuses = $care_cloud->bookingStatusesApi()->getBookingStatuses(
+        $accept_language,
+        $count,
+        $offset,
+        $sort_field,
+        $sort_direction
+    );
+    $booking_statuses = $get_booking_statuses->getData()->getBookingStatuses();
+    $total_items = $get_booking_statuses->getData()->getTotalItems();
+    var_dump($booking_statuses);
+    var_dump($total_items);
 }
 catch(ApiException $e)
 {
