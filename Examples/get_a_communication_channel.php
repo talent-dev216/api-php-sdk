@@ -34,9 +34,7 @@ try
         $accept_language
     );
     $communication_channel = $get_communication_channel->getData();
-    //$total_items = $get_communication_channel->getData()->getTotalItems();
     var_dump($communication_channel);
-    //var_dump($total_items);
 }
 catch(ApiException $e)
 {

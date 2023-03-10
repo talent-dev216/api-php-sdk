@@ -1,6 +1,6 @@
 <?php
 /**
- * Connection test
+ * Get a message detail
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -20,15 +20,21 @@ $config = new Config($project_uri, $login, $password, $external_app_id, $auth_ty
 
 $care_cloud = new CareCloud($config);
 
-// Set query parameters
-$test_string = 'taco cat'; // string | Test string send to REST API. Correct result should return a reverted string
+// Set Header parameter Accept-Language
+$accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
+
+// Set path parameters
+$message_id = '8bd62e6ba18b3c791a9402cf3e'; // string | The unique id of the message
 
 // Call endpoint and get data
 try
 {
-    $get_connection_test = $get_connection_test = $care_cloud->testsApi()->getTestsConnection($test_string);
-    $test_string_reverted = $get_connection_test->getData()->getTestString();
-    var_dump($test_string_reverted);
+    $get_message_detail = $care_cloud->messagesApi()->getSubMessageDetail(
+        $message_id,
+        $accept_language
+    );
+    $message_detail = $get_message_detail->getData();
+    var_dump($message_detail);
 }
 catch(ApiException $e)
 {
