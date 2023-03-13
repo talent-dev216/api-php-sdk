@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Get all product reservations
+ * Get a collection time slots depends on booking ticket
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -24,35 +23,39 @@ $care_cloud = new CareCloud($config);
 // Set Header parameter Accept-Language
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
+// Set path parameters
+$booking_ticket_id = '89d88719b8b442de2d11b401a2'; // string | The unique id of the booking ticket
+
 // Set query parameters
 $count = 10; // integer >= 1 | The number of records to return (optional, default is 100)
 $offset = 0; // integer | The number of records from a collection to skip (optional, default is 0)
 $sort_field = null; // string | One of the query string parameters for sorting (optional, default is null)
 $sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
-$customer_id = null; // string | The unique id of the customer (optional)
-$store_id = null; // string | The unique id of the store (optional)
-$reservation_state = null; // integer | Possible values: 0 - Canceled / 1 - Entered / 2 - Accepted / 3 - Ready / 4 - Delivered / 5 - In progress / 6 - Not Picked up / 7 - Ordered / 8 - Being solved / (optional)
-$external_reservation_list_type_id = null; // string | If set, external_reservation_code has to be present in request too (optional)
-$external_reservation_code = null; // string |  If set, external_reservation_list_type_id has to be present in request too (optional)
+$free_only = null; // bool | Possible values: true - returns all time slots with free capacity. / false - returns all occupied time slots. / no value - all time slots are returned (optional)
+$time_from = null; // string | Filter results on the start of the time interval. (YYYY-MM-DD HH:MM:SS) (optional)
+$time_to = null; // string | Filter results on the end of the time interval. (YYYY-MM-DD HH:MM:SS) (optional)
+$booking_ticket_property_id = null; // string | Booking ticket property id from resource booking-ticket-properties. (optional)
+$booking_ticket_property_value = null; // string | Booking ticket property record value from booking-ticket-properties in case of datatype with multiple values (optional)
 
 // Call endpoint and get data
 try
 {
-    $get_product_reservations = $care_cloud->productReservationsApi()->getProductReservations(
+    $get_booking_time_slots = $care_cloud->bookingTicketsApi()->getSubBookingTicketsTimeSlots(
+        $booking_ticket_id,
         $accept_language,
         $count,
         $offset,
         $sort_field,
         $sort_direction,
-        $customer_id,
-        $store_id,
-        $reservation_state,
-        $external_reservation_list_type_id,
-        $external_reservation_code
+        $free_only,
+        $time_from,
+        $time_to,
+        $booking_ticket_property_id,
+        $booking_ticket_property_value
     );
-    $product_reservations = $get_product_reservations->getData()->getProductReservations();
-    $total_items = $get_product_reservations->getData()->getTotalItems();
-    var_dump($product_reservations);
+    $booking_time_slots = $get_booking_time_slots->getData()->getTimeSlots();
+    $total_items = $get_booking_time_slots->getData()->getTotalItems();
+    var_dump($booking_time_slots);
     var_dump($total_items);
 }
 catch(ApiException $e)

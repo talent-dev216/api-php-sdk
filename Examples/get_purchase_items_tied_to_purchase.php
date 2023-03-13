@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Get all product reservations
+ * Get purchase items tied to a purchase
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
@@ -24,35 +23,29 @@ $care_cloud = new CareCloud($config);
 // Set Header parameter Accept-Language
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
+// Set path parameters
+$purchase_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the booking ticket
+
 // Set query parameters
 $count = 10; // integer >= 1 | The number of records to return (optional, default is 100)
 $offset = 0; // integer | The number of records from a collection to skip (optional, default is 0)
 $sort_field = null; // string | One of the query string parameters for sorting (optional, default is null)
 $sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
-$customer_id = null; // string | The unique id of the customer (optional)
-$store_id = null; // string | The unique id of the store (optional)
-$reservation_state = null; // integer | Possible values: 0 - Canceled / 1 - Entered / 2 - Accepted / 3 - Ready / 4 - Delivered / 5 - In progress / 6 - Not Picked up / 7 - Ordered / 8 - Being solved / (optional)
-$external_reservation_list_type_id = null; // string | If set, external_reservation_code has to be present in request too (optional)
-$external_reservation_code = null; // string |  If set, external_reservation_list_type_id has to be present in request too (optional)
 
 // Call endpoint and get data
 try
 {
-    $get_product_reservations = $care_cloud->productReservationsApi()->getProductReservations(
+    $get_purchase_items = $care_cloud->purchasesApi()->getSubPurchaseItems(
+        $purchase_id,
         $accept_language,
         $count,
         $offset,
         $sort_field,
         $sort_direction,
-        $customer_id,
-        $store_id,
-        $reservation_state,
-        $external_reservation_list_type_id,
-        $external_reservation_code
     );
-    $product_reservations = $get_product_reservations->getData()->getProductReservations();
-    $total_items = $get_product_reservations->getData()->getTotalItems();
-    var_dump($product_reservations);
+    $purchase_items = $get_purchase_items->getData()->getPurchaseItems();
+    $total_items = $get_purchase_items->getData()->getTotalItems();
+    var_dump($purchase_items);
     var_dump($total_items);
 }
 catch(ApiException $e)
