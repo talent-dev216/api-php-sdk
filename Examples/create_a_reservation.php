@@ -25,7 +25,7 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 
 // Set the request body
 $external_code1 = new \CrmCareCloud\Webservice\RestApi\Client\Model\ExternalCode();
-$external_code1->setExternalCodeTypeId(1); // integet | The unique id of the external code type
+$external_code1->setExternalCodeTypeId(1); // integer | The unique id of the external code type
 $external_code1->setValue('ext_code_001'); // string | Value of the external code
 
 $product_reservation = new \CrmCareCloud\Webservice\RestApi\Client\Model\ProductReservation();
