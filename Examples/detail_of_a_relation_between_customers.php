@@ -28,13 +28,10 @@ $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the cu
 $customer_relation_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the relation between two customers
 
 // Call endpoint and get data
-try
-{
+try {
     $get_relation = $care_cloud->customersApi()->getSubCustomerRelatedCustomer($customer_id, $customer_relation_id, $accept_language);
     $relation = $get_relation->getData();
     var_dump($relation);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

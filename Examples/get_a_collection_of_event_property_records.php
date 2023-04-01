@@ -27,15 +27,12 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $event_id = '81dee640727c45e3a7da28299e'; // string | The unique id of the event
 
 // Call endpoint and get data
-try
-{
+try {
     $get_property_records = $care_cloud->eventsApi()->getSubEventProperties($event_id, $accept_language);
     $property_records = $get_property_records->getData()->getPropertyRecords();
     $total_items = $get_property_records->getData()->getTotalItems();
     var_dump($property_records);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

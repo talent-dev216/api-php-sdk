@@ -31,15 +31,12 @@ $sort_direction = 'DESC'; // string | Direction of sorting the response list (op
 $name = null; // string | Search record by name or a part of the name (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_card_types = $care_cloud->cardTypesApi()->getCardTypes();
     $card_types = $get_card_types->getData()->getCardTypes();
     $total_items = $get_card_types->getData()->getTotalItems();
     var_dump($card_types);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

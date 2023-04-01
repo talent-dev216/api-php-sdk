@@ -34,14 +34,11 @@ $body->setCustomerId('8ea2591121e636086a4a9c0992'); // string | The unique id of
 $body->setPartnerRecords(array($partner_record1));
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->customersActionsApi()->postSubCustomerSetPartners(
         $body,
         $accept_language
     );
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

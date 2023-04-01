@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $store_property_id = 'datum_otevreni'; // string | The unique id of the store property
 
 // Call endpoint and get data
-try
-{
+try {
     $get_store_property = $care_cloud->storePropertiesApi()->getStoreProperty($store_property_id, $accept_language);
     $store_property = $get_store_property->getData();
     var_dump($store_property);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

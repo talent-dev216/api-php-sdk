@@ -52,16 +52,13 @@ $body = new AddressesAdditionalCustomerAddressIdPathBody();
 $body->setAdditionalAddress($additional_address);
 
 // Call endpoint and put data
-try
-{
+try {
     $care_cloud->customersApi()->putSubCustomerAddress(
         $body,
         $customer_id,
         $additional_customer_address_id_path,
         $accept_language
     );
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

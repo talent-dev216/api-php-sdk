@@ -64,15 +64,12 @@ $body->setRewardListType('A');
 $body->setBill($bill);
 
 // Call endpoint and get data
-try
-{
+try {
     $post_best_rewards = $care_cloud->purchasesApi()->postPurchaseRecommendedRewards($body, $accept_language);
     $best_rewards = $post_best_rewards->getData()->getRecommendedBestRewards();
     $total_items = $post_best_rewards->getData()->getTotalItems();
     var_dump($best_rewards);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -30,13 +30,10 @@ $body->setCustomerId('83ad6b11209eaf4e2a18e0b319'); // string | The unique id fo
 $body->setCardTypeId('8bed991c68a470e7aaeffbf048'); // string | The unique id for the card type
 
 // Call endpoint and post data
-try
-{
+try {
     $post_assign_card = $care_cloud->cardsApi()->postAssignCard($body, $accept_language);
     $card_id = $post_assign_card->getData()->getCardId();
     var_dump($card_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

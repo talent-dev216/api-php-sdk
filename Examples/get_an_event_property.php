@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $event_property_id = 'account_event_type_records_count'; // string | The unique id of the event property
 
 // Call endpoint and get data
-try
-{
+try {
     $get_event_property = $care_cloud->eventPropertiesApi()->getEventProperty($event_property_id, $accept_language);
     $event_property = $get_event_property->getData();
     var_dump($event_property);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

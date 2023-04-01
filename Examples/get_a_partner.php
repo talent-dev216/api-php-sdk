@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $partner_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the partner
 
 // Call endpoint and get data
-try
-{
+try {
     $get_partner = $care_cloud->partnersApi()->getPartner($partner_id, $accept_language);
     $partner = $get_partner->getData();
     var_dump($partner);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

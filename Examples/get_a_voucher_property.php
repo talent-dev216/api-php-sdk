@@ -28,16 +28,13 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $voucher_property_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the voucher property
 
 // Call endpoint and get data
-try
-{
+try {
     $get_voucher_property = $care_cloud->voucherPropertiesApi()->getVoucherProperty(
         $voucher_property_id,
         $accept_language
     );
     $voucher_property = $get_voucher_property->getData();
     var_dump($voucher_property);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

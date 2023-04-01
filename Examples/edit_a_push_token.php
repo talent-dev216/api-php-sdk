@@ -43,11 +43,8 @@ $body->setSetup($setup);
 $body->setPushToken('321e5d02605d46c18936912'); // string | Push notification token (Apple or Google) (optional)
 
 // Call endpoint and put data
-try
-{
+try {
     $care_cloud->tokensApi()->putToken($body, $token_id, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

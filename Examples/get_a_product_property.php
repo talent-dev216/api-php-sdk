@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $product_property_id = 'for_recommendation_engine'; // string | The unique id of the product group
 
 // Call endpoint and get data
-try
-{
+try {
     $get_product_property = $care_cloud->productPropertiesApi()->getProductProperty($product_property_id, $accept_language);
     $product_property = $get_product_property->getData();
     var_dump($product_property);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

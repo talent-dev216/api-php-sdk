@@ -33,8 +33,7 @@ $sort_field = null; // string | One of the query string parameters for sorting (
 $sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_campaign_product_store_records = $care_cloud->campaignProductsApi()->getCampaignProductStoreRecords(
         $campaign_product_id,
         $accept_language,
@@ -45,8 +44,6 @@ try
     );
     $campaign_product_store_records = $get_campaign_product_store_records->getData()->getCampaignProductStoreRecords();
     $total_items = $get_campaign_product_store_records->getData()->getTotalItems();
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

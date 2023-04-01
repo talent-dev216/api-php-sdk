@@ -31,13 +31,10 @@ $body->setLogin('user_login'); // string | Login name of the user
 $body->setPassword('user_password'); // string | User's password
 
 // Call endpoint and post data
-try
-{
+try {
     $post_login = $care_cloud->usersApi()->postUserLogin($body, $accept_language);
     $login_data = $post_login->getData();
     var_dump($login_data);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

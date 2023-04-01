@@ -37,13 +37,10 @@ $body->setLoginValue('happy_customer@example.com'); // string | Value of the log
 $body->setPassword('secret_password'); // string | Customer's password
 
 // Call endpoint and post data
-try
-{
+try {
     $post_token_login = $care_cloud->tokensApi()->postTokenLogin($body, $token_id, $accept_language);
     $customer_id = $post_token_login->getData()->getCustomerId();
     var_dump($customer_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -33,11 +33,8 @@ $body->setStoreId(null); // string | The unique id of the store (optional)
 $body->setDateApplied('2022-10-28 15:52:00'); // string | Date (ISO 8601) of voucher application (YYYY-MM-DD HH:MM:SS)
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->vouchersApi()->postVoucherApply($body, $voucher_id, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

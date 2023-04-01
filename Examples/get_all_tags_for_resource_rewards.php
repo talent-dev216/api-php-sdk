@@ -32,8 +32,7 @@ $name = null; // string | Search record by name or a part of the name (optional)
 $text_id = null; // string | Text id of an event group (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_reward_tags = $care_cloud->rewardsApi()->getSubRewardTags(
         $accept_language,
         $count,
@@ -47,8 +46,6 @@ try
     $total_items = $get_reward_tags->getData()->getTotalItems();
     var_dump($reward_tags);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

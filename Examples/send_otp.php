@@ -33,13 +33,10 @@ $body->setExternalApplicationId($external_app_id) // string | Id of the external
 ->setMessageTemplateId(null); // string | The unique id of the message_template. If not set, CareCloud uses default value from the system configuration (optional)
 
 // Call endpoint and post data
-try
-{
+try {
     $post_otp = $care_cloud->oneTimePasswordApi()->postSendOtp($body, $accept_language);
     $request_id = $post_otp->getData()->getRequestId();
     var_dump($request_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -44,20 +44,17 @@ $address->setCountryCode('cz'); // string | ISO code of the country Possible val
 
 $additional_address = new AdditionalAddress();
 $additional_address->setAddressType('86e05affc7a7abefcd513ab400') // string | The unique id of the type of the address
-    ->setAddress($address);
+->setAddress($address);
 
 // Set additional address to the request body
 $body = new CustomerIdAddressesBody();
 $body->setAdditionalAddress($additional_address);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_address = $care_cloud->customersApi()->postSubCustomerAddress($body, $customer_id, $accept_language);
     $additional_address_id = $post_address->getData()->getAdditionalAddressId();
     var_dump($additional_address_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

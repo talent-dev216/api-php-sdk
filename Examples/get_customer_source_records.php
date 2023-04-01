@@ -35,8 +35,7 @@ $external_id = null; // string | The unique ID from an external system (POS, web
 $customer_source_id = null; // string | The unique id of the customer source (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_source_records = $care_cloud->customersApi()->getSubCustomerSource(
         $customer_id,
         $accept_language,
@@ -51,8 +50,6 @@ try
     $total_items = $get_source_records->getData()->getTotalItems();
     var_dump($source_records);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

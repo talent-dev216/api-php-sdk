@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $product_id = '89bdacbffb5c82f2c52cb9ae8f'; // string | The unique id of the product
 
 // Call endpoint and get data
-try
-{
+try {
     $get_product = $care_cloud->productsApi()->getProduct($product_id, $accept_language);
     $product = $get_product->getData();
     var_dump($product);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

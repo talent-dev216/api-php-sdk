@@ -52,13 +52,10 @@ $body = new CampaignproductsBody();
 $body->setCampaignProduct($campaign_product);
 
 // Call endpoint and post data
-try
-{
+try {
     $new_campaign_product = $care_cloud->campaignProductsApi()->postCampaignProduct($body, $accept_language);
     $new_campaign_product_id = $new_campaign_product->getData()->getCampaignProductId();
     var_dump($new_campaign_product_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

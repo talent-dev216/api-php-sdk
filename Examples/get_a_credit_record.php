@@ -27,16 +27,13 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $credit_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the credit record
 
 // Call endpoint and get data
-try
-{
+try {
     $get_credit_record = $care_cloud->creditsApi()->getCredit(
         $credit_id,
         $accept_language
     );
     $credit_record = $get_credit_record->getData();
     var_dump($credit_record);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

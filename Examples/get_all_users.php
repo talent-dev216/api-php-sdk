@@ -35,8 +35,7 @@ $first_name = null; // string | Search by first name (optional)
 $last_name = null; // string | Search by last name (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_users = $care_cloud->usersApi()->getUsers(
         $accept_language,
         $count,
@@ -53,8 +52,6 @@ try
     $total_items = $get_users->getData()->getTotalItems();
     var_dump($users);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -35,8 +35,7 @@ $state = null; // integer | State of the customer. Possible values are: 0 - dele
 $is_valid = null; // boolean | in validity range - true / before or after validity range - false / no value - all (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_cards = $care_cloud->cardsApi()->getCards(
         $accept_language,
         $count,
@@ -53,8 +52,6 @@ try
     $total_items = $get_cards->getData()->getTotalItems();
     var_dump($cards);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

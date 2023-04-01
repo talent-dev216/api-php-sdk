@@ -42,14 +42,11 @@ $body = new ActionsSendmessageBody();
 $body->setMessage($message);
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->messagesApi()->postMessageSend(
         $body,
         $accept_language
     );
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

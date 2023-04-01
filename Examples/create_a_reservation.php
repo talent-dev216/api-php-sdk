@@ -38,16 +38,13 @@ $body = new \CrmCareCloud\Webservice\RestApi\Client\Model\ProductreservationsBod
 $body->setProductReservation($product_reservation);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_product_reservation = $care_cloud->productReservationsApi()->postProductReservation(
         $body,
         $accept_language
     );
     $product_reservation_id = $post_product_reservation->getData()->getProductReservationId();
     var_dump($product_reservation_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

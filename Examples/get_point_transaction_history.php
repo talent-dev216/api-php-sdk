@@ -39,8 +39,7 @@ $point_operation_note = null; // string | Search record by the operation note or
 $point_type_id = null; // string | The unique id of a point type (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_point_history = $care_cloud->pointHistoryApi()->getPointHistory(
         $customer_id,
         $accept_language,
@@ -60,8 +59,6 @@ try
     $total_items = $get_point_history->getData()->getTotalItems();
     var_dump($point_history);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

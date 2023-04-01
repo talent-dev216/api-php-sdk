@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $event_type_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the event type
 
 // Call endpoint and get data
-try
-{
+try {
     $get_event_type = $care_cloud->eventTypesApi()->getEventType($event_type_id, $accept_language);
     $event_type = $get_event_type->getData();
     var_dump($event_type);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

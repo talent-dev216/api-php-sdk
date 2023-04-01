@@ -27,15 +27,12 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $task_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
 
 // Call endpoint and get data
-try
-{
+try {
     $get_properties = $care_cloud->tasksApi()->getSubTaskProperties($task_id, $accept_language);
     $properties = $get_properties->getData()->getPropertyRecords();
     $total_items = $get_properties->getData()->getTotalItems();
     var_dump($properties);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

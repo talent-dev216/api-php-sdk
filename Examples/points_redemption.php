@@ -31,11 +31,8 @@ $body->setCustomerId('8ea2591121e636086a4a9c0992'); // string | The unique id of
 $body->setPartnerId(null); // string | The unique id of the partner (optional)
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->pointsApi()->postPointsRedemption($body, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -33,8 +33,7 @@ $store_id = null; // string | The unique id of the store (optional, default is n
 $code = null; // string | The code of the product group (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_product_groups = $care_cloud->productGroupsApi()->getProductGroups(
         $accept_language,
         $count,
@@ -49,8 +48,6 @@ try
     $total_items = $get_product_groups->getData()->getTotalItems();
     var_dump($product_groups);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

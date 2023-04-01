@@ -32,11 +32,8 @@ $body->setNewCustomerId('88a1b431227d2172d60285b4e1'); // string | The unique id
 $body->setPointTypeId('8adcb83164fa7e12668035d43e'); // string | Type of the transferred points
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->pointsApi()->postPointsTransfer($body, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

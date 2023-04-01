@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $interest_id = '81eaeea13b8984a169c490a325'; // string | The unique id of the interest
 
 // Call endpoint and get data
-try
-{
+try {
     $get_interest = $care_cloud->interestsApi()->getInterest($interest_id, $accept_language);
     $interest = $get_interest->getData();
     var_dump($interest);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

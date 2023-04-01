@@ -28,15 +28,12 @@ $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the cu
 $partner_record_id = '86b672f8b84076d6679cac14d9'; // string | The unique id of the partner record
 
 // Call endpoint and delete data
-try
-{
+try {
     $care_cloud->customersApi()->deleteSubCustomerPartner(
         $customer_id,
         $partner_record_id,
         $accept_language
     );
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

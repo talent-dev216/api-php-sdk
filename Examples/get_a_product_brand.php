@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $product_brand_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the product brand
 
 // Call endpoint and get data
-try
-{
+try {
     $get_product_brand = $care_cloud->productBrandsApi()->getProductBrand($product_brand_id, $accept_language);
     $product_brand = $get_product_brand->getData();
     var_dump($product_brand);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

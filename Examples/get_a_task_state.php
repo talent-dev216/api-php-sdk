@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $task_state_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
 
 // Call endpoint and get data
-try
-{
+try {
     $get_state = $care_cloud->tasksApi()->getTaskState($task_state_id, $accept_language);
     $task_state = $get_state->getData();
     var_dump($task_state);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

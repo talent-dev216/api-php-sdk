@@ -22,22 +22,35 @@ class Config
 
     private ?string $token;
 
+    /**
+     * @var callable[]
+     */
     private array $middlewares;
 
     private string $interface;
 
+    /**
+     * @param string $project_uri
+     * @param string $login
+     * @param string $password
+     * @param string $external_app_id
+     * @param string $auth_type
+     * @param string $interface
+     * @param CacheInterface|null $cache
+     * @param string|null $token
+     * @param callable[] $middlewares
+     */
     public function __construct(
-        string         $project_uri,
-        string         $login,
-        string         $password,
-        string         $external_app_id = '',
-        string         $auth_type = AuthTypes::DEFAULT_AUTH,
-        string         $interface = Interfaces::ENTERPRISE,
+        string $project_uri,
+        string $login,
+        string $password,
+        string $external_app_id = '',
+        string $auth_type = AuthTypes::DEFAULT_AUTH,
+        string $interface = Interfaces::ENTERPRISE,
         CacheInterface $cache = null,
-        string         $token = null,
-        array          $middlewares = []
-    )
-    {
+        string $token = null,
+        array $middlewares = []
+    ) {
         $this->project_uri = $project_uri;
         $this->login = $login;
         $this->password = $password;
@@ -58,8 +71,7 @@ class Config
     }
 
     /**
-     * @param string $projectUri
-     *
+     * @param string $project_uri
      * @return Config
      */
     public function setProjectUri(string $project_uri): Config
@@ -118,8 +130,7 @@ class Config
     }
 
     /**
-     * @param string $externalAppId
-     *
+     * @param string $external_app_id
      * @return Config
      */
     public function setExternalAppId(string $external_app_id): Config
@@ -138,8 +149,7 @@ class Config
     }
 
     /**
-     * @param string $authType
-     *
+     * @param string $auth_type
      * @return Config
      */
     public function setAuthType(string $auth_type): Config
@@ -182,7 +192,7 @@ class Config
     }
 
     /**
-     * @return array
+     * @return callable[]
      */
     public function getMiddlewares(): array
     {
@@ -190,7 +200,7 @@ class Config
     }
 
     /**
-     * @param array $middlewares
+     * @param callable[] $middlewares
      */
     public function setMiddlewares(array $middlewares): void
     {

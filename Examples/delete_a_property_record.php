@@ -28,11 +28,8 @@ $store_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the store
 $property_record_id = 'datum_otevreni:8bed991c68a470e7aaeffbf048'; // string | The unique id of the property record
 
 // Call endpoint and delete data
-try
-{
+try {
     $care_cloud->storesApi()->deleteSubStoreProperty($store_id, $property_record_id, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

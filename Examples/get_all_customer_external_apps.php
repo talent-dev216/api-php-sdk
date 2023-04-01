@@ -30,8 +30,7 @@ $sort_field = null; // string | One of the query string parameters for sorting (
 $sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_customer_external_apps = $care_cloud->customerExternalApplicationsApi()->getCustomerExternalApps(
         $accept_language,
         $count,
@@ -43,8 +42,6 @@ try
     $total_items = $get_customer_external_apps->getData()->getTotalItems();
     var_dump($customer_external_apps);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

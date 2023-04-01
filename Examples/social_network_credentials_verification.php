@@ -32,13 +32,10 @@ $body = new ActionsVerifysocialnetworkcredentialsBody();
 $body->setSocialNetworkCredentials($social_network_credentials);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_credentials = $care_cloud->customersActionsApi()->postCustomerVerifySocialNetworkCredentials($body);
     $customer_id = $post_credentials->getData()->getCustomerId();
     var_dump($customer_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

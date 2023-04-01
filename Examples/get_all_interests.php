@@ -31,8 +31,7 @@ $sort_direction = 'DESC'; // string | Direction of sorting the response list (op
 $name = null; // string | Search record by name or a part of the name (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_interests = $care_cloud->interestsApi()->getInterests(
         $accept_language,
         $count,
@@ -45,8 +44,6 @@ try
     $total_items = $get_interests->getData()->getTotalItems();
     var_dump($interests);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

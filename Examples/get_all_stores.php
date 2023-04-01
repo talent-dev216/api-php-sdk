@@ -34,8 +34,7 @@ $sort_direction = 'DESC'; // string | Direction of sorting the response list (op
 $visible_for_customer = null; // integer | State of the visibility of the customer Possible values are: 0 - invisible / 1- visible. If query string is not used, return both (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_stores = $care_cloud->rewardsApi()->getSubRewardStores(
         $reward_id,
         $accept_language,
@@ -49,8 +48,6 @@ try
     $total_items = $get_stores->getData()->getTotalItems();
     var_dump($stores);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

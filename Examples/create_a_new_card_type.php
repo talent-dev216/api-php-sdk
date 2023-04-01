@@ -35,13 +35,10 @@ $body = new CardtypesBody();
 $body->setCardType($card_type);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_card_type = $care_cloud->cardTypesApi()->postCardType($body, $accept_language);
     $new_card_type_id = $post_card_type->getData()->getCardTypeId();
     var_dump($new_card_type_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

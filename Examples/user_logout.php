@@ -30,11 +30,8 @@ $body->setUserExternalApplicationId('82de12eb8b138791e678fd11c3'); // string | I
 $body->setBearerToken('bearer_token'); // string | Autentication bearer token for a user
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->usersApi()->postUserLogout($body, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

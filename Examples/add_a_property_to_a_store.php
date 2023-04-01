@@ -38,13 +38,10 @@ $body = new StoreIdPropertyrecordsBody();
 $body->setPropertyRecord($property_record);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_store_properties = $care_cloud->storesApi()->postSubStoreProperties($body, $store_id, $accept_language);
     $property_record_id = $post_store_properties->getData()->getPropertyRecordId();
     var_dump($property_record_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

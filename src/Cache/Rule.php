@@ -31,8 +31,7 @@ class Rule
     }
 
     /**
-     * @param string $requestType
-     *
+     * @param string $request_type
      * @return Rule
      */
     public function setRequestType(string $request_type): Rule

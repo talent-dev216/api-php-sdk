@@ -36,8 +36,7 @@ $is_applied = null; // boolean | Filter by voucher application and reservation (
 $without_stores = null; // boolean | If true, the data will not contain information about business units (stores). If false, or not set resource returns default structure (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_vouchers = $care_cloud->vouchersApi()->getVouchers(
         $accept_language,
         $count,
@@ -55,8 +54,6 @@ try
     $total_items = $get_vouchers->getData()->getTotalItems();
     var_dump($vouchers);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

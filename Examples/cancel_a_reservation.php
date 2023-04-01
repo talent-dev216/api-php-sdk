@@ -31,15 +31,12 @@ $body = new \CrmCareCloud\Webservice\RestApi\Client\Model\ActionsCancelreservati
 $body->setProductReservationId($product_reservation_id);
 
 // Call endpoint and delete data
-try
-{
+try {
     $care_cloud->productReservationsApi()->postProductReservationCancel(
         $body,
         $product_reservation_id,
         $accept_language
     );
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

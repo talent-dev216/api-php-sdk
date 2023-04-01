@@ -67,13 +67,10 @@ $body->setBenefitCodes(null);
 $body->setBill($bill);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_payment = $care_cloud->purchasesApi()->postPurchaseAcceptPayment($body, $accept_language);
     $data = $post_payment->getData();
     var_dump($data);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -43,11 +43,8 @@ $body = new CardsCardIdBody();
 $body->setCard($card);
 
 // Call endpoint and put data
-try
-{
+try {
     $care_cloud->cardsApi()->putCard($body, $card_id, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

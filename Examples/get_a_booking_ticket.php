@@ -27,16 +27,13 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $booking_ticket_id = '89d88719b8b442de2d11b401a2'; // string | The unique id of the booking ticket
 
 // Call endpoint and get data
-try
-{
+try {
     $get_booking_ticket = $care_cloud->bookingTicketsApi()->getBookingTicket(
         $booking_ticket_id,
         $accept_language
     );
     $booking_ticket = $get_booking_ticket->getData();
     var_dump($booking_ticket);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

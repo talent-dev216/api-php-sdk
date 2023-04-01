@@ -39,8 +39,7 @@ $payment_time_to = null; // string | Date and time to of the purchase payment (Y
 $purchase_items_extension = null; // boolean | If true, resource returns extended response with purchase items. If false, the resource won't be extended (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_purchases = $care_cloud->creditsApi()->getSubCreditPurchases(
         $credit_id,
         $accept_language,
@@ -59,8 +58,6 @@ try
     $total_items = $get_purchases->getData()->getTotalItems();
     var_dump($purchases);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

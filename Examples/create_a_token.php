@@ -50,12 +50,9 @@ $body->setExternalApplicationId('82de12eb8b138791e678fd11c3'); // string | Id of
 $body->setPushToken(''); // string | Push notification token (Apple or Google) (optional)
 
 // Call endpoint and post data
-try
-{
+try {
     $post_token = $care_cloud->tokensApi()->postToken($body, $accept_language);
     $token_id = $post_token->getData()->getTokenId();
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

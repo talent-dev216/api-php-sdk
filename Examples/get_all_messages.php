@@ -35,8 +35,7 @@ $send_time_from = null; // string | Start date and time of the time interval YYY
 $send_time_to = null; // string | End date and time of the time interval YYYY-MM-DD HH:MM:SS (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_messages = $care_cloud->messagesApi()->getMessages(
         $accept_language,
         $count,
@@ -53,8 +52,6 @@ try
     $total_items = $get_messages->getData()->getTotalItems();
     var_dump($messages);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

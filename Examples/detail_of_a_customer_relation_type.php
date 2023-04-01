@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $customer_relation_type_id = '8bd48117006496e0b1788109b8'; // string | The unique id of the customer relation type
 
 // Call endpoint and get data
-try
-{
+try {
     $get_customer_relation_type = $care_cloud->customerRelationTypesApi()->getCustomerRelationType($customer_relation_type_id, $accept_language);
     $customer_relation_type = $get_customer_relation_type->getData();
     var_dump($customer_relation_type);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

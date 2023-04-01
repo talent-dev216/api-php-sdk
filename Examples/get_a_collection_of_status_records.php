@@ -34,8 +34,7 @@ $sort_direction = 'DESC'; // string | Direction of sorting the response list (op
 $valid_now = null; // boolean | Status validity. Possible values are: True for valid status / False for status not valid (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_status_records = $care_cloud->customersApi()->getSubCustomerStatus(
         $customer_id,
         $accept_language,
@@ -49,8 +48,6 @@ try
     $total_items = $get_status_records->getData()->getTotalItems();
     var_dump($status_records);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -41,13 +41,10 @@ $body->setToken('V952TL');
 $body->setTokenRequestId('326a3adc83f925a27cb8c0318d9bbceeb00f65e4');
 
 // Call endpoint and post data
-try
-{
+try {
     $post_verify_token = $care_cloud->customersActionsApi()->postCustomersVerifyAuthToken($body);
     $customer_id = $post_verify_token->getData()->getCustomerId();
     var_dump($customer_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

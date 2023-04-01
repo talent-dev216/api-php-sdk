@@ -28,11 +28,8 @@ $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the cu
 $property_record_id = 'blokace_darce:8ea2591121e636086a4a9c0992'; // string | The unique id of the property record
 
 // Call endpoint and delete data
-try
-{
+try {
     $care_cloud->customersApi()->deleteSubCustomerProperty($customer_id, $property_record_id, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

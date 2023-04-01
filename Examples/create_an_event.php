@@ -45,13 +45,10 @@ $body->setEvent($event);
 $body->setPropertyRecords(array($property_record)); // array of objects | List of an event property records (optional)
 
 // Call endpoint and post data
-try
-{
+try {
     $post_event = $care_cloud->eventsApi()->postEvent($body, $accept_language);
     $event_id = $post_event->getData()->getEventId();
     var_dump($event_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

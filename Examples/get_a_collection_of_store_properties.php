@@ -27,15 +27,12 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $store_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the store
 
 // Call endpoint and get data
-try
-{
+try {
     $get_store_properties = $care_cloud->storesApi()->getSubStoreProperties($store_id, $accept_language);
     $store_properties = $get_store_properties->getData()->getPropertyRecords();
     var_dump($store_properties);
     $total_items = $get_store_properties->getData()->getTotalItems();
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

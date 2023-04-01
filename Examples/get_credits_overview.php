@@ -29,8 +29,7 @@ $date_from = null; // string | Start of the time interval (YYYY-MM-DD) (optional
 $date_to = null; // string | End of the time interval (YYYY-MM-DD) (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_credits_overview = $care_cloud->walletApi()->getWalletCredits(
         $customer_id,
         $accept_language,
@@ -39,8 +38,6 @@ try
     );
     $credits_overview = $get_credits_overview->getData();
     var_dump($credits_overview);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

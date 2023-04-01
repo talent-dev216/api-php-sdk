@@ -34,8 +34,7 @@ $create_credit_time_from = null; // string | Date and time from of the credit re
 $create_credit_time_to = null; // string | Date and time to of the credit record's creation (YYYY-MM-DD HH:MM:SS) (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_credit_records = $care_cloud->creditsApi()->getCredits(
         $accept_language,
         $count,
@@ -51,8 +50,6 @@ try
     $total_items = $get_credit_records->getData()->getTotalItems();
     var_dump($credit_records);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

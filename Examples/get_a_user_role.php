@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $user_role_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the user role
 
 // Call endpoint and get data
-try
-{
+try {
     $get_user_role = $care_cloud->userRolesApi()->getUserRole($user_role_id, $accept_language);
     $user_role = $get_user_role->getData();
     var_dump($user_role);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

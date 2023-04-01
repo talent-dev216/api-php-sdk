@@ -11,7 +11,7 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 require_once '../vendor/autoload.php';
 require_once 'config.php';
 
-$config    = new Config($projectUri, $login, $password, $externalAppId, $authType);
+$config = new Config($projectUri, $login, $password, $externalAppId, $authType);
 $careCloud = new CareCloud($config);
 
 try {
@@ -19,14 +19,14 @@ try {
 
     $device = new Device();
     $device->setDeviceId('123654')
-    ->setDeviceSystem('OSX')
-    ->setDeviceName('Test phone')
-    ->setDeviceType('iPhone');
+        ->setDeviceSystem('OSX')
+        ->setDeviceName('Test phone')
+        ->setDeviceType('iPhone');
 
     $setup = new Setup();
     $setup->setLanguageId('en')
-    ->setAllowedGps(true)
-    ->setAllowedNotifications(true);
+        ->setAllowedGps(true)
+        ->setAllowedNotifications(true);
 
     $body = new TokensBody();
     $body->setDevice($device)->setSetup($setup);

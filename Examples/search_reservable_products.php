@@ -35,8 +35,7 @@ $body = new ActionsSearchreservableproductsBody();
 $body->setSearchString('Ca'); // string | String used for searching the results
 
 // Call endpoint and post data
-try
-{
+try {
     $post_reservable_products_search = $care_cloud->reservableProductsApi()->postReservableProductsSearch(
         $body,
         $accept_language,
@@ -49,8 +48,6 @@ try
     $total_items = $post_reservable_products_search->getData()->getTotalItems();
     var_dump($reservable_products);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

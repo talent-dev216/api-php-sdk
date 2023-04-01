@@ -39,8 +39,7 @@ $valid_from = null; //string | Date and time from when is record already valid. 
 $valid_to = null; //string | Date and time to when is record still valid. *(YYYY-MM-DD HH:MM:SS)* (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_campaign_products = $care_cloud->campaignProductsApi()->getCampaignProducts(
         $accept_language,
         $count,
@@ -61,8 +60,6 @@ try
     $total_items = $get_campaign_products->getData()->getTotalItems();
     var_dump($campaign_products);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

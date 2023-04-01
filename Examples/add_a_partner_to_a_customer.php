@@ -36,8 +36,7 @@ $body = new CustomerIdPartnerrecordsBody();
 $body->setPartnerRecord($partner_record);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_customer_partner = $care_cloud->customersApi()->postSubCustomerPartnerRecord(
         $body,
         $customer_id,
@@ -45,8 +44,6 @@ try
     );
     $partner_record_id = $post_customer_partner->getData()->getPartnerRecordId();
     var_dump($partner_record_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

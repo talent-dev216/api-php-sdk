@@ -39,13 +39,10 @@ $body = new CustomerIdRelatedcustomersBody();
 $body->setRelatedCustomer($related_customer);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_related_customer = $care_cloud->customersApi()->postSubCustomerRelatedCustomers($body, $customer_id, $accept_language);
     $customer_relation_id = $post_related_customer->getData()->getCustomerRelationId();
     var_dump($customer_relation_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

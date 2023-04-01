@@ -28,13 +28,10 @@ $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the cu
 $additional_customer_address_id_path = '86e05affc7a7abefcd513ab400'; // string | Unique ID of the customer additional address
 
 // Call endpoint and get data
-try
-{
+try {
     $get_address = $care_cloud->customersApi()->getSubCustomerAddress($customer_id, $additional_customer_address_id_path, $accept_language);
     $address = $get_address->getData();
     var_dump($address);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

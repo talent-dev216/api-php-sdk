@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $task_property_id = 'p1_communication_reasons'; // string | The unique id of the task property
 
 // Call endpoint and get data
-try
-{
+try {
     $get_task_property = $care_cloud->taskPropertiesApi()->getTaskProperty($task_property_id, $accept_language);
     $task_property = $get_task_property->getData();
     var_dump($task_property);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

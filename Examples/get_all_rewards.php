@@ -42,8 +42,7 @@ $tag_ids = null; // string[] | Parameter filters values by a list of tag ids. Lo
 $partner_id = null; // string | The unique id of the partner (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_rewards = $care_cloud->rewardsApi()->getRewards(
         $accept_language,
         $count,
@@ -67,8 +66,6 @@ try
     $total_items = $get_rewards->getData()->getTotalItems();
     var_dump($rewards);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $user_id = '8a84da45ed2c825a741a321d50'; // string | The unique id of the user
 
 // Call endpoint and get data
-try
-{
+try {
     $get_user = $care_cloud->usersApi()->getUser($user_id, $accept_language);
     $user = $get_user->getData();
     var_dump($user);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

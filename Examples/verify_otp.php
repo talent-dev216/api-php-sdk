@@ -30,13 +30,10 @@ $body->setVerificationCode('7R29') // string | Verification code from email, SMS
 ->setExternalApplicationId($external_app_id); // string | Id of the external application that requested one time password
 
 // Call endpoint and post data
-try
-{
+try {
     $post_verify_otp = $care_cloud->oneTimePasswordApi()->postVerifyOtp($body, $accept_language);
     $is_valid = $post_verify_otp->getData()->getIsValid();
     var_dump($is_valid);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

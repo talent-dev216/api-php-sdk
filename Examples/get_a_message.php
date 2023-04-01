@@ -27,16 +27,13 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $message_id = '8bd62e6ba18b3c791a9402cf3e'; // string | The unique id of the message
 
 // Call endpoint and get data
-try
-{
+try {
     $get_message = $care_cloud->messagesApi()->getMessage(
         $message_id,
         $accept_language
     );
     $message = $get_message->getData();
     var_dump($message);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

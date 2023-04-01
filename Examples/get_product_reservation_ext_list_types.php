@@ -30,8 +30,7 @@ $sort_field = null; // string | One of the query string parameters for sorting (
 $sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_product_reservation_ext_list_types = $care_cloud->productReservationExternalListTypesApi()->getProductReservationExternalListTypes(
         $accept_language,
         $count,
@@ -43,8 +42,6 @@ try
     $total_items = $get_product_reservation_ext_list_types->getData()->getTotalItems();
     var_dump($product_reservation_ext_list_types);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

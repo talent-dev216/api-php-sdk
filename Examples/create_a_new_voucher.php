@@ -34,8 +34,7 @@ $body->setCode('e1234'); // string | Code of the voucher (optional)
 $body->setNote('test voucher 2'); // string | Note for the voucher
 
 // Call endpoint and post data
-try
-{
+try {
     $post_voucher = $care_cloud->rewardsApi()->postRewardCreateVoucher(
         $body,
         $reward_id,
@@ -43,8 +42,6 @@ try
     );
     $voucher_id = $post_voucher->getData()->getVoucherId();
     var_dump($voucher_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

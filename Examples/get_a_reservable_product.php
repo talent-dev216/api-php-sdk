@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $reservable_product_id = '89bdacbffb5c82f2c52cb9ae8f'; // string | The unique id f the reservable product
 
 // Call endpoint and get data
-try
-{
+try {
     $get_reservable_product = $care_cloud->reservableProductsApi()->getReservableProduct($reservable_product_id, $accept_language);
     $reservable_product = $get_reservable_product->getData();
     var_dump($reservable_product);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

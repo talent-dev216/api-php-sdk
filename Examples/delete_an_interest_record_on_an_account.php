@@ -28,11 +28,8 @@ $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the cu
 $interest_record_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the interest record
 
 // Call endpoint and delete data
-try
-{
+try {
     $care_cloud->customersApi()->deleteSubCustomerInterest($customer_id, $interest_record_id, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -28,13 +28,10 @@ $task_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
 $task_comment_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task comment
 
 // Call endpoint and get data
-try
-{
+try {
     $get_comment = $care_cloud->tasksApi()->getTaskComment($task_comment_id, $task_id, $accept_language);
     $task_comment = $get_comment->getData();
     var_dump($task_comment);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

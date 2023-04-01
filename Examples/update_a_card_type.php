@@ -38,11 +38,8 @@ $body = new CardtypesCardTypeIdBody();
 $body->setCardType($card_type);
 
 // Call endpoint and put data
-try
-{
+try {
     $care_cloud->cardTypesApi()->putCardType($body, $card_type_id, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

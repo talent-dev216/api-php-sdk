@@ -27,15 +27,12 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the customer
 
 // Call endpoint and get data
-try
-{
+try {
     $get_interests = $care_cloud->customersApi()->getSubCustomerInterests($customer_id, $accept_language);
     $interests = $get_interests->getData()->getInterestRecords();
     $total_items = $get_interests->getData()->getTotalItems();
     var_dump($interests);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

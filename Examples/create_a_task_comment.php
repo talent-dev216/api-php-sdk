@@ -37,13 +37,10 @@ $body = new TaskIdTaskcommentsBody();
 $body->setTaskComment($task_comment);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_comment = $care_cloud->tasksApi()->postTaskComment($body, $task_id, $accept_language);
     $task_comment_id = $post_comment->getData()->getTaskCommentId();
     var_dump($task_comment_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

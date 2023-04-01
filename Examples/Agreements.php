@@ -7,19 +7,19 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 require_once '../vendor/autoload.php';
 require_once 'config.php';
 
-$config = new Config( $projectUri, $login, $password, $externalAppId, $authType );
+$config = new Config($projectUri, $login, $password, $externalAppId, $authType);
 
-$careCloud = new CareCloud( $config );
+$careCloud = new CareCloud($config);
 
 /**
  * Get a list of agreements accepted in CRM CareCloud
  */
 try {
     $agreements = $careCloud->agreementsApi()->getAgreements();
-	$items      = $agreements->getData()->getAgreements();
-	$totalItems = $agreements->getData()->getTotalItems();
-} catch ( ApiException $e ) {
-	die( var_dump( $e->getResponseBody() ) );
+    $items = $agreements->getData()->getAgreements();
+    $totalItems = $agreements->getData()->getTotalItems();
+} catch (ApiException $e) {
+    die(var_dump($e->getResponseBody()));
 }
 
 /**
@@ -33,8 +33,8 @@ $agreement_id = "81eaeea13b8984a169c490a325"; // string | The unique id of an ag
 
 try {
     $agreement = $careCloud->agreementsApi()->getAgreement($agreement_id, $accept_language);
-    $name      = $agreement->getData()->getName();
-    $text      = $agreement->getData()->getText();
+    $name = $agreement->getData()->getName();
+    $text = $agreement->getData()->getText();
 } catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

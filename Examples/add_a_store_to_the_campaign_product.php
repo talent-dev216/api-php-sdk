@@ -38,13 +38,10 @@ $body = new CampaignProductIdCampaignproductstorerecordsBody();
 $body->setCampaignProductStoreRecord($campaign_product_store_record);
 
 // Call endpoint and post data
-try
-{
+try {
     $new_campaign_product_store_record = $care_cloud->campaignProductsApi()->postCampaignProductStoreRecord($body, $campaign_product_id, $accept_language);
     $campaign_product_store_record_id = $new_campaign_product_store_record->getData()->getCampaignProductStoreRecordId();
     var_dump($campaign_product_store_record_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -40,13 +40,10 @@ $body = new CampaignsBody();
 $body->setCampaign($campaign);
 
 // Call endpoint and post data
-try
-{
+try {
     $new_campaign = $care_cloud->campaignsApi()->postCampaign($body, $accept_language);
     $campaign_id = $new_campaign->getData()->getCampaignId();
     var_dump($campaign_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

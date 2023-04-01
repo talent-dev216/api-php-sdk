@@ -29,8 +29,7 @@ $date_from = null; // string | Start of the time interval (YYYY-MM-DD) (optional
 $date_to = null; // string | End of the time interval (YYYY-MM-DD) (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_sales_turnover = $care_cloud->walletApi()->getWalletSalesTurnover(
         $customer_id,
         $accept_language,
@@ -39,8 +38,6 @@ try
     );
     $sales_turnover = $get_sales_turnover->getData()->getTurnover();
     var_dump($sales_turnover);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

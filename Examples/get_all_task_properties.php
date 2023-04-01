@@ -31,8 +31,7 @@ $sort_direction = 'DESC'; // string | Direction of sorting the response list (op
 $name = null; // string | Search record by name or a part of the name (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_task_properties = $care_cloud->taskPropertiesApi()->getTaskProperties(
         $accept_language,
         $count,
@@ -45,8 +44,6 @@ try
     $total_items = $get_task_properties->getData()->getTotalItems();
     var_dump($task_properties);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

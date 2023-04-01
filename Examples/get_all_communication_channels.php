@@ -30,8 +30,7 @@ $sort_field = null; // string | One of the query string parameters for sorting (
 $sort_direction = 'DESC'; // string | Direction of sorting the response list (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_communication_channels = $care_cloud->communicationChannelsApi()->getCommunicationChannels(
         $accept_language,
         $count,
@@ -43,8 +42,6 @@ try
     $total_items = $get_communication_channels->getData()->getTotalItems();
     var_dump($communication_channels);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

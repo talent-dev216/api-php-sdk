@@ -28,13 +28,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $agreement_id = '8fd73167342d06899c4c015320';
 
 // Call endpoint and get data
-try
-{
+try {
     $get_agreement = $care_cloud->agreementsApi()->getAgreement($agreement_id, $accept_language);
     $agreement = $get_agreement->getData();
     var_dump($agreement);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

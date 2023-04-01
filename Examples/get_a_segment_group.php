@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $segment_group_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the segment group
 
 // Call endpoint and get data
-try
-{
+try {
     $get_segment_group = $care_cloud->segmentsApi()->getSegmentGroup($segment_group_id, $accept_language);
     $segment_group = $get_segment_group->getData();
     var_dump($segment_group);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

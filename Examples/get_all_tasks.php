@@ -37,8 +37,7 @@ $task_title = null; // string | Search record by the task summary or a part of t
 $task_note = null; // string | Search record by the task note or a part of the task note (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_tasks = $care_cloud->tasksApi()->getTasks(
         $accept_language,
         $count,
@@ -57,8 +56,6 @@ try
     $total_items = $get_tasks->getData()->getTotalItems();
     var_dump($tasks);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -37,13 +37,10 @@ $body = new CustomerIdInterestrecordsBody();
 $body->setInterestRecord($interest_record);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_interest = $care_cloud->customersApi()->postSubCustomerInterest($body, $customer_id, $accept_language);
     $interest_record_id = $post_interest->getData()->getInterestRecordId();
     var_dump($interest_record_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -27,16 +27,13 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $event_group_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the event group
 
 // Call endpoint and get data
-try
-{
+try {
     $get_event_group = $care_cloud->eventGroupsApi()->getEventGroup(
         $event_group_id,
         $accept_language
     );
     $event_group = $get_event_group->getData();
     var_dump($event_group);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

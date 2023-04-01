@@ -27,15 +27,12 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $language_list_type = 'web-portal'; // string | Type of language list, possible values: "carecloud-api" "web-portal" "customer-communication" (optional, the default value is "carecloud-api")
 
 // Call endpoint and get data
-try
-{
+try {
     $get_languages = $care_cloud->languagesApi()->getLanguages($accept_language, $language_list_type);
     $languages = $get_languages->getData()->getLanguages();
     $total_items = $get_languages->getData()->getTotalItems();
     var_dump($languages);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

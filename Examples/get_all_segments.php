@@ -31,8 +31,7 @@ $sort_direction = 'DESC'; // string | Direction of sorting the response list (op
 $segment_group_ids = null; // string[] | List of the segment group IDs (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_segments = $care_cloud->segmentsApi()->getSegments(
         $accept_language,
         $count,
@@ -45,8 +44,6 @@ try
     $total_items = $get_segments->getData()->getTotalItems();
     var_dump($segments);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

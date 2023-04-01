@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $card_type_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the card type
 
 // Call endpoint and get data
-try
-{
+try {
     $get_card_type = $care_cloud->cardTypesApi()->getCardType($card_type_id);
     $card_type = $get_card_type->getData();
     var_dump($card_type);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

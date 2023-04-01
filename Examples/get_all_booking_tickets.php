@@ -36,8 +36,7 @@ $booking_ticket_property_id = null; // string | Booking ticket property id from 
 $booking_ticket_property_value = null; // Booking ticket property record value from booking-ticket-properties in case of datatype with multiple values (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_booking_tickets = $care_cloud->bookingTicketsApi()->getBookingTickets(
         $accept_language,
         $count,
@@ -55,8 +54,6 @@ try
     $total_items = $get_booking_tickets->getData()->getTotalItems();
     var_dump($booking_tickets);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

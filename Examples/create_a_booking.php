@@ -45,16 +45,13 @@ $body = new BookingsBody();
 $body->setBooking($booking);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_booking = $care_cloud->bookingsApi()->postBooking(
         $body,
         $accept_language
     );
     $booking_id = $post_booking->getData()->getBookingId();
     var_dump($booking_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

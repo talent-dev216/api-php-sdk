@@ -69,13 +69,10 @@ $body->setCustomerId(null);
 $body->setBill($bill);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_purchase = $care_cloud->purchasesApi()->postPurchaseSend($body, $accept_language);
     $purchase_id = $post_purchase->getData()->getPurchaseId();
     var_dump($purchase_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

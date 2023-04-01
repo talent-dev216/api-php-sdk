@@ -12,7 +12,7 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
     /**
      * Search for the card and verify that it is not assigned
      *
-     * @param string      $card_number
+     * @param string $card_number
      * @param string|null $accept_language
      *
      * @return Card
@@ -20,19 +20,17 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
      */
     public function getUnassignedCard(string $card_number, string $accept_language = null): Card
     {
-        $get_card = $this->getCards($accept_language, null, null, null, null, null, $card_number);
+        if ($accept_language === null) {
+            $accept_language = "";
+        }
+        $get_card = $this->getCards($accept_language, 100, 0, null, null, null, $card_number);
         $card = $get_card->getData()->getCards()[0];
 
-        if($card->getCustomerId())
-        {
+        if ($card->getCustomerId()) {
             throw new Exception('The card is already assigned to the customer.');
-        }
-        elseif($card->getState() === 0)
-        {
+        } elseif ($card->getState() === 0) {
             throw new Exception('The card is blocked.');
-        }
-        else
-        {
+        } else {
             return $card;
         }
     }
@@ -40,8 +38,8 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
     /**
      * Assigning a free card to a customer
      *
-     * @param string      $card_number
-     * @param string      $customer_id
+     * @param string $card_number
+     * @param string $customer_id
      * @param string|null $valid_from
      * @param string|null $valid_to
      * @param string|null $store_id
@@ -58,9 +56,9 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
         $cart_body->setCustomerId($customer_id)
             ->setCardTypeId($unassigned_card->getCardId())
             ->setCardNumber($card_number)
-            ->setValidFrom($valid_from)
-            ->setValidTo($valid_to)
-            ->setStoreId($store_id)
+            ->setValidFrom((is_null($valid_from) ? "" : $valid_from))
+            ->setValidTo((is_null($valid_to) ? "" : $valid_to))
+            ->setStoreId((is_null($store_id) ? "" : $store_id))
             ->setState($unassigned_card->getState());
 
         $body = new CardsCardIdBody();

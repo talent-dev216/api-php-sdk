@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $reward_property_id = 'additional_payment'; // string | The unique id of the reward property
 
 // Call endpoint and get data
-try
-{
+try {
     $get_reward_property = $care_cloud->rewardPropertiesApi()->getRewardProperty($reward_property_id, $accept_language);
     $reward_property = $get_reward_property->getData();
     var_dump($reward_property);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

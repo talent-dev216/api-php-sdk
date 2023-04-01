@@ -39,13 +39,10 @@ $body = new CardsBody();
 $body->setCard($card);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_card = $care_cloud->cardsApi()->postCard($body, $accept_language);
     $card_id = $post_card->getData()->getCardId();
     var_dump($card_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

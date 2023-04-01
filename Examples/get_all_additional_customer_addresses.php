@@ -34,8 +34,7 @@ $sort_direction = 'DESC'; // string | Direction of sorting the response list (op
 $customer_address_type_id = null; // string | The unique id of the customer address type (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_addresses = $care_cloud->customersApi()->getSubCustomerAddresses(
         $customer_id,
         $accept_language,
@@ -49,8 +48,6 @@ try
     $total_items = $get_addresses->getData()->getTotalItems();
     var_dump($addresses);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

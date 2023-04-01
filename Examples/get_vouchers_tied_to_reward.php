@@ -35,8 +35,7 @@ $customer_id = null; // string | The unique id of the customer (optional, defaul
 $store_id = null; // string | The unique id of the store where the customer can apply reward (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_vouchers = $care_cloud->rewardsApi()->getSubRewardVouchers(
         $reward_id,
         $accept_language,
@@ -51,8 +50,6 @@ try
     $total_items = $get_vouchers->getData()->getTotalItems();
     var_dump($vouchers);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -27,16 +27,13 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $reward_type_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the reward type
 
 // Call endpoint and get data
-try
-{
+try {
     $get_reward_type = $care_cloud->rewardTypesApi()->getRewardtype(
         $reward_type_id,
         $accept_language
     );
     $reward_type = $get_reward_type->getData();
     var_dump($reward_type);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

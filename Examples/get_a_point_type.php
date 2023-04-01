@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $point_type_id = '81d503b99cc748b3ca189383ad'; // string | The unique id of the point type
 
 // Call endpoint and get data
-try
-{
+try {
     $get_point_type = $care_cloud->pointTypesApi()->getPointType($point_type_id, $accept_language);
     $point_type = $get_point_type->getData();
     var_dump($point_type);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

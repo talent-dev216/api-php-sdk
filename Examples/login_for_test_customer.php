@@ -30,13 +30,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $token_id = '702baa4a40a57694831321e5d02605d46c189369126ae43a81030790ea188af87e49578a'; // Client's application token
 
 // Call endpoint and post data
-try
-{
+try {
     $post_test_login = $care_cloud->tokensApi()->postTokenTestCustomerLogin($token_id, $accept_language);
     $customer_id = $post_test_login->getData()->getCustomerId();
     var_dump($customer_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

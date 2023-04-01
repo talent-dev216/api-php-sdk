@@ -24,13 +24,10 @@ $care_cloud = new CareCloud($config);
 $test_string = 'taco cat'; // string | Test string send to REST API. Correct result should return a reverted string
 
 // Call endpoint and get data
-try
-{
+try {
     $get_connection_test = $get_connection_test = $care_cloud->testsApi()->getTestsConnection($test_string);
     $test_string_reverted = $get_connection_test->getData()->getTestString();
     var_dump($test_string_reverted);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

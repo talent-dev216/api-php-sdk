@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $customer_property_id = 'p1_favourite_color'; // string | The unique id of the customer property
 
 // Call endpoint and get data
-try
-{
+try {
     $get_customer_property = $care_cloud->customerPropertiesApi()->getCustomerProperty($customer_property_id, $accept_language);
     $customer_property = $get_customer_property->getData();
     var_dump($customer_property);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

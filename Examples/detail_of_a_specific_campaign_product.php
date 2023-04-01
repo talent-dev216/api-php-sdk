@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $campaign_product_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the campaign product
 
 // Call endpoint and get data
-try
-{
+try {
     $get_campaign_product = $care_cloud->campaignProductsApi()->getCampaignProduct($campaign_product_id, $accept_language);
     $campaign_product = $get_campaign_product->getData();
     var_dump($campaign_product);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

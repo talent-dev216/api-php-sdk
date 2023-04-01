@@ -32,11 +32,8 @@ $body = new ActionsRemovecustomerBody();
 $body->setCustomerId('8fae1b952efb32fff53dfb899a');
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->segmentsApi()->postSegmentRemoveCustomer($body, $segment_id, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -33,8 +33,7 @@ $booking_status = null; // string | Current status of the booking from resource 
 $add_booking_items = null; // string | Possible values: full - returns all booking items with their additional properties. / items-only - returns all booking items without additional properties. / none or no value - return no booking items (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_bookings = $care_cloud->bookingsApi()->getBookings(
         $accept_language,
         $count,
@@ -49,8 +48,6 @@ try
     $total_items = $get_bookings->getData()->getTotalItems();
     var_dump($bookings);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

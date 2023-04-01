@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $status_id = '8fd73167342d06899c4c015320'; // string | The unique id of the status
 
 // Call endpoint and get data
-try
-{
+try {
     $get_status = $care_cloud->statusesApi()->getStatus($status_id, $accept_language);
     $status = $get_status->getData();
     var_dump($status);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

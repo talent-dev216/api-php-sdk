@@ -39,14 +39,11 @@ $body = new CardsBatchBody();
 $body->setCards(array($card1));
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->cardsApi()->postBatchCards(
         $body,
         $accept_language
     );
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

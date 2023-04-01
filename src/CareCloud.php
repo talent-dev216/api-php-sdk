@@ -76,6 +76,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\WalletApi;
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
 use CrmCareCloud\Webservice\RestApi\Client\Configuration;
 use CrmCareCloud\Webservice\RestApi\Client\Model\ActionsLoginBody1;
+use CrmCareCloud\Webservice\RestApi\Client\Model\ModelInterface;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\Cache;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Cache\CacheRequestMatcher;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
@@ -93,8 +94,6 @@ use Kevinrob\GuzzleCache\Strategy\NullCacheStrategy;
 
 class CareCloud
 {
-    private $client;
-
     private Config $config;
 
     /** @var AuthenticationHandler */
@@ -102,22 +101,17 @@ class CareCloud
 
     private ?Cache $cache;
 
-    private ?Configuration $default_configuration = null;
+    private Configuration $default_configuration;
 
     public function __construct(Config $config, Cache $cache = null)
     {
         $this->config = $config;
         $this->cache = $cache;
+        $this->getDefaultConfiguration();
     }
 
-    public function getDefaultConfiguration()
+    public function getDefaultConfiguration(): Configuration
     {
-
-        if($this->default_configuration !== null)
-        {
-            return $this->default_configuration;
-        }
-
         $url = trim($this->config->getProjectUri());
 
         $this->default_configuration = Configuration::getDefaultConfiguration()->setHost($url);
@@ -125,48 +119,42 @@ class CareCloud
             ->setBearerAuth($this->getConfig()->getAuthType() === AuthTypes::BEARER_AUTH)
             ->addUserAgent($this->getCareCloudUserAgent());
 
-        if($this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH)
-        {
+        if ($this->getConfig()->getAuthType() === AuthTypes::BASIC_AUTH) {
             $password = $this->config->getInterface() === Interfaces::ENTERPRISE ? $this->getHashedPassword() : $this->getConfig()->getPassword();
-            $this->default_configuration->setUsername($this->config->getLogin())->setPassword($password)->setAccessToken(
-                null
-            );
+            $this->default_configuration->setUsername($this->config->getLogin());
+            $this->default_configuration->setPassword($password);
         }
 
         return $this->default_configuration;
     }
 
     /**
-     * @return mixed
+     * @return Client
      */
-    public function getClient()
+    public function getClient(): Client
     {
-        if(!$this->auth_handler)
-        {
+        if (!$this->auth_handler instanceof AuthenticationHandler) {
             $this->auth_handler = new AuthenticationHandler($this);
         }
         $stack = HandlerStack::create(new CurlHandler());
 
         $stack->push($this->auth_handler);
 
-        if(!empty($this->config->getMiddlewares()))
-        {
-            foreach($this->config->getMiddlewares() as $middleware)
-            {
+        if (!empty($this->config->getMiddlewares())) {
+            foreach ($this->config->getMiddlewares() as $middleware) {
                 $stack->push($middleware);
             }
         }
 
-        if($this->cache)
-        {
-            $strategy = new DelegatingCacheStrategy($default_strategy = new NullCacheStrategy());
-            foreach($this->cache->getRules() as $item)
-            {
+        if ($this->cache instanceof Cache) {
+            $strategy = new DelegatingCacheStrategy(new NullCacheStrategy());
+            foreach ($this->cache->getRules() as $item) {
                 $strategy->registerRequestMatcher(
                     new CacheRequestMatcher($item),
                     new GreedyCacheStrategy(
                         new Psr6CacheStorage($this->cache->getCacheItemPool()),
-                        $item->getTtl())
+                        $item->getTtl()
+                    )
                 );
             }
 
@@ -194,7 +182,7 @@ class CareCloud
     public function setConfig(Config $config): void
     {
         $this->config = $config;
-        $this->default_configuration = null;
+        $this->getDefaultConfiguration();
     }
 
     /**
@@ -606,9 +594,9 @@ class CareCloud
     }
 
     /**
-     * @return HintsApi
      * @deprecated use hintApi() method
      *
+     * @return HintsApi
      */
     public function recommendationsApi(): HintsApi
     {
@@ -624,9 +612,9 @@ class CareCloud
     }
 
     /**
-     * @return ProductRecommendationEngineApi
      * @deprecated use productRecommendationEngineApi() method
      *
+     * @return ProductRecommendationEngineApi
      */
     public function recommendationEngineApi(): ProductRecommendationEngineApi
     {
@@ -772,26 +760,32 @@ class CareCloud
     }
 
     /**
-     * @throws \InvalidArgumentException
+     * @return mixed|null
+     * @throws ApiException
+     * @throws \InvalidArgumentException|ApiException
      */
     public function getCountries()
     {
-        if(!$this->cache->has('countries'))
-        {
-            $this->cache->set(
-                'countries',
-                $this->countriesApi()->getCountries(),
-                3600
-            );
+        $cache = $this->cache;
+        if ($cache instanceof Cache) {
+            if (!$cache->has('countries')) {
+                $cache->set(
+                    'countries',
+                    $this->countriesApi()->getCountries(),
+                    3600
+                );
+            }
+
+            return $cache->get('countries');
         }
 
-        return $this->cache->get('countries');
+        return null;
     }
 
     /**
      * @throws ApiException
      */
-    public function authenticate()
+    public function authenticate(): ModelInterface
     {
         $body = new ActionsLoginBody1();
         $body
@@ -804,15 +798,15 @@ class CareCloud
         return $api->postUserLogin($body);
     }
 
-    public function getHashedPassword()
+    public function getHashedPassword(): string
     {
         $dt = new DateTime('now', new DateTimeZone('UTC'));
 
-        return hash('sha256', md5($this->config->getPassword()).$dt->format("YmdH"));
+        return hash('sha256', md5($this->config->getPassword()) . $dt->format("YmdH"));
     }
 
-    private function getCareCloudUserAgent()
+    private function getCareCloudUserAgent(): string
     {
-        return 'CareCloud SDK '.SdkConfig::SDK_VERSION;
+        return 'CareCloud SDK ' . SdkConfig::SDK_VERSION;
     }
 }

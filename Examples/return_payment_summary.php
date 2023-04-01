@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $purchase_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the purchase
 
 // Call endpoint and get data
-try
-{
+try {
     $get_payment_summary = $care_cloud->purchasesApi()->getPurchasePaymentSummary($purchase_id, $accept_language);
     $payment_summary = $get_payment_summary->getData();
     var_dump($payment_summary);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

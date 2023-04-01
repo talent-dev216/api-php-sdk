@@ -42,13 +42,10 @@ $body->setAssignees(null); // array of objects | List of an task assignees (opti
 $body->setPropertyRecords(null); // array of objects | List of an task property records (optional)
 
 // Call endpoint and post data
-try
-{
+try {
     $post_task = $care_cloud->tasksApi()->postTasks($body, $accept_language);
     $task_id = $post_task->getData()->getTaskId();
     var_dump($task_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -10,9 +10,7 @@ use Psr\Http\Message\RequestInterface;
 
 class AuthenticationHandler
 {
-    private Config $config;
-
-    private $token;
+    private ?string $token;
 
     private CareCloud $care_cloud;
 
@@ -21,15 +19,13 @@ class AuthenticationHandler
         $this->care_cloud = $care_cloud;
     }
 
-    public function __invoke(callable $handler)
+    public function __invoke(callable $handler): \Closure
     {
         $config = $this->care_cloud->getConfig();
-        if($config->getToken())
-        {
+        if ($config->getToken()) {
             $this->token = $config->getToken();
         }
-        if($config->getAuthType() === AuthTypes::BEARER_AUTH && !$this->token)
-        {
+        if ($config->getAuthType() === AuthTypes::BEARER_AUTH && !$this->token) {
             $body = new ActionsLoginBody1();
             $body->setLogin($config->getLogin())
                 ->setPassword($config->getPassword())
@@ -40,26 +36,22 @@ class AuthenticationHandler
             $this->token = $response->getData()->getBearerToken();
         }
 
-        return function(RequestInterface $request, array $options) use ($handler)
-        {
-            if($this->care_cloud->getConfig()->getAuthType() === AuthTypes::BEARER_AUTH)
-            {
+        return function (RequestInterface $request, array $options) use ($handler) {
+            if ($this->care_cloud->getConfig()->getAuthType() === AuthTypes::BEARER_AUTH) {
                 return $handler(
-                    $request->withHeader('Authorization', 'Bearer '.$this->token),
+                    $request->withHeader('Authorization', 'Bearer ' . $this->token),
                     $options
                 );
-            }
-            else
-            {
+            } else {
                 return $handler($request, $options);
             }
         };
     }
 
     /**
-     * @return mixed
+     * @return ?string
      */
-    public function getToken()
+    public function getToken(): ?string
     {
         return $this->token;
     }

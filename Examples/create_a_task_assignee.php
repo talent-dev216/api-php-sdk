@@ -38,13 +38,10 @@ $body = new TaskIdAssigneesBody();
 $body->setTaskAssignee($task_assignee);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_assignee = $care_cloud->tasksApi()->postTaskAssignee($body, $task_id, $accept_language);
     $task_assignee_id = $post_assignee->getData()->getTaskAssigneeId();
     var_dump($task_assignee_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

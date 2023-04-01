@@ -32,8 +32,7 @@ $name = null; // string | Search record by name or a part of the name (optional,
 $code = null; // string | Code of the product (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_reservable_products = $care_cloud->reservableProductsApi()->getReservableProducts(
         $accept_language,
         $count,
@@ -47,8 +46,6 @@ try
     $total_items = $get_reservable_products->getData()->getTotalItems();
     var_dump($reservable_products);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

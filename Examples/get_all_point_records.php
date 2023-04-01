@@ -34,8 +34,7 @@ $create_point_time_from = null; // string | Date and time from of the create poi
 $create_point_time_to = null; // string | Date and time to of the create point record (YYYY-MM-DD HH:MM:SS) (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_points = $care_cloud->pointsApi()->getPoints(
         $accept_language,
         $count,
@@ -51,8 +50,6 @@ try
     $total_items = $get_points->getData()->getTotalItems();
     var_dump($points);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -28,13 +28,10 @@ $body->setLoginValue('customer_email@example.com'); // string | Value of the log
 $body->setPassword('customer_password'); // string | Password of the customer.
 
 // Call endpoint and post data
-try
-{
+try {
     $post_credentials = $care_cloud->customersActionsApi()->postCustomerVerifyCredentials($body);
     $customer_id = $post_credentials->getData()->getCustomerId();
     var_dump($customer_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

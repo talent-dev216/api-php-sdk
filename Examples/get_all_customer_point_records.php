@@ -34,8 +34,7 @@ $sort_direction = 'DESC'; // string | Direction of sorting the response list (op
 $point_type_id = null; // string | The unique id of the point type (optional, default is null)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_point_records = $care_cloud->pointsApi()->getPoints(
         $accept_language,
         $count,
@@ -49,8 +48,6 @@ try
     $total_items = $get_point_records->getData()->getTotalItems();
     var_dump($point_records);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

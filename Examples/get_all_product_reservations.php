@@ -36,8 +36,7 @@ $external_reservation_list_type_id = null; // string | If set, external_reservat
 $external_reservation_code = null; // string |  If set, external_reservation_list_type_id has to be present in request too (optional)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_product_reservations = $care_cloud->productReservationsApi()->getProductReservations(
         $accept_language,
         $count,
@@ -54,8 +53,6 @@ try
     $total_items = $get_product_reservations->getData()->getTotalItems();
     var_dump($product_reservations);
     var_dump($total_items);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

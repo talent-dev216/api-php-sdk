@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $customer_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the customer
 
 // Call endpoint and get data
-try
-{
+try {
     $get_points_expiration = $care_cloud->walletApi()->getWalletPointsExpiration($customer_id, $accept_language);
     $points_expiration = $get_points_expiration->getData();
     var_dump($points_expiration);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

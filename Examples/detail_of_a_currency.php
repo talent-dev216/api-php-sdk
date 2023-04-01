@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $currency_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the currency
 
 // Call endpoint and get data
-try
-{
+try {
     $get_currency = $care_cloud->currenciesApi()->getCurrency($currency_id, $accept_language);
     $currency = $get_currency->getData();
     var_dump($currency);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

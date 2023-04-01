@@ -28,15 +28,12 @@ $task_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
 $assignee_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task assignee
 
 // Call endpoint and delete data
-try
-{
+try {
     $care_cloud->tasksApi()->deleteSubTasksAssignee(
         $task_id,
         $assignee_id,
         $accept_language
     );
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

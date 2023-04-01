@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $point_reservation_id = '8ea2591121e636086a4a9c0992'; // string | The unique id of the point reservation
 
 // Call endpoint and get data
-try
-{
+try {
     $get_point_reservation = $care_cloud->pointReservationsApi()->getPointReservation($point_reservation_id, $accept_language);
     $point_reservation = $get_point_reservation->getData();
     var_dump($point_reservation);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

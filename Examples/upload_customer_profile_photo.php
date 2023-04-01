@@ -30,11 +30,8 @@ $body->setCustomerId('8ea2591121e636086a4a9c0992'); // string | The unique id of
 $body->setData('YTc4ZTExZTc3NGY3Zmh1b3dmamZram5sam5kZmpuZm5mIGRzbiBzZGpuc2Rsam5kc2Y'); // string | Base 64 encoded image data
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->customersActionsApi()->postCustomersUploadPhoto($body);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

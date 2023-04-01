@@ -34,8 +34,7 @@ $external_application_id = '82de12eb8b138791e678fd11c3'; // string | Id of the e
 $token_type = 1; // integer | Possible values: 1- alphanumeric, 2- numeric
 
 // Call endpoint and get data
-try
-{
+try {
     $get_token = $care_cloud->tokensApi()->getTokenAuthentication(
         $token_id,
         $external_application_id,
@@ -44,8 +43,6 @@ try
     );
     $token = $get_token->getData();
     var_dump($token);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -19,13 +19,11 @@ class CacheRequestMatcher implements RequestMatcherInterface
      */
     public function matches(RequestInterface $request)
     {
-        if($this->rule->getRequestType() !== $request->getMethod())
-        {
+        if ($this->rule->getRequestType() !== $request->getMethod()) {
             return false;
         }
 
-        if(strpos($request->getUri()->getPath(), $this->rule->getPath()) === false)
-        {
+        if (strpos($request->getUri()->getPath(), $this->rule->getPath()) === false) {
             return false;
         }
 

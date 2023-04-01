@@ -27,16 +27,13 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $communication_channel_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the communication channel
 
 // Call endpoint and get data
-try
-{
+try {
     $get_communication_channel = $care_cloud->communicationChannelsApi()->getCommunicationChannel(
         $communication_channel_id,
         $accept_language
     );
     $communication_channel = $get_communication_channel->getData();
     var_dump($communication_channel);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

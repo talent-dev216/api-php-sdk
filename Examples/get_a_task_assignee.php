@@ -28,13 +28,10 @@ $task_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task
 $assignee_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the task assignee
 
 // Call endpoint and get data
-try
-{
+try {
     $get_assignee = $care_cloud->tasksApi()->getTaskAssignee($assignee_id, $task_id, $accept_language);
     $assignee = $get_assignee->getData();
     var_dump($assignee);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

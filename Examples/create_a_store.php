@@ -47,13 +47,10 @@ $body = new StoresBody();
 $body->setStore($store);
 
 // Call endpoint and post data
-try
-{
+try {
     $post_store = $care_cloud->storesApi()->postStore($body, $accept_language);
     $store_id = $post_store->getData()->getStoreId();
     var_dump($store_id);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

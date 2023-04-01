@@ -46,11 +46,8 @@ $body = new ProductsBatchBody();
 $body->setProducts(array($product1));
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->productsApi()->postBulkProducts($body, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $product_reservation_source_id = '86e05affc7a7abefcd513ab400'; // string | The unique id of the product reservation source
 
 // Call endpoint and get data
-try
-{
+try {
     $get_product_reservation_source = $care_cloud->productReservationSourcesApi()->getProductReservationSource($product_reservation_source_id, $accept_language);
     $product_reservation_source = $get_product_reservation_source->getData();
     var_dump($product_reservation_source);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

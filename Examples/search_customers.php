@@ -31,8 +31,7 @@ $card_number = '1000000000016'; // string | Number of the customer card (optiona
 $mode = 'strict'; // string | Possible values are: strict - return only 100% matching results (all path parameters are required)
 
 // Call endpoint and get data
-try
-{
+try {
     $get_customers = $care_cloud->customersActionsApi()->getCustomerSearch(
         $accept_language,
         $first_name,
@@ -43,8 +42,6 @@ try
     );
     $customers = $get_customers->getData();
     var_dump($customers);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

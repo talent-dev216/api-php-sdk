@@ -32,11 +32,8 @@ $body->setAmount(100); // float | The number of the reserved points
 $body->setExpirationTime(null); // string | Date and time of the point reservation expiration (YYYY-MM-DD HH:MM:SS) (optional)
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->pointReservationsApi()->postPointReservationCreate($body, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

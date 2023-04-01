@@ -39,11 +39,8 @@ $body = new ProductgroupsBatchBody();
 $body->setProductGroups(array($product_group));
 
 // Call endpoint and post data
-try
-{
+try {
     $care_cloud->productGroupsApi()->postBulkProductGroups($body, $accept_language);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }

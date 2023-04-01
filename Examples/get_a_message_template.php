@@ -27,13 +27,10 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $message_template_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of the message template
 
 // Call endpoint and get data
-try
-{
+try {
     $get_message_template = $care_cloud->messageTemplatesApi()->getMessageTemplate($message_template_id, $accept_language);
     $message_template = $get_message_template->getData();
     var_dump($message_template);
-}
-catch(ApiException $e)
-{
+} catch (ApiException $e) {
     die(var_dump($e->getResponseBody() ?: $e->getMessage()));
 }
