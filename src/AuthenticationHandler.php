@@ -10,7 +10,7 @@ use Psr\Http\Message\RequestInterface;
 
 class AuthenticationHandler
 {
-    private ?string $token;
+    private ?string $token = "";
 
     private CareCloud $care_cloud;
 
