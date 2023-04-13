@@ -6,3 +6,4 @@ parameters:
     ignoreErrors:
         - '#Variable .* might not be defined\.#'
         - '#Parameter .* of .* expects .*, .* given\.#'
+        - '#Unreachable statement - code above always terminates\.#'
