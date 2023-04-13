@@ -27,5 +27,6 @@ try {
     $agreements = $careCloud->agreementsApi()->getAgreements();
     $items = $agreements->getData()->getAgreements();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

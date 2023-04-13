@@ -47,5 +47,6 @@ try {
     $task_id = $post_task->getData()->getTaskId();
     var_dump($task_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

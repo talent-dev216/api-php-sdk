@@ -31,5 +31,6 @@ $interest_record_id = '8bed991c68a470e7aaeffbf048'; // string | The unique id of
 try {
     $care_cloud->customersApi()->deleteSubCustomerInterest($customer_id, $interest_record_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

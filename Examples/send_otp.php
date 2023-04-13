@@ -38,5 +38,6 @@ try {
     $request_id = $post_otp->getData()->getRequestId();
     var_dump($request_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

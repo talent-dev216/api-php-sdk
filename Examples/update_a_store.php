@@ -53,5 +53,6 @@ $body->setStore($store);
 try {
     $care_cloud->storesApi()->putStore($body, $store_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

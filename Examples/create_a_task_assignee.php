@@ -43,5 +43,6 @@ try {
     $task_assignee_id = $post_assignee->getData()->getTaskAssigneeId();
     var_dump($task_assignee_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -35,5 +35,6 @@ try {
     $message = $get_message->getData();
     var_dump($message);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

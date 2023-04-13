@@ -17,5 +17,6 @@ try {
     $items = $events->getData()->getEvents();
     $totalItems = $events->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

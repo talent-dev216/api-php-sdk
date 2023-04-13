@@ -43,5 +43,6 @@ try {
     $customers = $get_customers->getData();
     var_dump($customers);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -43,5 +43,6 @@ try {
     $property_record_id = $post_store_properties->getData()->getPropertyRecordId();
     var_dump($property_record_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

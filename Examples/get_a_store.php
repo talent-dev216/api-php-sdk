@@ -32,5 +32,6 @@ try {
     $store = $get_store->getData();
     var_dump($store);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

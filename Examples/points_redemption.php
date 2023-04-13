@@ -34,5 +34,6 @@ $body->setPartnerId(null); // string | The unique id of the partner (optional)
 try {
     $care_cloud->pointsApi()->postPointsRedemption($body, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

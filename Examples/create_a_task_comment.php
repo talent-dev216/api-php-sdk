@@ -42,5 +42,6 @@ try {
     $task_comment_id = $post_comment->getData()->getTaskCommentId();
     var_dump($task_comment_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

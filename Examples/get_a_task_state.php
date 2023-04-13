@@ -32,5 +32,6 @@ try {
     $task_state = $get_state->getData();
     var_dump($task_state);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

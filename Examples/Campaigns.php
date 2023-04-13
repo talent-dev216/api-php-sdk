@@ -17,5 +17,6 @@ try {
     $items = $campaigns->getData()->getCampaigns();
     $totalItems = $campaigns->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

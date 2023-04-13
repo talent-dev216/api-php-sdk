@@ -35,5 +35,6 @@ try {
     $credit_record = $get_credit_record->getData();
     var_dump($credit_record);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

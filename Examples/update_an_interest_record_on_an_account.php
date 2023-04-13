@@ -41,5 +41,6 @@ $body->setInterestRecord($interest_record);
 try {
     $care_cloud->customersApi()->putSubCustomerInterest($body, $customer_id, $interest_record_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

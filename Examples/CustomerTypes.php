@@ -17,5 +17,6 @@ try {
     $items = $customerTypes->getData()->getCustomerTypes();
     $totalItems = $customerTypes->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

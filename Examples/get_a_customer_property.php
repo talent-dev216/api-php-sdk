@@ -32,5 +32,6 @@ try {
     $customer_property = $get_customer_property->getData();
     var_dump($customer_property);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

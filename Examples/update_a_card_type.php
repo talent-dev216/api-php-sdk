@@ -41,5 +41,6 @@ $body->setCardType($card_type);
 try {
     $care_cloud->cardTypesApi()->putCardType($body, $card_type_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

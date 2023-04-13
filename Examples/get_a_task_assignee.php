@@ -33,5 +33,6 @@ try {
     $assignee = $get_assignee->getData();
     var_dump($assignee);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -13,5 +13,6 @@ $careCloud = new CareCloud($config);
 try {
     $result = $careCloud->authenticate();
 } catch (ApiException $e) {
-    die(var_dump($e->getMessage()));
+    var_dump($e->getMessage());
+    die();
 }

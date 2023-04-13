@@ -43,5 +43,6 @@ try {
     $source_record_id = $post_source_record->getData()->getCustomerSourceRecordId();
     var_dump($source_record_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

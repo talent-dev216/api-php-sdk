@@ -42,9 +42,11 @@ $customer_type_id = null; // By resource customer-types
 // Call endpoints and get data
 try {
     $allRewards = $careCloud->customersApi()->getAllRewards($customer_id, $rewards, $reward_group, $vouchers, $campaign_products, $is_valid, $customer_type_id, $accept_language);
-    die(print_r($allRewards));
+    print_r($allRewards);
+    die();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }
 
 /**
@@ -121,7 +123,8 @@ $body->setCustomer($customer)
 try {
     $newCustomer = $careCloud->customersApi()->postCustomer($body, $accept_language);;
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }
 
 /**
@@ -223,7 +226,8 @@ $interestBody->setInterestRecord($interest_record);
 try {
     $newCustomer = $careCloud->customersApi()->postCustomerExtended($customerBody, $card, $propertyBody, $interestBody, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }
 
 /**
@@ -250,7 +254,8 @@ try {
     $customers = $getCustomers->getData()->getCustomers();
     $totalItems = $getCustomers->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }
 
 /**
@@ -267,7 +272,8 @@ try {
     $getCustomer = $careCloud->customersApi()->getCustomer($customer_id, $accept_language);
     $customer = $getCustomer->getData();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }
 
 /**
@@ -340,5 +346,6 @@ $body->setCustomer($customer)
 try {
     $putCustomer = $careCloud->customersApi()->putCustomer($body, $customer_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

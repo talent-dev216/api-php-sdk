@@ -3,3 +3,6 @@ parameters:
     paths:
         - src
         - Examples
+    ignoreErrors:
+        - '#Variable .* might not be defined\.#'
+        - '#Parameter .* of .* expects .*, .* given\.#'

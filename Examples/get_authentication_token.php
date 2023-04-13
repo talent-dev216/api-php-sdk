@@ -44,5 +44,6 @@ try {
     $token = $get_token->getData();
     var_dump($token);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

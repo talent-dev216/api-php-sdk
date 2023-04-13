@@ -53,5 +53,6 @@ try {
     $booking_id = $post_booking->getData()->getBookingId();
     var_dump($booking_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -32,5 +32,6 @@ try {
     $segment_group = $get_segment_group->getData();
     var_dump($segment_group);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -17,5 +17,6 @@ try {
     $items = $cardTypes->getData()->getCardTypes();
     $totalItems = $cardTypes->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

@@ -32,5 +32,6 @@ try {
     $user_role = $get_user_role->getData();
     var_dump($user_role);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

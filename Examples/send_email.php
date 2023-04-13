@@ -38,5 +38,6 @@ $body->setEmail('happy_customer@example.com'); // string | Message with a setup 
 try {
     $care_cloud->tokensApi()->postTokenSendPasswordSetup($body, $token_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

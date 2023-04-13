@@ -17,5 +17,6 @@ try {
     $items = $customerSourceRecords->getData()->getCustomerSourceRecords();
     $totalItems = $customerSourceRecords->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

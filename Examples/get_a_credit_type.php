@@ -35,5 +35,6 @@ try {
     $credit_type = $get_credit_type->getData();
     var_dump($credit_type);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

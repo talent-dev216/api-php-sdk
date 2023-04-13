@@ -32,5 +32,6 @@ try {
     $event_type = $get_event_type->getData();
     var_dump($event_type);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -46,5 +46,6 @@ $body->setTask($task);
 try {
     $care_cloud->tasksApi()->putTask($body, $task_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

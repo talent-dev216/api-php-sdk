@@ -17,5 +17,6 @@ try {
     $items = $recommendationProductEliminate->getData()->getRecommendedProductsList();
     $totalItems = $recommendationProductEliminate->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

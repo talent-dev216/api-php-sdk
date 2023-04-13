@@ -32,5 +32,6 @@ try {
     $recommendation = $get_recommendation->getData();
     var_dump($recommendation);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -35,5 +35,6 @@ $body->setCustomerId('8fae1b952efb32fff53dfb899a');
 try {
     $care_cloud->segmentsApi()->postSegmentRemoveCustomer($body, $segment_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

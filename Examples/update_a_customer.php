@@ -96,5 +96,6 @@ $body->setCustomer($customer)
 try {
     $care_cloud->customersApi()->putCustomer($body, $customer_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

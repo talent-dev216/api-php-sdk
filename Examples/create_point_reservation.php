@@ -35,5 +35,6 @@ $body->setExpirationTime(null); // string | Date and time of the point reservati
 try {
     $care_cloud->pointReservationsApi()->postPointReservationCreate($body, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

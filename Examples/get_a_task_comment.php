@@ -33,5 +33,6 @@ try {
     $task_comment = $get_comment->getData();
     var_dump($task_comment);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

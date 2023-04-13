@@ -31,5 +31,6 @@ $property_record_id = 'datum_otevreni:8bed991c68a470e7aaeffbf048'; // string | T
 try {
     $care_cloud->storesApi()->deleteSubStoreProperty($store_id, $property_record_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

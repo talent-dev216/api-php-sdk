@@ -72,5 +72,6 @@ try {
     $data = $post_payment->getData();
     var_dump($data);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

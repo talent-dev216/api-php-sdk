@@ -35,5 +35,6 @@ $body->setCustomerId('8ea02b112ccac496a3d423c5b1'); // string | Number of the cu
 try {
     $care_cloud->purchasesApi()->postPurchaseAssignCustomer($body, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

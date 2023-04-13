@@ -47,5 +47,6 @@ try {
     var_dump($reward_tags);
     var_dump($total_items);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

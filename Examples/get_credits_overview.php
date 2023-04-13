@@ -39,5 +39,6 @@ try {
     $credits_overview = $get_credits_overview->getData();
     var_dump($credits_overview);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

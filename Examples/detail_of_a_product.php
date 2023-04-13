@@ -32,5 +32,6 @@ try {
     $product = $get_product->getData();
     var_dump($product);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

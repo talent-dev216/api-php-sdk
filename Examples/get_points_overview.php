@@ -39,5 +39,6 @@ try {
     $points_overview = $get_points_overview->getData();
     var_dump($points_overview);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

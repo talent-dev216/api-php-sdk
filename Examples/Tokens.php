@@ -34,5 +34,6 @@ try {
     $createToken = $careCloud->tokensApi()->postToken($body);
     $token_id = $createToken->getData()->getTokenId();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

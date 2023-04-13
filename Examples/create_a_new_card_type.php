@@ -40,5 +40,6 @@ try {
     $new_card_type_id = $post_card_type->getData()->getCardTypeId();
     var_dump($new_card_type_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

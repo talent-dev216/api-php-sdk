@@ -42,5 +42,6 @@ try {
     $interest_record_id = $post_interest->getData()->getInterestRecordId();
     var_dump($interest_record_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

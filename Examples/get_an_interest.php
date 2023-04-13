@@ -32,5 +32,6 @@ try {
     $interest = $get_interest->getData();
     var_dump($interest);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -32,5 +32,6 @@ try {
     $points_expiration = $get_points_expiration->getData();
     var_dump($points_expiration);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

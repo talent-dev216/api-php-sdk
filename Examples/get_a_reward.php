@@ -32,5 +32,6 @@ try {
     $reward = $get_reward->getData();
     var_dump($reward);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -17,5 +17,6 @@ try {
     $items = $productGroups->getData()->getProductGroups();
     $totalItems = $productGroups->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

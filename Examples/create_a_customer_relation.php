@@ -44,5 +44,6 @@ try {
     $customer_relation_id = $post_related_customer->getData()->getCustomerRelationId();
     var_dump($customer_relation_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

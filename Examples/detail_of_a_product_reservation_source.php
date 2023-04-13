@@ -32,5 +32,6 @@ try {
     $product_reservation_source = $get_product_reservation_source->getData();
     var_dump($product_reservation_source);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

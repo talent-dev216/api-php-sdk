@@ -32,5 +32,6 @@ try {
     $purchase = $get_purchase->getData();
     var_dump($purchase);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

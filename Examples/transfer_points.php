@@ -35,5 +35,6 @@ $body->setPointTypeId('8adcb83164fa7e12668035d43e'); // string | Type of the tra
 try {
     $care_cloud->pointsApi()->postPointsTransfer($body, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

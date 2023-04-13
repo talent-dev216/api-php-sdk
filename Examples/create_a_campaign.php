@@ -45,5 +45,6 @@ try {
     $campaign_id = $new_campaign->getData()->getCampaignId();
     var_dump($campaign_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -35,5 +35,6 @@ try {
     $is_valid = $post_verify_otp->getData()->getIsValid();
     var_dump($is_valid);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

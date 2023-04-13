@@ -36,5 +36,6 @@ try {
     $login_data = $post_login->getData();
     var_dump($login_data);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

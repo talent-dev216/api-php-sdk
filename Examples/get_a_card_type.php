@@ -32,5 +32,6 @@ try {
     $card_type = $get_card_type->getData();
     var_dump($card_type);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

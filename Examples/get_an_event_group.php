@@ -35,5 +35,6 @@ try {
     $event_group = $get_event_group->getData();
     var_dump($event_group);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

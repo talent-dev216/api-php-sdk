@@ -31,5 +31,6 @@ $property_record_id = 'blokace_darce:8ea2591121e636086a4a9c0992'; // string | Th
 try {
     $care_cloud->customersApi()->deleteSubCustomerProperty($customer_id, $property_record_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

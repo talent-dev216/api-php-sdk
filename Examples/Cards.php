@@ -19,7 +19,8 @@ try {
     $items = $cards->getData()->getCards();
     $totalItems = $cards->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }
 
 /**
@@ -39,5 +40,6 @@ $store_id = null; // string | assign a store id to the card
 try {
     $assignCard = $careCloud->cardsApi()->putUnassignedCard($card_number, $customer_id, $valid_from, $valid_to, $store_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

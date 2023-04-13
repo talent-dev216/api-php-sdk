@@ -17,5 +17,6 @@ try {
     $items = $productReservations->getData()->getProductReservations();
     $totalItems = $productReservations->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

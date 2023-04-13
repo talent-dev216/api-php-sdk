@@ -35,5 +35,6 @@ try {
     $customer_address_type = $get_customer_address_type->getData();
     var_dump($customer_address_type);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

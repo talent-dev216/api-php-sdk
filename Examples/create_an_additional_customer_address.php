@@ -56,5 +56,6 @@ try {
     $additional_address_id = $post_address->getData()->getAdditionalAddressId();
     var_dump($additional_address_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

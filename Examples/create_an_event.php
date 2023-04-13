@@ -50,5 +50,6 @@ try {
     $event_id = $post_event->getData()->getEventId();
     var_dump($event_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -43,5 +43,6 @@ try {
     $campaign_product_store_record_id = $new_campaign_product_store_record->getData()->getCampaignProductStoreRecordId();
     var_dump($campaign_product_store_record_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

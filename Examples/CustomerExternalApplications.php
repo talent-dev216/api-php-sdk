@@ -17,5 +17,6 @@ try {
     $items = $customerExternalApplications->getData()->getCustomerExternalApplications();
     $totalItems = $customerExternalApplications->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

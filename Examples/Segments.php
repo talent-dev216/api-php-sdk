@@ -17,5 +17,6 @@ try {
     $items = $segments->getData()->getSegments();
     $totalItems = $segments->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

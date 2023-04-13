@@ -35,5 +35,6 @@ try {
     $communication_channel = $get_communication_channel->getData();
     var_dump($communication_channel);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

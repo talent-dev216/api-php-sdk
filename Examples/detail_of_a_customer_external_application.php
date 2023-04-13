@@ -32,5 +32,6 @@ try {
     $customer_external_app = $get_customer_external_app->getData();
     var_dump($customer_external_app);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

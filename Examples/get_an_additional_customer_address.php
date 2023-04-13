@@ -33,5 +33,6 @@ try {
     $address = $get_address->getData();
     var_dump($address);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

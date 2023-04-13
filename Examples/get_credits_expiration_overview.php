@@ -32,5 +32,6 @@ try {
     $credits_expiration = $get_credits_expiration->getData();
     var_dump($credits_expiration);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

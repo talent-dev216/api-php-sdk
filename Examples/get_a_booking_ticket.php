@@ -35,5 +35,6 @@ try {
     $booking_ticket = $get_booking_ticket->getData();
     var_dump($booking_ticket);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

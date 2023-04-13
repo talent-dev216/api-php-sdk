@@ -17,5 +17,6 @@ try {
     $items = $stores->getData()->getStores();
     $totalItems = $stores->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

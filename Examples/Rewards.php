@@ -17,5 +17,6 @@ try {
     $items = $rewards->getData()->getRewards();
     $totalItems = $rewards->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

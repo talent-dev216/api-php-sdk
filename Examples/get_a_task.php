@@ -33,5 +33,6 @@ try {
     $task = $get_task->getData();
     var_dump($task);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

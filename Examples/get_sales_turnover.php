@@ -39,5 +39,6 @@ try {
     $sales_turnover = $get_sales_turnover->getData()->getTurnover();
     var_dump($sales_turnover);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

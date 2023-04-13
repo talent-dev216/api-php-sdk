@@ -33,5 +33,6 @@ $body->setBearerToken('bearer_token'); // string | Autentication bearer token fo
 try {
     $care_cloud->usersApi()->postUserLogout($body, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -35,5 +35,6 @@ try {
     $currency = $get_currency->getData();
     var_dump($currency);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

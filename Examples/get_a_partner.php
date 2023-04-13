@@ -32,5 +32,6 @@ try {
     $partner = $get_partner->getData();
     var_dump($partner);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

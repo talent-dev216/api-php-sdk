@@ -46,5 +46,6 @@ try {
     $product_reservation_id = $post_product_reservation->getData()->getProductReservationId();
     var_dump($product_reservation_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

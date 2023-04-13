@@ -16,5 +16,6 @@ try {
     $salesTurnover = $careCloud->walletApi()->getWalletSalesTurnover('8bed991c68a470e7aaeffbf048');
     $items = $salesTurnover->getData()->getTurnover();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

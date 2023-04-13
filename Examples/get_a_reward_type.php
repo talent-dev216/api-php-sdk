@@ -35,5 +35,6 @@ try {
     $reward_type = $get_reward_type->getData();
     var_dump($reward_type);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

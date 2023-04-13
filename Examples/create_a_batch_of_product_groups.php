@@ -42,5 +42,6 @@ $body->setProductGroups(array($product_group));
 try {
     $care_cloud->productGroupsApi()->postBulkProductGroups($body, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

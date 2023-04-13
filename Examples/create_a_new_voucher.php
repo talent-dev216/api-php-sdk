@@ -43,5 +43,6 @@ try {
     $voucher_id = $post_voucher->getData()->getVoucherId();
     var_dump($voucher_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

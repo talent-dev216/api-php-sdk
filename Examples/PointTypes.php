@@ -17,5 +17,6 @@ try {
     $items = $pointTypes->getData()->getPointTypes();
     $totalItems = $pointTypes->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

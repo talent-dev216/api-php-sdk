@@ -45,5 +45,6 @@ try {
     $campaign_product_store_records = $get_campaign_product_store_records->getData()->getCampaignProductStoreRecords();
     $total_items = $get_campaign_product_store_records->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

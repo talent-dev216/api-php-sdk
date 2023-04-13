@@ -32,5 +32,6 @@ try {
     $payment_summary = $get_payment_summary->getData();
     var_dump($payment_summary);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

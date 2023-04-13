@@ -32,5 +32,6 @@ try {
     $point_record = $get_point_record->getData();
     var_dump($point_record);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

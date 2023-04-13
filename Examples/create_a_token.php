@@ -54,5 +54,6 @@ try {
     $post_token = $care_cloud->tokensApi()->postToken($body, $accept_language);
     $token_id = $post_token->getData()->getTokenId();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

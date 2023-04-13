@@ -17,5 +17,6 @@ try {
     $items = $currencies->getData()->getCurrencies();
     $totalItems = $currencies->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

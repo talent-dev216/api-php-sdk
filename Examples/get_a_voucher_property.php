@@ -36,5 +36,6 @@ try {
     $voucher_property = $get_voucher_property->getData();
     var_dump($voucher_property);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

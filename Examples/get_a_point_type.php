@@ -32,5 +32,6 @@ try {
     $point_type = $get_point_type->getData();
     var_dump($point_type);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -33,5 +33,6 @@ try {
     $relation = $get_relation->getData();
     var_dump($relation);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

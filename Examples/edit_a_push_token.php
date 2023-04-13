@@ -46,5 +46,6 @@ $body->setPushToken('321e5d02605d46c18936912'); // string | Push notification to
 try {
     $care_cloud->tokensApi()->putToken($body, $token_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

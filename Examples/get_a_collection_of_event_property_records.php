@@ -34,5 +34,6 @@ try {
     var_dump($property_records);
     var_dump($total_items);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

@@ -57,5 +57,6 @@ try {
     $new_campaign_product_id = $new_campaign_product->getData()->getCampaignProductId();
     var_dump($new_campaign_product_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

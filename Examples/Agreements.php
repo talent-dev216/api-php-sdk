@@ -19,7 +19,8 @@ try {
     $items = $agreements->getData()->getAgreements();
     $totalItems = $agreements->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }
 
 /**
@@ -36,5 +37,6 @@ try {
     $name = $agreement->getData()->getName();
     $text = $agreement->getData()->getText();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

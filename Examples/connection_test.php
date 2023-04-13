@@ -29,5 +29,6 @@ try {
     $test_string_reverted = $get_connection_test->getData()->getTestString();
     var_dump($test_string_reverted);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

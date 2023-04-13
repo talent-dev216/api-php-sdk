@@ -35,5 +35,6 @@ try {
     $product_reservation_ext_list_type = $get_product_reservation_ext_list_type->getData();
     var_dump($product_reservation_ext_list_type);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

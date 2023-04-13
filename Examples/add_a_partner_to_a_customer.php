@@ -45,5 +45,6 @@ try {
     $partner_record_id = $post_customer_partner->getData()->getPartnerRecordId();
     var_dump($partner_record_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

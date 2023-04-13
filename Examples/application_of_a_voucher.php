@@ -36,5 +36,6 @@ $body->setDateApplied('2022-10-28 15:52:00'); // string | Date (ISO 8601) of vou
 try {
     $care_cloud->vouchersApi()->postVoucherApply($body, $voucher_id, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

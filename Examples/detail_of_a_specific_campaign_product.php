@@ -32,5 +32,6 @@ try {
     $campaign_product = $get_campaign_product->getData();
     var_dump($campaign_product);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

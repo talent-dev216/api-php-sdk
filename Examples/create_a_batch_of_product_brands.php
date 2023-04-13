@@ -38,5 +38,6 @@ $body->setProductBrands(array($product_brand));
 try {
     $care_cloud->productBrandsApi()->postBulkProductBrands($body, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

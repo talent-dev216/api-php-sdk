@@ -22,5 +22,6 @@ try {
     $customerSources = $careCloud->customersActionsApi()->postCustomerVerifyCredentials($body);
     $customer_id = $customerSources->getData()->getCustomerId();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

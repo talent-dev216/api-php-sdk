@@ -74,5 +74,6 @@ try {
     $purchase_id = $post_purchase->getData()->getPurchaseId();
     var_dump($purchase_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

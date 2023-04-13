@@ -44,5 +44,6 @@ try {
     $card_id = $post_card->getData()->getCardId();
     var_dump($card_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

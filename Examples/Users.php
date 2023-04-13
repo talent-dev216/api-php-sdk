@@ -22,5 +22,6 @@ try {
     $user = $careCloud->usersApi()->postUserLogin($body);
     $token = $user->getData()->getBearerToken();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }

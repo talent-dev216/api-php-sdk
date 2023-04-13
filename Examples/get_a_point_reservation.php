@@ -32,5 +32,6 @@ try {
     $point_reservation = $get_point_reservation->getData();
     var_dump($point_reservation);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

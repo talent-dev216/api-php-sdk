@@ -35,5 +35,6 @@ try {
     $file_url = $post_generate_card->getData()->getFileUrl();
     var_dump($file_url);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

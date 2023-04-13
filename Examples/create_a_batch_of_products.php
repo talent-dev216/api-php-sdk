@@ -49,5 +49,6 @@ $body->setProducts(array($product1));
 try {
     $care_cloud->productsApi()->postBulkProducts($body, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

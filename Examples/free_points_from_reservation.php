@@ -32,5 +32,6 @@ $body->setExternalId('e134'); // string | The external id of the point reservati
 try {
     $care_cloud->pointReservationsApi()->postPointReservationRelease($body, $accept_language);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

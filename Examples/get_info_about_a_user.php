@@ -32,5 +32,6 @@ try {
     $user = $get_user->getData();
     var_dump($user);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

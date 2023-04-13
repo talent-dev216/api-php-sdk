@@ -102,5 +102,6 @@ try {
     $customer_id = $post_customer->getData()->getCustomerId();
     var_dump($customer_id);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

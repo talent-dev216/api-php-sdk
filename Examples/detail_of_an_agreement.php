@@ -33,5 +33,6 @@ try {
     $agreement = $get_agreement->getData();
     var_dump($agreement);
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody() ?: $e->getMessage()));
+    var_dump($e->getResponseBody() ?: $e->getMessage());
+    die();
 }

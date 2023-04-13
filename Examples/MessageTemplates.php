@@ -17,5 +17,6 @@ try {
     $items = $messageTemplates->getData()->getMessageTemplates();
     $totalItems = $messageTemplates->getData()->getTotalItems();
 } catch (ApiException $e) {
-    die(var_dump($e->getResponseBody()));
+    var_dump($e->getResponseBody());
+    die();
 }
