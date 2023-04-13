@@ -40,7 +40,7 @@ try {
         $sort_direction,
         $name
     );
-    $reward_properties = $get_reward_properties->getData()->getRewardProperties();
+    $reward_properties = $get_reward_properties->getData()->getRewardsProperties();
     $total_items = $get_reward_properties->getData()->getTotalItems();
     var_dump($reward_properties);
     var_dump($total_items);

@@ -38,7 +38,7 @@ $store_id = null; // string | assign a store id to the card
 
 // Call endpoint and get data
 try {
-    $assignCard = $careCloud->cardsApi()->putUnassignedCard($card_number, $customer_id, $valid_from, $valid_to, $store_id, $accept_language);
+    $careCloud->cardsApi()->putUnassignedCard($card_number, $customer_id, $valid_from, $valid_to, $store_id, $accept_language);
 } catch (ApiException $e) {
     var_dump($e->getResponseBody() ?: $e->getMessage());
     die();

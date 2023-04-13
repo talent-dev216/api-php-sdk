@@ -13,7 +13,9 @@ $careCloud = new CareCloud($config);
 
 try {
     // Get the best recommendation with an elimination
-    $recommendationProductEliminate = $careCloud->productRecommendationEngineApi()->getRecommendationProductEliminate('8bed991c68a470e7aaeffbf048');
+    $recommendationProductEliminateBody = new CrmCareCloud\Webservice\RestApi\Client\Model\ActionsEliminateBody();
+    $recommendationProductEliminateBody->setCustomerId('8bed991c68a470e7aaeffbf048');
+    $recommendationProductEliminate = $careCloud->productRecommendationEngineApi()->postRecommendationProductEliminate($recommendationProductEliminateBody);
     $items = $recommendationProductEliminate->getData()->getRecommendedProductsList();
     $totalItems = $recommendationProductEliminate->getData()->getTotalItems();
 } catch (ApiException $e) {
