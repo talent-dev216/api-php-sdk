@@ -4,6 +4,9 @@ parameters:
         - src
         - Examples
     ignoreErrors:
-        - '#Variable .* might not be defined\.#'
-        - '#Parameter .* of .* expects .*, .* given\.#'
-        - '#Unreachable statement - code above always terminates\.#'
+        -
+            message: '#Variable .* might not be defined\.#'
+            path: Examples
+        -
+            message: '#Parameter .* of .* expects .*, .* given\.#'
+            path: Examples

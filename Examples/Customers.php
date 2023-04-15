@@ -43,7 +43,6 @@ $customer_type_id = null; // By resource customer-types
 try {
     $allRewards = $careCloud->customersApi()->getAllRewards($customer_id, $rewards, $reward_group, $vouchers, $campaign_products, $is_valid, $customer_type_id, $accept_language);
     print_r($allRewards);
-    die();
 } catch (ApiException $e) {
     var_dump($e->getResponseBody() ?: $e->getMessage());
     die();
@@ -344,7 +343,7 @@ $body->setCustomer($customer)
 
 // Call endpoint and get data
 try {
-    $putCustomer = $careCloud->customersApi()->putCustomer($body, $customer_id, $accept_language);
+    $careCloud->customersApi()->putCustomer($body, $customer_id, $accept_language);
 } catch (ApiException $e) {
     var_dump($e->getResponseBody() ?: $e->getMessage());
     die();
