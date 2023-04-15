@@ -101,7 +101,7 @@ class CareCloud
 
     private ?Cache $cache;
 
-    private Configuration $default_configuration;
+    private ?Configuration $default_configuration = null;
 
     public function __construct(Config $config, Cache $cache = null)
     {
@@ -112,6 +112,10 @@ class CareCloud
 
     public function getDefaultConfiguration(): Configuration
     {
+        if ($this->default_configuration !== null) {
+            return $this->default_configuration;
+        }
+
         $url = trim($this->config->getProjectUri());
 
         $this->default_configuration = Configuration::getDefaultConfiguration()->setHost($url);
@@ -760,7 +764,7 @@ class CareCloud
     }
 
     /**
-     * @return mixed|null
+     * @return mixed
      * @throws ApiException
      * @throws \InvalidArgumentException|ApiException
      */
@@ -779,7 +783,7 @@ class CareCloud
             return $cache->get('countries');
         }
 
-        return null;
+        return $this->countriesApi()->getCountries();
     }
 
     /**
