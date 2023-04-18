@@ -49,9 +49,9 @@ class AuthenticationHandler
     }
 
     /**
-     * @return ?string
+     * @return string
      */
-    public function getToken(): ?string
+    public function getToken(): string
     {
         return $this->token;
     }

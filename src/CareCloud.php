@@ -107,9 +107,11 @@ class CareCloud
     {
         $this->config = $config;
         $this->cache = $cache;
-        $this->getDefaultConfiguration();
     }
 
+    /**
+     * @return Configuration
+     */
     public function getDefaultConfiguration(): Configuration
     {
         if ($this->default_configuration !== null) {
@@ -186,7 +188,7 @@ class CareCloud
     public function setConfig(Config $config): void
     {
         $this->config = $config;
-        $this->getDefaultConfiguration();
+        $this->default_configuration = null;
     }
 
     /**
@@ -326,7 +328,7 @@ class CareCloud
     }
 
     /**
-     * @return \CrmCareCloud\Webservice\RestApi\Client\SDK\Extensions\CustomersApi
+     * @return Extensions\CustomersApi
      */
     public function customersApi(): CustomersApi
     {
@@ -753,11 +755,17 @@ class CareCloud
         return new WalletApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
+    /**
+     * @return TasksApi
+     */
     public function tasksApi(): TasksApi
     {
         return new TasksApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
+    /**
+     * @return TaskPropertiesApi
+     */
     public function taskPropertiesApi(): TaskPropertiesApi
     {
         return new TaskPropertiesApi($this->getClient(), $this->getDefaultConfiguration());
@@ -802,6 +810,9 @@ class CareCloud
         return $api->postUserLogin($body);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function getHashedPassword(): string
     {
         $dt = new DateTime('now', new DateTimeZone('UTC'));
@@ -809,6 +820,9 @@ class CareCloud
         return hash('sha256', md5($this->config->getPassword()) . $dt->format("YmdH"));
     }
 
+    /**
+     * @return string
+     */
     private function getCareCloudUserAgent(): string
     {
         return 'CareCloud SDK ' . SdkConfig::SDK_VERSION;
