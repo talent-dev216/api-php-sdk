@@ -4,6 +4,9 @@
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
+use CrmCareCloud\Webservice\RestApi\Client\Model\ExternalCode;
+use CrmCareCloud\Webservice\RestApi\Client\Model\ProductReservation;
+use CrmCareCloud\Webservice\RestApi\Client\Model\ProductreservationsBody;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
@@ -24,17 +27,17 @@ $care_cloud = new CareCloud($config);
 $accept_language = 'en'; //	string | The unique id of the language code by ISO 639-1 Default: cs, en-gb;q=0.8
 
 // Set the request body
-$external_code1 = new \CrmCareCloud\Webservice\RestApi\Client\Model\ExternalCode();
+$external_code1 = new ExternalCode();
 $external_code1->setExternalCodeTypeId(1); // integer | The unique id of the external code type
 $external_code1->setValue('ext_code_001'); // string | Value of the external code
 
-$product_reservation = new \CrmCareCloud\Webservice\RestApi\Client\Model\ProductReservation();
+$product_reservation = new ProductReservation();
 $product_reservation->setCustomerId('8ea2591121e636086a4a9c0992');
 $product_reservation->setStoreId('8bed991c68a470e7aaeffbf048');
 $product_reservation->setExternalReservationCodes(array($external_code1));
 $product_reservation->setProductReservationSourceId('86e05affc7a7abefcd513ab400');
 
-$body = new \CrmCareCloud\Webservice\RestApi\Client\Model\ProductreservationsBody();
+$body = new ProductreservationsBody();
 $body->setProductReservation($product_reservation);
 
 // Call endpoint and post data

@@ -31,7 +31,7 @@ $sort_direction = 'DESC'; // string | Direction of sorting the response list (op
 $customer_id = null; // string | The unique id of the customer (optional, default is null)
 $card_number = null; // string | Number of the customer card (optional, default is null)
 $card_type_id = null; // string | The unique id of the card type (optional, default is null)
-$state = null; // integer | State of the customer. Possible values are: 0 - deleted / 1 - active / 2 - non active (optional, default is null)
+$state = null; // integer | State of the customer. Possible values are: 0 - deleted / 1 - active / 2 - non-active (optional, default is null)
 $is_valid = null; // boolean | in validity range - true / before or after validity range - false / no value - all (optional, default is null)
 
 // Call endpoint and get data

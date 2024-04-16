@@ -38,8 +38,8 @@ $task->setTaskTypeId('8bed991c68a470e7aaeffbf048') // string | The unique id of 
 // Set the request body
 $body = new TasksBody();
 $body->setTask($task);
-$body->setAssignees(null); // array of objects | List of an task assignees (optional)
-$body->setPropertyRecords(null); // array of objects | List of an task property records (optional)
+$body->setAssignees(null); // array of objects | List of a task assignees (optional)
+$body->setPropertyRecords(null); // array of objects | List of a task property records (optional)
 
 // Call endpoint and post data
 try {

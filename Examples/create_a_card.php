@@ -27,7 +27,7 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 
 // Set card info
 $card = new Card();
-$card->setCustomerId('87af991126405bf8e7dfb36045'); // string | The unique id for the card holder
+$card->setCustomerId('87af991126405bf8e7dfb36045'); // string | The unique id for the cardholder
 $card->setCardTypeId('81eaeea13b8984a169c490a325'); // string | The unique id for the card type
 $card->setCardNumber('CARD10101'); // string | Card number
 $card->setValidFrom('2022-10-18 16:18:00'); // string | Card validity from (YYYY-MM-DD HH:MM:SS)

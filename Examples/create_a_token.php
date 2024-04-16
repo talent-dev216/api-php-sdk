@@ -32,7 +32,7 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 // Set the device info
 $device = new Device();
 $device->setDeviceId('test121212'); // string | The unique id of the client device
-$device->setDeviceSystem('iOS'); // string | Operation system of the device
+$device->setDeviceSystem('iOS'); // string | Operating system of the device
 $device->setDeviceName('Apple iPhone'); // string | The name of the device
 $device->setDeviceType('test_device'); // string | Type of device by producer (product line)
 

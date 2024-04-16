@@ -26,7 +26,7 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 
 // Set card info to the request body
 $body = new ActionsAssignfreecardBody();
-$body->setCustomerId('83ad6b11209eaf4e2a18e0b319'); // string | The unique id for the card holder
+$body->setCustomerId('83ad6b11209eaf4e2a18e0b319'); // string | The unique id for the cardholder
 $body->setCardTypeId('8bed991c68a470e7aaeffbf048'); // string | The unique id for the card type
 
 // Call endpoint and post data

@@ -88,7 +88,7 @@ $personal_information = new PersonalInformation();
 $personal_information->setGender(1) // integer | Gender of the customer Possible values: 1 - male, 2 - female
 ->setFirstName('John') // string | First name of the customer
 ->setLastName('Smith') // string | Last name of the customer
-->setBirthdate('1985-02-12') // string <date> | Customer's date of birth (YYYY-MM-DD)
+->setBirthdate(new DateTime('1985-02-12')) // string <date> | Customer's date of birth (YYYY-MM-DD)
 ->setEmail('happy_customer@crmcarecloud.com') // string | Email of the customer
 ->setPhone('420523828931') // string | Phone number of the customer with international prefix (420000000000)
 ->setLanguageId('cs') // string | The unique id for the language by ISO 639 code
@@ -115,12 +115,12 @@ $body = new CustomersBody();
 $body->setCustomer($customer)
     ->setCustomerSource($customer_source)
     ->setPassword('fO7mrC7spZjr') // string | Password of the customer.
-    ->setAutologin(false) // boolean | If true, password is required and customer is logged in. Otherwise password is optional
+    ->setAutologin(false) // boolean | If true, password is required and customer is logged in. Otherwise, password is optional
     ->setSocialNetworkCredentials($social_network_credentials);
 
 // Call endpoint and get data
 try {
-    $newCustomer = $careCloud->customersApi()->postCustomer($body, $accept_language);;
+    $newCustomer = $careCloud->customersApi()->postCustomer($body, $accept_language);
 } catch (ApiException $e) {
     var_dump($e->getResponseBody() ?: $e->getMessage());
     die();
@@ -166,7 +166,7 @@ $personal_information = new PersonalInformation();
 $personal_information->setGender(1) // integer | Gender of the customer Possible values: 1 - male, 2 - female
 ->setFirstName('John') // string | First name of the customer
 ->setLastName('Smith') // string | Last name of the customer
-->setBirthdate('1985-02-12') // string <date> | Customer's date of birth (YYYY-MM-DD)
+->setBirthdate(new DateTime('1985-02-12')) // string <date> | Customer's date of birth (YYYY-MM-DD)
 ->setEmail('happy_customer@crmcarecloud.com') // string | Email of the customer
 ->setPhone('420523828931') // string | Phone number of the customer with international prefix (420000000000)
 ->setLanguageId('cs') // string | The unique id for the language by ISO 639 code
@@ -193,7 +193,7 @@ $customerBody = new CustomersBody();
 $customerBody->setCustomer($customer)
     ->setCustomerSource($customer_source)
     ->setPassword('fO7mrC7spZjr') // string | Password of the customer.
-    ->setAutologin(false) // boolean | If true, password is required and customer is logged in. Otherwise password is optional
+    ->setAutologin(false) // boolean | If true, password is required and customer is logged in. Otherwise, password is optional
     ->setSocialNetworkCredentials($social_network_credentials);
 
 // Set the card information that will be assigned to the customer
@@ -318,7 +318,7 @@ $personal_information = new PersonalInformation();
 $personal_information->setGender(1) // integer | Gender of the customer Possible values: 1 - male, 2 - female
 ->setFirstName('John') // string | First name of the customer
 ->setLastName('Smith') // string | Last name of the customer
-->setBirthdate('1985-02-12') // string <date> | Customer's date of birth (YYYY-MM-DD)
+->setBirthdate(new DateTime('1985-02-12')) // string <date> | Customer's date of birth (YYYY-MM-DD)
 ->setEmail('happy_customer@crmcarecloud.com') // string | Email of the customer
 ->setPhone('420523828931') // string | Phone number of the customer with international prefix (420000000000)
 ->setLanguageId('cs') // string | The unique id for the language by ISO 639 code

@@ -92,7 +92,7 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
             $total_rewards = $get_rewards->getData()->getTotalItems();
         }
 
-        // We want get resource vouchers
+        // We want to get resource vouchers
         if ($vouchers) {
             $get_vouchers = $this->getSubCustomerVouchers(
                 $customer_id,
@@ -109,7 +109,7 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
             $total_vouchers = $get_vouchers->getData()->getTotalItems();
         }
 
-        // We want get resource campaign-products
+        // We want to get resource campaign-products
         if ($campaign_products) {
             if (is_null($customer_type_id)) {
                 $customer_type_id_param = null;
@@ -168,7 +168,6 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
         $card_type_id = (isset($card) ? $card->getCardTypeId() : null);
 
         $response = array(
-            'customer_id' => null,
             'card_id' => null,
             'property_record_id' => null,
             'interest_record_id' => null,

@@ -24,7 +24,8 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
             $accept_language = "";
         }
         $get_card = $this->getCards($accept_language, 100, 0, null, null, null, $card_number);
-        $card = $get_card->getData()->getCards()[0];
+        $cards = $get_card->getData()->getCards();
+        $card = reset($cards);
 
         if ($card->getCustomerId()) {
             throw new Exception('The card is already assigned to the customer.');
@@ -64,6 +65,6 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
         $body = new CardsCardIdBody();
         $body->setCard($cart_body);
 
-        $this->putCard($body, $unassigned_card->getCardId(),);
+        $this->putCard($body, $unassigned_card->getCardId());
     }
 }

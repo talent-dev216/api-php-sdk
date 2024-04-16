@@ -30,7 +30,7 @@ $card_id = '82db62087b0f79a6e14e5747e7'; // string | The unique id of the card
 
 // Set card info
 $card = new Card();
-$card->setCustomerId('8fac83212755b729a2f3f9bbb0'); // string | The unique id for the card holder
+$card->setCustomerId('8fac83212755b729a2f3f9bbb0'); // string | The unique id for the cardholder
 $card->setCardTypeId('81eaeea13b8984a169c490a325'); // string | The unique id for the card type
 $card->setCardNumber('CARD1011'); // string | Card number
 $card->setValidFrom('2022-10-17 16:18:00'); // string | Card validity from (YYYY-MM-DD HH:MM:SS)

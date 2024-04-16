@@ -4,6 +4,7 @@
  */
 
 use CrmCareCloud\Webservice\RestApi\Client\ApiException;
+use CrmCareCloud\Webservice\RestApi\Client\Model\ActionsCancelreservationBody;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
@@ -27,7 +28,7 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 $product_reservation_id = '81eaeea13b8984a169c490a325'; // string | The unique id of the product reservation
 
 // Set the request body
-$body = new \CrmCareCloud\Webservice\RestApi\Client\Model\ActionsCancelreservationBody();
+$body = new ActionsCancelreservationBody();
 $body->setProductReservationId($product_reservation_id);
 
 // Call endpoint and delete data

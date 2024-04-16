@@ -29,7 +29,7 @@ $accept_language = 'en'; //	string | The unique id of the language code by ISO 6
 // Set the event data
 $event = new Event();
 $event->setEventTypeId('82d0f9d976dee39aacd13dc7ea'); // string | The unique id of the event type
-$event->setCustomerId('8ea2591121e636086a4a9c0992'); // string | The unique id for the card holder
+$event->setCustomerId('8ea2591121e636086a4a9c0992'); // string | The unique id for the cardholder
 $event->setExternalId('e123'); // string | The unique external id of the event
 $event->setData(null); // string, string[] or object | Additional data of the event. Serialized data in JSON (optional)
 $event->setCreatedAt(null); // string | Date and time of the event (YYYY-MM-DD HH:MM:SS) (optional)

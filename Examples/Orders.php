@@ -7,7 +7,6 @@ use CrmCareCloud\Webservice\RestApi\Client\Model\OrderItem;
 use CrmCareCloud\Webservice\RestApi\Client\Model\OrdersBody;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\CareCloud;
-use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 
 require_once '../vendor/autoload.php';
 require_once 'config.php';

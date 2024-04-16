@@ -69,7 +69,7 @@ $personal_information->setSalutation('Mr. Doe') // string | Customers salutation
 ->setGender(1) // integer | Gender of the customer Possible values: 1 - male, 2 - female (optional)
 ->setFirstName('John') // string | First name of the customer (optional)
 ->setLastName('Doe') // string | Last name of the customer (optional)
-->setBirthdate('1990-01-01') // string <date> | Customer's date of birth (YYYY-MM-DD) (optional)
+->setBirthdate(new DateTime('1990-01-01')) // string <date> | Customer's date of birth (YYYY-MM-DD) (optional)
 ->setEmail('doe@crmcarecloud.com') // string | Email of the customer (optional)
 ->setPhone('420523828932') // string | Phone number of the customer with international prefix (420000000000) (optional)
 ->setLanguageId('cs') // string | The unique id for the language by ISO 639 code

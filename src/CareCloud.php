@@ -37,6 +37,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\MessagesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\MessageTemplatesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\OneTimePasswordApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\OrdersApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PartnerPropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PartnersApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PointHistoryApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PointReservationApi;
@@ -477,6 +478,14 @@ class CareCloud
     public function partnersApi(): PartnersApi
     {
         return new PartnersApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return PartnerPropertiesApi
+     */
+    public function partnerPropertiesApi(): PartnerPropertiesApi
+    {
+        return new PartnerPropertiesApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
     /**
