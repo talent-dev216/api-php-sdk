@@ -1,0 +1,12 @@
+<?php
+
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Config;
+use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
+
+$config = new Config(
+    "url",
+    "login",
+    "password",
+    "external_application_id",
+    AuthTypes::DEFAULT_AUTH
+);

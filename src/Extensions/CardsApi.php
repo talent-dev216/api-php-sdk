@@ -25,6 +25,7 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
         }
         $get_card = $this->getCards($accept_language, 100, 0, null, null, null, $card_number);
         $cards = $get_card->getData()->getCards();
+        /** @var Card $card */
         $card = reset($cards);
 
         if ($card->getCustomerId()) {

@@ -69,7 +69,7 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
             if (is_null($customer_type_id)) {
                 $customer_type_id_param = null;
             } else {
-                $customer_type_id_param = array($customer_type_id);
+                $customer_type_id_param = [$customer_type_id];
             }
             $get_rewards = $this->getSubCustomerRewards(
                 $customer_id,
@@ -114,7 +114,7 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
             if (is_null($customer_type_id)) {
                 $customer_type_id_param = null;
             } else {
-                $customer_type_id_param = array($customer_type_id);
+                $customer_type_id_param = [$customer_type_id];
             }
             $get_campaign_products = $this->care_cloud->campaignProductsApi()->getCampaignProducts(
                 (is_null($accept_language) ? "" : $accept_language),
@@ -167,11 +167,11 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
         $store_id = (isset($card) ? $card->getStoreId() : null);
         $card_type_id = (isset($card) ? $card->getCardTypeId() : null);
 
-        $response = array(
+        $response = [
             'card_id' => null,
             'property_record_id' => null,
             'interest_record_id' => null,
-        );
+        ];
 
         // Search for the card and verify that it is not assigned
         if ($card_number) {
@@ -188,8 +188,8 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
 
         //assign the customer's searched card if it is free
         if ($card_number && $card_id) {
-            $cart_body = new Card();
-            $cart_body->setCustomerId($customer_id)
+            $card_body = new Card();
+            $card_body->setCustomerId($customer_id)
                 ->setCardTypeId((is_null($card_type_id) ? "" : $card_type_id))
                 ->setCardNumber($card_number)
                 ->setValidFrom((is_null($valid_from) ? "" : $valid_from))
@@ -198,7 +198,7 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
                 ->setState((is_null($state) ? 0 : $state));
 
             $body = new CardsCardIdBody();
-            $body->setCard($cart_body);
+            $body->setCard($card_body);
 
             $this->care_cloud->cardsApi()->putCard($body, $card_id, (is_null($accept_language) ? "" : $accept_language));
             // If we don't know the card number assign any free
@@ -226,6 +226,7 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
 
         // Add an interest record to a customer if is set
         if ($interest_body) {
+            $interest_body->getInterestRecord()->setCustomerId($customer_id);
             $interest_record = $this->postSubCustomerInterest($interest_body, $customer_id, (is_null($accept_language) ? "" : $accept_language));
             $interest_record_id = $interest_record->getData()->getInterestRecordId();
             $response['interest_record_id'] = $interest_record_id;

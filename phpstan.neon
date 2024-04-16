@@ -3,6 +3,7 @@ parameters:
     paths:
         - src
         - Examples
+        - Tests
     ignoreErrors:
         -
             message: '#Variable .* might not be defined\.#'

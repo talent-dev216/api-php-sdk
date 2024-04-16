@@ -1,3 +1,4 @@
 vendor
 Examples/config.php
 .idea
+Tests/config.php
