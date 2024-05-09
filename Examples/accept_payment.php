@@ -33,7 +33,7 @@ $plu_ids->setListCode('local_code');
 $plu_ids->setCode('e345');
 
 $bill_item = new BillItem();
-$bill_item->setPluIds(array($plu_ids));
+$bill_item->setPluIds([$plu_ids]);
 $bill_item->setPluName('Teapot');
 $bill_item->setCategoryPluId('1110001');
 $bill_item->setVatRate(0);
@@ -52,7 +52,7 @@ $bill->setPaymentTime('2022-10-30T15:51:49+02:00');
 $bill->setCreatedBy(null);
 $bill->setCurrencyId('8bed991c68a470e7aaeffbf048');
 $bill->setTotalPrice(100);
-$bill->setBillItems(array($bill_item));
+$bill->setBillItems([$bill_item]);
 
 // Set the request body
 $body = new ActionsAcceptpaymentBody();

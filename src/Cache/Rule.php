@@ -10,10 +10,10 @@ class Rule
 
     private int $ttl;
 
-    const REQUEST_TYPE_GET = 'GET';
-    const REQUEST_TYPE_POST = 'POST';
-    const REQUEST_TYPE_PUT = 'PUT';
-    const REQUEST_TYPE_DELETE = 'DELETE';
+    public const REQUEST_TYPE_GET = 'GET';
+    public const REQUEST_TYPE_POST = 'POST';
+    public const REQUEST_TYPE_PUT = 'PUT';
+    public const REQUEST_TYPE_DELETE = 'DELETE';
 
     public function __construct(string $request_type, string $path, int $ttl = 500)
     {
@@ -31,7 +31,6 @@ class Rule
     }
 
     /**
-     * @param string $request_type
      * @return Rule
      */
     public function setRequestType(string $request_type): Rule
@@ -50,8 +49,6 @@ class Rule
     }
 
     /**
-     * @param string $path
-     *
      * @return Rule
      */
     public function setPath(string $path): Rule
@@ -70,8 +67,6 @@ class Rule
     }
 
     /**
-     * @param int $ttl
-     *
      * @return Rule
      */
     public function setTtl(int $ttl): Rule

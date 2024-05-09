@@ -35,11 +35,7 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
     /**
      * Get all rewards
      *
-     * @param string $customer_id
-     * @param bool $rewards
      * @param int|null $reward_group
-     * @param bool $vouchers
-     * @param bool $campaign_products
      * @param bool|null $is_valid
      * @param string|null $customer_type_id
      * @param string|null $accept_language
@@ -142,10 +138,6 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
     /**
      * Save the customer extended
      *
-     * @param CustomersBody $customer_body
-     * @param Card|null $card
-     * @param ?CustomerIdPropertyrecordsBody $property_body
-     * @param ?CustomerIdInterestrecordsBody $interest_body
      * @param string|null $accept_language
      *
      * @return array<string, string|null>
@@ -236,11 +228,6 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
     }
 
     /**
-     * @param CareCloud $care_cloud
-     * @param CustomersBody $customers_body
-     * @param string $accept_language
-     * @param string $customer_source_id
-     * @param string $external_id
      *
      * @return Customer
      * @throws ApiException

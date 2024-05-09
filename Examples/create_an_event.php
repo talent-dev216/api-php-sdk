@@ -42,7 +42,7 @@ $property_record->setPropertyValue(2); // (string or null) or (number or null) o
 // Set the request body
 $body = new EventsBody();
 $body->setEvent($event);
-$body->setPropertyRecords(array($property_record)); // array of objects | List of an event property records (optional)
+$body->setPropertyRecords([$property_record]); // array of objects | List of an event property records (optional)
 
 // Call endpoint and post data
 try {

@@ -32,7 +32,7 @@ $product_brand->setExternalId('123'); // string | The unique external id of the 
 
 // Set the request body
 $body = new ProductbrandsBatchBody();
-$body->setProductBrands(array($product_brand));
+$body->setProductBrands([$product_brand]);
 
 // Call endpoint and post data
 try {

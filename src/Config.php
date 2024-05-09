@@ -30,12 +30,6 @@ class Config
     private string $interface;
 
     /**
-     * @param string $project_uri
-     * @param string $login
-     * @param string $password
-     * @param string $external_app_id
-     * @param string $auth_type
-     * @param string $interface
      * @param CacheInterface|null $cache
      * @param string|null $token
      * @param callable[] $middlewares
@@ -71,7 +65,6 @@ class Config
     }
 
     /**
-     * @param string $project_uri
      * @return Config
      */
     public function setProjectUri(string $project_uri): Config
@@ -90,8 +83,6 @@ class Config
     }
 
     /**
-     * @param string $login
-     *
      * @return Config
      */
     public function setLogin(string $login): Config
@@ -110,8 +101,6 @@ class Config
     }
 
     /**
-     * @param string $password
-     *
      * @return Config
      */
     public function setPassword(string $password): Config
@@ -130,7 +119,6 @@ class Config
     }
 
     /**
-     * @param string $external_app_id
      * @return Config
      */
     public function setExternalAppId(string $external_app_id): Config
@@ -149,7 +137,6 @@ class Config
     }
 
     /**
-     * @param string $auth_type
      * @return Config
      */
     public function setAuthType(string $auth_type): Config
@@ -167,9 +154,6 @@ class Config
         return $this->cache;
     }
 
-    /**
-     * @param CacheInterface|null $cache
-     */
     public function setCache(?CacheInterface $cache): void
     {
         $this->cache = $cache;
@@ -183,9 +167,6 @@ class Config
         return $this->token;
     }
 
-    /**
-     * @param string|null $token
-     */
     public function setToken(?string $token): void
     {
         $this->token = $token;
@@ -215,9 +196,6 @@ class Config
         return $this->interface;
     }
 
-    /**
-     * @param string $interface
-     */
     public function setInterface(string $interface): void
     {
         $this->interface = $interface;

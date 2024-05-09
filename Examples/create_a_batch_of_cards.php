@@ -36,7 +36,7 @@ $card1->setStoreId(null); // string | The unique id of the store (optional)
 $card1->setState(1); // integer | Possible values are: 0 - blocked / 1 - active
 
 $body = new CardsBatchBody();
-$body->setCards(array($card1));
+$body->setCards([$card1]);
 
 // Call endpoint and post data
 try {

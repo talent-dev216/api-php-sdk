@@ -31,7 +31,7 @@ $partner_record1->setPartnerId('86e05affc7a7abefcd513ab400'); // string | The un
 
 $body = new ActionsSetpartnersBody();
 $body->setCustomerId('8ea2591121e636086a4a9c0992'); // string | The unique id of the customer
-$body->setPartnerRecords(array($partner_record1));
+$body->setPartnerRecords([$partner_record1]);
 
 // Call endpoint and post data
 try {

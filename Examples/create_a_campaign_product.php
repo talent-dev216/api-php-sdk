@@ -43,7 +43,7 @@ $campaign_product->setValue(100); // float | Value of the product
 $campaign_product->setValueTypeId(2); // int | Type of value (1 - percentage discount value, 2 - final price)
 $campaign_product->setValidFrom('2022-10-17 00:00:00'); // string | Valid from (YYYY-MM-DD HH:MM:SS)
 $campaign_product->setValidTo('2022-10-19 00:00:00'); // string | Valid to (YYYY-MM-DD HH:MM:SS)
-$campaign_product->setDisplayIn(array()); // string[] | List of possible display places (optional)
+$campaign_product->setDisplayIn([]); // string[] | List of possible display places (optional)
 $campaign_product->setTypeId('86e05affc7a7abefcd513ab400'); // string | Type of the campaign product
 $campaign_product->setPresentationData($presentation_data);
 

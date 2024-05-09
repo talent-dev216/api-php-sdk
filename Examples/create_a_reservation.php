@@ -34,7 +34,7 @@ $external_code1->setValue('ext_code_001'); // string | Value of the external cod
 $product_reservation = new ProductReservation();
 $product_reservation->setCustomerId('8ea2591121e636086a4a9c0992');
 $product_reservation->setStoreId('8bed991c68a470e7aaeffbf048');
-$product_reservation->setExternalReservationCodes(array($external_code1));
+$product_reservation->setExternalReservationCodes([$external_code1]);
 $product_reservation->setProductReservationSourceId('86e05affc7a7abefcd513ab400');
 
 $body = new ProductreservationsBody();

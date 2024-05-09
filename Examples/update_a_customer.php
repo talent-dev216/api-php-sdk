@@ -51,10 +51,7 @@ $custom_agreement2 = new CustomAgreements();
 $custom_agreement2->setAgreementId('8fd73167342d06899c4c015320'); // string | The unique id of the agreement in CareCloud
 $custom_agreement2->setAgreementValue(1); // integer | Value of the specific agreement Possible values: 0 - no, consent canceled / 1 - yes, consent given / 2 - consent not set
 
-$custom_agreements = array(
-    $custom_agreement1,
-    $custom_agreement2,
-);
+$custom_agreements = [$custom_agreement1, $custom_agreement2];
 
 // Set agreement of a new customer
 $agreement = new Agreement();

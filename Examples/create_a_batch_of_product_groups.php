@@ -36,7 +36,7 @@ $product_group->setStoreId(null); // string | The unique id for the store where 
 
 // Set the request body
 $body = new ProductgroupsBatchBody();
-$body->setProductGroups(array($product_group));
+$body->setProductGroups([$product_group]);
 
 // Call endpoint and post data
 try {

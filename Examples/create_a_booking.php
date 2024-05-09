@@ -37,7 +37,7 @@ $booking_item1->setCustomerId('85bc5819e09dab95437552ce79'); // string | The uni
 
 $booking = new Booking();
 $booking->setCustomerId('85bc5819e09dab95437552ce79'); // string | The unique id of the customer (optional)
-$booking->setBookingItems(array($booking_item1)); // BookingItem[] | List of the booking items
+$booking->setBookingItems([$booking_item1]); // BookingItem[] | List of the booking items
 $booking->setBookingStatus(null); //string | Current status of the booking from resource booking-statuses. If not set, CareCloud uses default booking status.
 $booking->setCreatedAt('2023-03-08 10:51:34'); // string | Date and time of the booking (YYYY-MM-DD HH:MM:SS)
 

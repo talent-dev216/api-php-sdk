@@ -23,7 +23,7 @@ class CacheRequestMatcher implements RequestMatcherInterface
             return false;
         }
 
-        if (strpos($request->getUri()->getPath(), $this->rule->getPath()) === false) {
+        if (!str_contains($request->getUri()->getPath(), $this->rule->getPath())) {
             return false;
         }
 

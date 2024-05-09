@@ -4,6 +4,6 @@ namespace CrmCareCloud\Webservice\RestApi\Client\SDK\Data;
 
 class Interfaces
 {
-    const ENTERPRISE = 'enterprise';
-    const CUSTOMER = 'customer';
+    public const ENTERPRISE = 'enterprise';
+    public const CUSTOMER = 'customer';
 }

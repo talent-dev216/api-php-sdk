@@ -36,7 +36,7 @@ $message->setCustomerId('8ea2591121e636086a4a9c0992'); // string | The unique id
 $message->setMessageTemplateId('8bed991c68a470e7aaeffbf048'); // string | The unique id of the message template
 $message->setContact('happycustomer@crmcarecloud.com'); // string | Email address or phone number of customer in case of send message to different contact than customer has in database (optional)
 $message->setCommunicationChannelId(1); // integer | 1 - email / 2- SMS / 4 - PUSH notification (Apple or Google)/ 5 - internal system notification
-$message->setMessageData(array($parameter));
+$message->setMessageData([$parameter]);
 
 $body = new ActionsSendmessageBody();
 $body->setMessage($message);

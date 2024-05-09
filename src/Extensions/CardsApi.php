@@ -12,7 +12,6 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
     /**
      * Search for the card and verify that it is not assigned
      *
-     * @param string $card_number
      * @param string|null $accept_language
      *
      * @return Card
@@ -40,13 +39,10 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
     /**
      * Assigning a free card to a customer
      *
-     * @param string $card_number
-     * @param string $customer_id
      * @param string|null $valid_from
      * @param string|null $valid_to
      * @param string|null $store_id
      * @param string|null $accept_language
-     *
      * @return void
      * @throws ApiException
      */

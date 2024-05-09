@@ -34,7 +34,7 @@ $plu_id->setCode('abc123'); // string | Code of product from the product list
 $product1 = new ProductBatch();
 $product1->setName('Apple Clock'); // strong | The name of the product
 $product1->setCode(null); // string | The code of the product (optional)
-$product1->setPluIds(array($plu_id)); // array of PluId objects
+$product1->setPluIds([$plu_id]); // array of PluId objects
 $product1->setProductGroupId(null); // string | The unique id of the product group (optional)
 $product1->setProductGroupExternalId(null); // string | The unique external id of the product group (optional)
 $product1->setProductBrandId(null); // string | The unique id of the product brand (optional)
@@ -43,7 +43,7 @@ $product1->setStoreId(null); // string | The unique id for the store where the p
 
 // Set the request body
 $body = new ProductsBatchBody();
-$body->setProducts(array($product1));
+$body->setProducts([$product1]);
 
 // Call endpoint and post data
 try {
