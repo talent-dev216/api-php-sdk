@@ -18,6 +18,7 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\CreditsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CreditTypesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CurrenciesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerAddressTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerEngagementApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerExternalApplicationsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerPropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\CustomerRelationTypesApi;
@@ -259,6 +260,14 @@ class CareCloud
     public function customerAddressTypesApi(): CustomerAddressTypesApi
     {
         return new CustomerAddressTypesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
+     * @return CustomerEngagementApi
+     */
+    public function customerEngagementApi(): CustomerEngagementApi
+    {
+        return new CustomerEngagementApi($this->getClient(), $this->getDefaultConfiguration());
     }
 
     /**
