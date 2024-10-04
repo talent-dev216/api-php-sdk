@@ -4,10 +4,13 @@ namespace CrmCareCloud\Webservice\RestApi\Client\SDK\Cache;
 
 class Rule
 {
+    /** @var string */
     private string $request_type;
 
+    /** @var string */
     private string $path;
 
+    /** @var int */
     private int $ttl;
 
     public const REQUEST_TYPE_GET = 'GET';
@@ -15,6 +18,11 @@ class Rule
     public const REQUEST_TYPE_PUT = 'PUT';
     public const REQUEST_TYPE_DELETE = 'DELETE';
 
+    /**
+     * @param string $request_type
+     * @param string $path
+     * @param int $ttl
+     */
     public function __construct(string $request_type, string $path, int $ttl = 500)
     {
         $this->request_type = $request_type;
@@ -31,6 +39,7 @@ class Rule
     }
 
     /**
+     * @param string $request_type
      * @return Rule
      */
     public function setRequestType(string $request_type): Rule
@@ -49,6 +58,7 @@ class Rule
     }
 
     /**
+     * @param string $path
      * @return Rule
      */
     public function setPath(string $path): Rule
@@ -67,6 +77,7 @@ class Rule
     }
 
     /**
+     * @param int $ttl
      * @return Rule
      */
     public function setTtl(int $ttl): Rule

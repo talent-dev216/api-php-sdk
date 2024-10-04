@@ -19,6 +19,7 @@ use GuzzleHttp\ClientInterface;
 
 class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CustomersApi
 {
+    /** @var CareCloud */
     private CareCloud $care_cloud;
 
     /**
@@ -34,14 +35,17 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
 
     /**
      * Get all rewards
-     *
+     * @param string $customer_id
+     * @param bool $rewards
      * @param int|null $reward_group
+     * @param bool $vouchers
+     * @param bool $campaign_products
      * @param bool|null $is_valid
      * @param string|null $customer_type_id
      * @param string|null $accept_language
-     *
      * @return array<array<mixed>>
      * @throws ApiException
+     * @throws Exception
      */
     public function getAllRewards(
         string $customer_id,
@@ -60,7 +64,7 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
         $campaign_products_data = [];
         $total_campaign_products = 0;
 
-        // We want get resource rewards
+        // We want to get resource rewards
         if ($rewards) {
             if (is_null($customer_type_id)) {
                 $customer_type_id_param = null;
@@ -68,44 +72,28 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
                 $customer_type_id_param = [$customer_type_id];
             }
             $get_rewards = $this->getSubCustomerRewards(
-                $customer_id,
-                (is_null($accept_language) ? "" : $accept_language),
-                100,
-                0,
-                null,
-                null,
-                null,
-                null,
-                $is_valid,
-                null,
-                null,
-                null,
-                null,
-                $reward_group,
-                $customer_type_id_param
+                customer_id: $customer_id,
+                accept_language: (is_null($accept_language) ? "" : $accept_language),
+                is_valid: $is_valid,
+                reward_group: $reward_group,
+                customer_type_id: $customer_type_id_param
             );
             $rewards_data = $get_rewards->getData()->getRewards();
             $total_rewards = $get_rewards->getData()->getTotalItems();
         }
 
-        // We want to get resource vouchers
+        // We want to get vouchers resource
         if ($vouchers) {
             $get_vouchers = $this->getSubCustomerVouchers(
-                $customer_id,
-                (is_null($accept_language) ? "" : $accept_language),
-                100,
-                0,
-                null,
-                null,
-                null,
-                null,
-                $is_valid
+                customer_id: $customer_id,
+                accept_language: (is_null($accept_language) ? "" : $accept_language),
+                is_valid: $is_valid
             );
             $vouchers_data = $get_vouchers->getData()->getVouchers();
             $total_vouchers = $get_vouchers->getData()->getTotalItems();
         }
 
-        // We want to get resource campaign-products
+        // We want to get campaign-products resource
         if ($campaign_products) {
             if (is_null($customer_type_id)) {
                 $customer_type_id_param = null;
@@ -113,15 +101,8 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
                 $customer_type_id_param = [$customer_type_id];
             }
             $get_campaign_products = $this->care_cloud->campaignProductsApi()->getCampaignProducts(
-                (is_null($accept_language) ? "" : $accept_language),
-                100,
-                0,
-                null,
-                null,
-                null,
-                null,
-                null,
-                $customer_type_id_param
+                accept_language: (is_null($accept_language) ? "" : $accept_language),
+                type_id: $customer_type_id_param
             );
             $campaign_products_data = $get_campaign_products->getData()->getCampaignProducts();
             $total_campaign_products = $get_campaign_products->getData()->getTotalItems();
@@ -137,11 +118,14 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
 
     /**
      * Save the customer extended
-     *
+     * @param CustomersBody $customer_body
+     * @param Card|null $card
+     * @param CustomerIdPropertyrecordsBody|null $property_body
+     * @param CustomerIdInterestrecordsBody|null $interest_body
      * @param string|null $accept_language
-     *
      * @return array<string, string|null>
      * @throws ApiException
+     * @throws Exception
      */
     public function postCustomerExtended(
         CustomersBody $customer_body,
@@ -152,12 +136,12 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
     ): array {
         // Card data
         $card_id = null;
-        $state = (isset($card) ? $card->getState() : null);
-        $card_number = (isset($card) ? $card->getCardNumber() : null);
-        $valid_from = (isset($card) ? $card->getValidFrom() : null);
-        $valid_to = (isset($card) ? $card->getValidTo() : null);
-        $store_id = (isset($card) ? $card->getStoreId() : null);
-        $card_type_id = (isset($card) ? $card->getCardTypeId() : null);
+        $state = ($card?->getState());
+        $card_number = ($card?->getCardNumber());
+        $valid_from = ($card?->getValidFrom());
+        $valid_to = ($card?->getValidTo());
+        $store_id = ($card?->getStoreId());
+        $card_type_id = ($card?->getCardTypeId());
 
         $response = [
             'card_id' => null,
@@ -228,9 +212,14 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
     }
 
     /**
-     *
+     * @param CareCloud $care_cloud
+     * @param CustomersBody $customers_body
+     * @param string $accept_language
+     * @param string $customer_source_id
+     * @param string $external_id
      * @return Customer
      * @throws ApiException
+     * @throws Exception
      */
     public function synchronizeCustomer(
         CareCloud $care_cloud,
@@ -241,14 +230,9 @@ class CustomersApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\Customers
     ): Customer {
         //search source record by $external_id & $customer_source_id
         $get_source_record = $care_cloud->customerSourceRecordsApi()->getCustomerSourceRecords(
-            $accept_language,
-            100,
-            0,
-            null,
-            null,
-            null,
-            $external_id,
-            $customer_source_id
+            accept_language: $accept_language,
+            external_id: $external_id,
+            customer_source_id: $customer_source_id
         );
         $source_record = $get_source_record->getData()->getCustomerSourceRecords();
         //source record was found, do updating

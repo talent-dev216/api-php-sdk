@@ -7,6 +7,7 @@ use Symfony\Component\Cache\Psr16Cache;
 
 class Cache extends Psr16Cache
 {
+    /** @var CacheItemPoolInterface */
     private CacheItemPoolInterface $cache_item_pool;
 
     /** @var Rule[] $rules */

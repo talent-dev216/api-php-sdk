@@ -53,9 +53,9 @@ use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductReservationSourcesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ProductsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PurchaseItemTypesApi;
+use CrmCareCloud\Webservice\RestApi\Client\Api\PurchasePropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PurchasesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\PurchaseTypesApi;
-use CrmCareCloud\Webservice\RestApi\Client\Api\RecommendationsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\ReservableProductsApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\RewardPropertiesApi;
 use CrmCareCloud\Webservice\RestApi\Client\Api\RewardsApi;
@@ -85,9 +85,11 @@ use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\Interfaces;
 use DateTime;
 use DateTimeZone;
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
+use InvalidArgumentException;
 use Kevinrob\GuzzleCache\CacheMiddleware;
 use Kevinrob\GuzzleCache\Storage\Psr6CacheStorage;
 use Kevinrob\GuzzleCache\Strategy\Delegate\DelegatingCacheStrategy;
@@ -96,15 +98,22 @@ use Kevinrob\GuzzleCache\Strategy\NullCacheStrategy;
 
 class CareCloud
 {
+    /** @var Config */
     private Config $config;
 
     /** @var AuthenticationHandler */
     private $auth_handler;
 
+    /** @var Cache|null */
     private ?Cache $cache;
 
+    /** @var Configuration|null */
     private ?Configuration $default_configuration = null;
 
+    /**
+     * @param Config $config
+     * @param Cache|null $cache
+     */
     public function __construct(Config $config, Cache $cache = null)
     {
         $this->config = $config;
@@ -113,6 +122,7 @@ class CareCloud
 
     /**
      * @return Configuration
+     * @throws Exception
      */
     public function getDefaultConfiguration(): Configuration
     {
@@ -184,6 +194,10 @@ class CareCloud
         return $this->config;
     }
 
+    /**
+     * @param Config $config
+     * @return void
+     */
     public function setConfig(Config $config): void
     {
         $this->config = $config;
@@ -192,6 +206,7 @@ class CareCloud
 
     /**
      * @return AgreementsApi
+     * @throws Exception
      */
     public function agreementsApi(): AgreementsApi
     {
@@ -200,6 +215,7 @@ class CareCloud
 
     /**
      * @return BookingsApi
+     * @throws Exception
      */
     public function bookingsApi(): BookingsApi
     {
@@ -208,6 +224,7 @@ class CareCloud
 
     /**
      * @return BookingTicketsApi
+     * @throws Exception
      */
     public function bookingTicketsApi(): BookingTicketsApi
     {
@@ -216,6 +233,7 @@ class CareCloud
 
     /**
      * @return BookingTicketPropertiesApi
+     * @throws Exception
      */
     public function bookingTicketsPropertiesApi(): BookingTicketPropertiesApi
     {
@@ -224,6 +242,7 @@ class CareCloud
 
     /**
      * @return BookingStatusesApi
+     * @throws Exception
      */
     public function bookingStatusesApi(): BookingStatusesApi
     {
@@ -232,6 +251,7 @@ class CareCloud
 
     /**
      * @return CreditsApi
+     * @throws Exception
      */
     public function creditsApi(): CreditsApi
     {
@@ -240,6 +260,7 @@ class CareCloud
 
     /**
      * @return CreditHistoryApi
+     * @throws Exception
      */
     public function creditHistoryApi(): CreditHistoryApi
     {
@@ -248,6 +269,7 @@ class CareCloud
 
     /**
      * @return CreditTypesApi
+     * @throws Exception
      */
     public function creditTypesApi(): CreditTypesApi
     {
@@ -256,6 +278,7 @@ class CareCloud
 
     /**
      * @return CustomerAddressTypesApi
+     * @throws Exception
      */
     public function customerAddressTypesApi(): CustomerAddressTypesApi
     {
@@ -264,6 +287,7 @@ class CareCloud
 
     /**
      * @return CustomerEngagementApi
+     * @throws Exception
      */
     public function customerEngagementApi(): CustomerEngagementApi
     {
@@ -272,6 +296,7 @@ class CareCloud
 
     /**
      * @return TestsApi
+     * @throws Exception
      */
     public function testsApi(): TestsApi
     {
@@ -280,6 +305,7 @@ class CareCloud
 
     /**
      * @return CampaignsApi
+     * @throws Exception
      */
     public function campaignsApi(): campaignsApi
     {
@@ -288,6 +314,7 @@ class CareCloud
 
     /**
      * @return CampaignProductsApi
+     * @throws Exception
      */
     public function campaignProductsApi(): CampaignProductsApi
     {
@@ -296,6 +323,7 @@ class CareCloud
 
     /**
      * @return \CrmCareCloud\Webservice\RestApi\Client\SDK\Extensions\CardsApi
+     * @throws Exception
      */
     public function cardsApi(): CardsApi
     {
@@ -304,6 +332,7 @@ class CareCloud
 
     /**
      * @return CardTypesApi
+     * @throws Exception
      */
     public function cardTypesApi(): CardTypesApi
     {
@@ -312,6 +341,7 @@ class CareCloud
 
     /**
      * @return CommunicationChannelsApi
+     * @throws Exception
      */
     public function communicationChannelsApi(): CommunicationChannelsApi
     {
@@ -320,6 +350,7 @@ class CareCloud
 
     /**
      * @return CountriesApi
+     * @throws Exception
      */
     public function countriesApi(): CountriesApi
     {
@@ -328,6 +359,7 @@ class CareCloud
 
     /**
      * @return CurrenciesApi
+     * @throws Exception
      */
     public function currenciesApi(): CurrenciesApi
     {
@@ -336,6 +368,7 @@ class CareCloud
 
     /**
      * @return Extensions\CustomersApi
+     * @throws Exception
      */
     public function customersApi(): CustomersApi
     {
@@ -344,6 +377,7 @@ class CareCloud
 
     /**
      * @return CustomersActionsApi
+     * @throws Exception
      */
     public function customersActionsApi(): CustomersActionsApi
     {
@@ -352,6 +386,7 @@ class CareCloud
 
     /**
      * @return CustomerTypesApi
+     * @throws Exception
      */
     public function customerTypesApi(): CustomerTypesApi
     {
@@ -360,6 +395,7 @@ class CareCloud
 
     /**
      * @return CustomerExternalApplicationsApi
+     * @throws Exception
      */
     public function customerExternalApplicationsApi(): CustomerExternalApplicationsApi
     {
@@ -368,6 +404,7 @@ class CareCloud
 
     /**
      * @return CustomerPropertiesApi
+     * @throws Exception
      */
     public function customerPropertiesApi(): CustomerPropertiesApi
     {
@@ -376,6 +413,7 @@ class CareCloud
 
     /**
      * @return CustomerRelationTypesApi
+     * @throws Exception
      */
     public function customerRelationTypesApi(): CustomerRelationTypesApi
     {
@@ -384,6 +422,7 @@ class CareCloud
 
     /**
      * @return CustomerSourcesApi
+     * @throws Exception
      */
     public function customerSourcesApi(): CustomerSourcesApi
     {
@@ -392,6 +431,7 @@ class CareCloud
 
     /**
      * @return CustomerSourceRecordsApi
+     * @throws Exception
      */
     public function customerSourceRecordsApi(): CustomerSourceRecordsApi
     {
@@ -400,6 +440,7 @@ class CareCloud
 
     /**
      * @return EventsApi
+     * @throws Exception
      */
     public function eventsApi(): EventsApi
     {
@@ -408,6 +449,7 @@ class CareCloud
 
     /**
      * @return EventGroupsApi
+     * @throws Exception
      */
     public function eventGroupsApi(): EventGroupsApi
     {
@@ -416,6 +458,7 @@ class CareCloud
 
     /**
      * @return EventPropertiesApi
+     * @throws Exception
      */
     public function eventPropertiesApi(): EventPropertiesApi
     {
@@ -424,6 +467,7 @@ class CareCloud
 
     /**
      * @return EventTypesApi
+     * @throws Exception
      */
     public function eventTypesApi(): EventTypesApi
     {
@@ -432,6 +476,7 @@ class CareCloud
 
     /**
      * @return InterestsApi
+     * @throws Exception
      */
     public function interestsApi(): InterestsApi
     {
@@ -440,6 +485,7 @@ class CareCloud
 
     /**
      * @return LanguagesApi
+     * @throws Exception
      */
     public function languagesApi(): LanguagesApi
     {
@@ -448,6 +494,7 @@ class CareCloud
 
     /**
      * @return MessagesApi
+     * @throws Exception
      */
     public function messagesApi(): MessagesApi
     {
@@ -456,6 +503,7 @@ class CareCloud
 
     /**
      * @return MessageTemplatesApi
+     * @throws Exception
      */
     public function messageTemplatesApi(): MessageTemplatesApi
     {
@@ -464,6 +512,7 @@ class CareCloud
 
     /**
      * @return OrdersApi
+     * @throws Exception
      */
     public function ordersApi(): OrdersApi
     {
@@ -472,6 +521,7 @@ class CareCloud
 
     /**
      * @return OneTimePasswordApi
+     * @throws Exception
      */
     public function oneTimePasswordApi(): OneTimePasswordApi
     {
@@ -480,6 +530,7 @@ class CareCloud
 
     /**
      * @return PartnersApi
+     * @throws Exception
      */
     public function partnersApi(): PartnersApi
     {
@@ -488,6 +539,7 @@ class CareCloud
 
     /**
      * @return PartnerPropertiesApi
+     * @throws Exception
      */
     public function partnerPropertiesApi(): PartnerPropertiesApi
     {
@@ -496,6 +548,7 @@ class CareCloud
 
     /**
      * @return PointsApi
+     * @throws Exception
      */
     public function pointsApi(): PointsApi
     {
@@ -504,6 +557,7 @@ class CareCloud
 
     /**
      * @return PointReservationApi
+     * @throws Exception
      */
     public function pointReservationsApi(): PointReservationApi
     {
@@ -512,6 +566,7 @@ class CareCloud
 
     /**
      * @return PointTypesApi
+     * @throws Exception
      */
     public function pointTypesApi(): PointTypesApi
     {
@@ -520,6 +575,7 @@ class CareCloud
 
     /**
      * @return PointHistoryApi
+     * @throws Exception
      */
     public function pointHistoryApi(): PointHistoryApi
     {
@@ -528,6 +584,7 @@ class CareCloud
 
     /**
      * @return ProductsApi
+     * @throws Exception
      */
     public function productsApi(): ProductsApi
     {
@@ -536,6 +593,7 @@ class CareCloud
 
     /**
      * @return ProductBrandsApi
+     * @throws Exception
      */
     public function productBrandsApi(): ProductBrandsApi
     {
@@ -544,6 +602,7 @@ class CareCloud
 
     /**
      * @return ProductGroupsApi
+     * @throws Exception
      */
     public function productGroupsApi(): ProductGroupsApi
     {
@@ -552,6 +611,7 @@ class CareCloud
 
     /**
      * @return ProductPropertiesApi
+     * @throws Exception
      */
     public function productPropertiesApi(): ProductPropertiesApi
     {
@@ -560,6 +620,7 @@ class CareCloud
 
     /**
      * @return ProductReservationExternalListTypesApi
+     * @throws Exception
      */
     public function productReservationExternalListTypesApi(): ProductReservationExternalListTypesApi
     {
@@ -568,6 +629,7 @@ class CareCloud
 
     /**
      * @return ProductReservationsApi
+     * @throws Exception
      */
     public function productReservationsApi(): ProductReservationsApi
     {
@@ -576,6 +638,7 @@ class CareCloud
 
     /**
      * @return ProductReservationSourcesApi
+     * @throws Exception
      */
     public function productReservationSourcesApi(): ProductReservationSourcesApi
     {
@@ -584,6 +647,7 @@ class CareCloud
 
     /**
      * @return ReservableProductsApi
+     * @throws Exception
      */
     public function reservableProductsApi(): ReservableProductsApi
     {
@@ -592,6 +656,7 @@ class CareCloud
 
     /**
      * @return PurchasesApi
+     * @throws Exception
      */
     public function purchasesApi(): PurchasesApi
     {
@@ -600,6 +665,7 @@ class CareCloud
 
     /**
      * @return PurchaseItemTypesApi
+     * @throws Exception
      */
     public function purchaseItemTypesApi(): PurchaseItemTypesApi
     {
@@ -608,6 +674,7 @@ class CareCloud
 
     /**
      * @return PurchaseTypesApi
+     * @throws Exception
      */
     public function purchaseTypesApi(): PurchaseTypesApi
     {
@@ -618,6 +685,7 @@ class CareCloud
      * @deprecated use hintApi() method
      *
      * @return HintsApi
+     * @throws Exception
      */
     public function recommendationsApi(): HintsApi
     {
@@ -626,6 +694,7 @@ class CareCloud
 
     /**
      * @return HintsApi
+     * @throws Exception
      */
     public function hintApi(): HintsApi
     {
@@ -636,6 +705,7 @@ class CareCloud
      * @deprecated use productRecommendationEngineApi() method
      *
      * @return ProductRecommendationEngineApi
+     * @throws Exception
      */
     public function recommendationEngineApi(): ProductRecommendationEngineApi
     {
@@ -644,6 +714,7 @@ class CareCloud
 
     /**
      * @return ProductRecommendationEngineApi
+     * @throws Exception
      */
     public function productRecommendationEngineApi(): ProductRecommendationEngineApi
     {
@@ -652,6 +723,7 @@ class CareCloud
 
     /**
      * @return RewardsApi
+     * @throws Exception
      */
     public function rewardsApi(): RewardsApi
     {
@@ -660,6 +732,7 @@ class CareCloud
 
     /**
      * @return RewardPropertiesApi
+     * @throws Exception
      */
     public function rewardPropertiesApi(): RewardPropertiesApi
     {
@@ -668,6 +741,7 @@ class CareCloud
 
     /**
      * @return RewardTypesApi
+     * @throws Exception
      */
     public function rewardTypesApi(): RewardTypesApi
     {
@@ -676,6 +750,7 @@ class CareCloud
 
     /**
      * @return SegmentsApi
+     * @throws Exception
      */
     public function segmentsApi(): SegmentsApi
     {
@@ -684,6 +759,7 @@ class CareCloud
 
     /**
      * @return SkipassesApi
+     * @throws Exception
      */
     public function skipassesApi(): SkipassesApi
     {
@@ -692,6 +768,7 @@ class CareCloud
 
     /**
      * @return StatusesApi
+     * @throws Exception
      */
     public function statusesApi(): StatusesApi
     {
@@ -700,6 +777,7 @@ class CareCloud
 
     /**
      * @return StoresApi
+     * @throws Exception
      */
     public function storesApi(): StoresApi
     {
@@ -708,6 +786,7 @@ class CareCloud
 
     /**
      * @return StoreGroupsApi
+     * @throws Exception
      */
     public function storeGroupsApi(): StoreGroupsApi
     {
@@ -716,6 +795,7 @@ class CareCloud
 
     /**
      * @return StorePropertiesApi
+     * @throws Exception
      */
     public function storePropertiesApi(): StorePropertiesApi
     {
@@ -724,6 +804,7 @@ class CareCloud
 
     /**
      * @return TokensApi
+     * @throws Exception
      */
     public function tokensApi(): TokensApi
     {
@@ -732,6 +813,7 @@ class CareCloud
 
     /**
      * @return UsersApi
+     * @throws Exception
      */
     public function usersApi(): UsersApi
     {
@@ -740,6 +822,7 @@ class CareCloud
 
     /**
      * @return UserRolesApi
+     * @throws Exception
      */
     public function userRolesApi(): UserRolesApi
     {
@@ -748,6 +831,7 @@ class CareCloud
 
     /**
      * @return VoucherPropertiesApi
+     * @throws Exception
      */
     public function voucherPropertiesApi(): VoucherPropertiesApi
     {
@@ -756,6 +840,7 @@ class CareCloud
 
     /**
      * @return VouchersApi
+     * @throws Exception
      */
     public function vouchersApi(): VouchersApi
     {
@@ -764,6 +849,7 @@ class CareCloud
 
     /**
      * @return WalletApi
+     * @throws Exception
      */
     public function walletApi(): WalletApi
     {
@@ -772,6 +858,7 @@ class CareCloud
 
     /**
      * @return TasksApi
+     * @throws Exception
      */
     public function tasksApi(): TasksApi
     {
@@ -780,6 +867,7 @@ class CareCloud
 
     /**
      * @return TaskPropertiesApi
+     * @throws Exception
      */
     public function taskPropertiesApi(): TaskPropertiesApi
     {
@@ -787,11 +875,21 @@ class CareCloud
     }
 
     /**
+     * @return PurchasePropertiesApi
+     * @throws Exception
+     */
+    public function purchasePropertiesApi(): PurchasePropertiesApi
+    {
+        return new PurchasePropertiesApi($this->getClient(), $this->getDefaultConfiguration());
+    }
+
+    /**
      * @return mixed
      * @throws ApiException
-     * @throws \InvalidArgumentException|ApiException
+     * @throws InvalidArgumentException
+     * @throws Exception
      */
-    public function getCountries()
+    public function getCountries(): mixed
     {
         $cache = $this->cache;
         if ($cache instanceof Cache) {
@@ -811,6 +909,7 @@ class CareCloud
 
     /**
      * @throws ApiException
+     * @throws Exception
      */
     public function authenticate(): ModelInterface
     {
@@ -826,7 +925,7 @@ class CareCloud
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function getHashedPassword(): string
     {

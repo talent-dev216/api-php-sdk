@@ -11,18 +11,21 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
 {
     /**
      * Search for the card and verify that it is not assigned
-     *
+     * @param string $card_number
      * @param string|null $accept_language
-     *
      * @return Card
      * @throws ApiException
+     * @throws Exception
      */
     public function getUnassignedCard(string $card_number, string $accept_language = null): Card
     {
         if ($accept_language === null) {
             $accept_language = "";
         }
-        $get_card = $this->getCards($accept_language, 100, 0, null, null, null, $card_number);
+        $get_card = $this->getCards(
+            accept_language: $accept_language,
+            card_number: $card_number
+        );
         $cards = $get_card->getData()->getCards();
         /** @var Card $card */
         $card = reset($cards);
@@ -38,7 +41,8 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
 
     /**
      * Assigning a free card to a customer
-     *
+     * @param string $card_number
+     * @param string $customer_id
      * @param string|null $valid_from
      * @param string|null $valid_to
      * @param string|null $store_id
@@ -46,7 +50,7 @@ class CardsApi extends \CrmCareCloud\Webservice\RestApi\Client\Api\CardsApi
      * @return void
      * @throws ApiException
      */
-    public function putUnassignedCard(string $card_number, string $customer_id, string $valid_from = null, string $valid_to = null, string $store_id = null, string $accept_language = null)
+    public function putUnassignedCard(string $card_number, string $customer_id, string $valid_from = null, string $valid_to = null, string $store_id = null, string $accept_language = null): void
     {
         $unassigned_card = $this->getUnassignedCard($card_number, $accept_language);
 

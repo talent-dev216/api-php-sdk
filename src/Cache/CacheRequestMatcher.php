@@ -9,6 +9,9 @@ class CacheRequestMatcher implements RequestMatcherInterface
 {
     private Rule $rule;
 
+    /**
+     * @param Rule $rule
+     */
     public function __construct(Rule $rule)
     {
         $this->rule = $rule;
@@ -17,7 +20,7 @@ class CacheRequestMatcher implements RequestMatcherInterface
     /**
      * @inheritDoc
      */
-    public function matches(RequestInterface $request)
+    public function matches(RequestInterface $request): bool
     {
         if ($this->rule->getRequestType() !== $request->getMethod()) {
             return false;

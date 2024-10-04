@@ -2,24 +2,35 @@
 
 namespace CrmCareCloud\Webservice\RestApi\Client\SDK;
 
+use Closure;
 use CrmCareCloud\Webservice\RestApi\Client\Api\UsersApi;
+use CrmCareCloud\Webservice\RestApi\Client\ApiException;
 use CrmCareCloud\Webservice\RestApi\Client\Model\ActionsLoginBody1;
 use CrmCareCloud\Webservice\RestApi\Client\SDK\Data\AuthTypes;
+use Exception;
 use GuzzleHttp\Client;
 use Psr\Http\Message\RequestInterface;
 
 class AuthenticationHandler
 {
+    /** @var string  */
     private string $token = "";
-
+/** @var CareCloud  */
     private CareCloud $care_cloud;
 
+    /**
+     * @param CareCloud $care_cloud
+     */
     public function __construct(CareCloud $care_cloud)
     {
         $this->care_cloud = $care_cloud;
     }
 
-    public function __invoke(callable $handler): \Closure
+    /**
+     * @throws ApiException
+     * @throws Exception
+     */
+    public function __invoke(callable $handler): Closure
     {
         $config = $this->care_cloud->getConfig();
         if ($config->getToken()) {
