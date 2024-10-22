@@ -5,7 +5,7 @@
   },
   "require": {
     "php": "^8.1",
-    "crmcarecloud/api-php-client": "^3.1",
+    "crmcarecloud/api-php-client": "^4.0",
     "kevinrob/guzzle-cache-middleware": "^5.1",
     "psr/simple-cache": "^3.0",
     "symfony/cache": "^6.4"
